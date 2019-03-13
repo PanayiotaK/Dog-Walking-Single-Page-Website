@@ -10,7 +10,13 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #a75833dc;">
+<br>
+<br>
+     
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a75833dc;">
   <a class="navbar-brand" href="#">DogWalking</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -31,51 +37,7 @@
   </div>
 </nav> 
 <br>
-<center>
 
-    <div class="container"> 
-        <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <div class= "card-header"> 
-                        <h5 class="card-title">Max</h5>  
-                    </div>
-                    <img class="card-img-top" src="dog1.jpg" alt="Dog image" width= 200 height= 350>
-                    <div class="card-body">    
-                        <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul  class="list-group list-group-flush"  >
-                        <li class="list-group-item">Corgi</li>
-                        <li class="list-group-item">3 years old</li>
-                        <li class="list-group-item">Male</li>
-                    </ul>
-                </div>
-            </div>
-         
-            <div class="col">
-              
-                <div class="card"  style="width: 18rem;">
-                    <div class= "card-header"> 
-                        <h5 class="card-title">Amy</h5>  
-                    </div>
-                    <img class="card-img-top" src="dog3.jpg" alt="Dog image" width= 350 height= 350>
-                    <div class="card-body">    
-                        <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Labrador</li>
-                        <li class="list-group-item">1 years old</li>
-                        <li class="list-group-item">Female</li>
-                    </ul>
-                 </div> 
-                 
-            </div>
-        </div>
-    </div>
-
-</center>
- 
-<br>
 
 <center>
     <div class="jumbotron">
@@ -108,8 +70,8 @@
                             <p class="card-text">Dog description .</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Labrador</li>
-                            <li class="list-group-item">1 years old</li>
+                            <li class="list-group-item">Husky</li>
+                            <li class="list-group-item">7 months old</li>
                             <li class="list-group-item">Female</li>
                         </ul>
                      </div> 
@@ -118,7 +80,154 @@
         </div>
     </div>
   </center>
-     
+<br>
+  <center>
+    <div class="jumbotron">
+        <div class="container"> 
+            <div class="row">
+                <div class ="col">
+                    <div class="card" align="center" style="width: 18rem;">
+                        <div class= "card-header"> 
+                            <h5 class="card-title">Emily</h5>  
+                        </div>
+                        <img class="card-img-top" src="labrador.jpg" alt="Dog image" width= 200 height= 350>
+                        <div class="card-body">    
+                            <p class="card-text">Dog description .</p>
+                        </div>
+                        <ul  class="list-group list-group-flush"  >
+                            <li class="list-group-item">Labrador</li>
+                            <li class="list-group-item">9 months old</li>
+                            <li class="list-group-item">Female</li>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class= "col">
+                    <div class="card" align="center"style="width: 18rem;">
+                        <div class= "card-header"> 
+                            <h5 class="card-title">Rex</h5>  
+                        </div>
+                        <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width= 350 height= 350>
+                        <div class="card-body">    
+                            <p class="card-text">Dog description .</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Rottweiler</li>
+                            <li class="list-group-item">4 years old</li>
+                            <li class="list-group-item">Male</li>
+                        </ul>
+                     </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+  </center>
+
+
+<center>
+<div class="jumbotron jumbotron-special">
+<h3 id="title">Owner Info</h3>
+<br>
+  <form class="needs-validation" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" placeholder="First name"  required>
+        <div class="valid-feedback">
+          Valid Input!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name"  required>
+        <div class="valid-feedback">
+            Valid Input!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustomUsername">Username</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+          </div>
+          <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03">City</label>
+        <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>      
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom04">County</label>
+        <input type="text" class="form-control" id="validationCustom04" placeholder="County" required>
+        <div class="invalid-feedback">
+          Please provide a valid county.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom05">Zip</label>
+        <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+  
+  <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
+
+</div>
+</center>
+
+
+
+
+
+
+
 
 
 
