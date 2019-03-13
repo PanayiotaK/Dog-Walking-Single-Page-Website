@@ -12,3 +12,21 @@ body {
     height: 700px;
     width: 700px; 
 }
+
+.test {
+    margin: auto;
+   /* width: 100%;*/
+    padding-left: 30%;
+}
+
+.jumbotron-special{
+    padding-top: 30px;
+    padding-bottom: 14px;  
+    height: 600px;
+    width: 950px; 
+
+}
+
+#title {
+    color: blue;
+}
