@@ -1,0 +1,14 @@
+body {
+    background-image: url("12.jpg");
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {  
+    padding-top: 30px;
+    padding-bottom: 14px;  
+    height: 700px;
+    width: 700px; 
+}
