@@ -1,237 +1,339 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="stylesheet.css">
-<title>Dog Walking</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+  <title>Dog Walking</title>
 </head>
+
 <body>
 
-<br>
-<br>
-     
+  <br>
+  <br>
 
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a75833dc;">
+    <a class="navbar-brand" href="#">DogWalking</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Info <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dogs</a>
+        </li>
+        <li class="nav-item active ">
+          <a class="nav-link" href="#">Forms</a>
+        </li>
 
-
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a75833dc;">
-  <a class="navbar-brand" href="#">DogWalking</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Info <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Dogs</a>
-      </li>
-      <li class="nav-item active ">
-        <a class="nav-link" href="#">Forms</a>
-      </li>
-     
-    </ul>
-  </div>
-</nav> 
-<br>
-
-
-<center>
-    <div class="jumbotron">
-        <div class="container"> 
-            <div class="row">
-                <div class ="col">
-                    <div class="card" align="center" style="width: 18rem;">
-                        <div class= "card-header"> 
-                            <h5 class="card-title">Max</h5>  
-                        </div>
-                        <img class="card-img-top" src="dog1.jpg" alt="Dog image" width= 200 height= 350>
-                        <div class="card-body">    
-                            <p class="card-text">Dog description .</p>
-                        </div>
-                        <ul  class="list-group list-group-flush"  >
-                            <li class="list-group-item">Corgi</li>
-                            <li class="list-group-item">3 years old</li>
-                            <li class="list-group-item">Male</li>
-                        </ul>
-                    </div>
-                </div>
-            
-                <div class= "col">
-                    <div class="card" align="center"style="width: 18rem;">
-                        <div class= "card-header"> 
-                            <h5 class="card-title">Amy</h5>  
-                        </div>
-                        <img class="card-img-top" src="dog3.jpg" alt="Dog image" width= 350 height= 350>
-                        <div class="card-body">    
-                            <p class="card-text">Dog description .</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Husky</li>
-                            <li class="list-group-item">7 months old</li>
-                            <li class="list-group-item">Female</li>
-                        </ul>
-                     </div> 
-                </div>
-            </div>
-        </div>
+      </ul>
     </div>
-  </center>
-<br>
+  </nav>
+  <br>
+
   <center>
     <div class="jumbotron">
-        <div class="container"> 
-            <div class="row">
-                <div class ="col">
-                    <div class="card" align="center" style="width: 18rem;">
-                        <div class= "card-header"> 
-                            <h5 class="card-title">Emily</h5>  
-                        </div>
-                        <img class="card-img-top" src="labrador.jpg" alt="Dog image" width= 200 height= 350>
-                        <div class="card-body">    
-                            <p class="card-text">Dog description .</p>
-                        </div>
-                        <ul  class="list-group list-group-flush"  >
-                            <li class="list-group-item">Labrador</li>
-                            <li class="list-group-item">9 months old</li>
-                            <li class="list-group-item">Female</li>
-                        </ul>
-                    </div>
-                </div>
-            
-                <div class= "col">
-                    <div class="card" align="center"style="width: 18rem;">
-                        <div class= "card-header"> 
-                            <h5 class="card-title">Rex</h5>  
-                        </div>
-                        <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width= 350 height= 350>
-                        <div class="card-body">    
-                            <p class="card-text">Dog description .</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Rottweiler</li>
-                            <li class="list-group-item">4 years old</li>
-                            <li class="list-group-item">Male</li>
-                        </ul>
-                     </div> 
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card" align="center" style="width: 18rem;">
+              <div class="card-header">
+                <h5 class="card-title">Max</h5>
+              </div>
+              <img class="card-img-top" src="dog1.jpg" alt="Dog image" width=200 height=350>
+              <div class="card-body">
+                <p class="card-text">Dog description .</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Corgi</li>
+                <li class="list-group-item">3 years old</li>
+                <li class="list-group-item">Male</li>
+              </ul>
             </div>
+          </div>
+
+          <div class="col">
+            <div class="card" align="center" style="width: 18rem;">
+              <div class="card-header">
+                <h5 class="card-title">Amy</h5>
+              </div>
+              <img class="card-img-top" src="dog3.jpg" alt="Dog image" width=350 height=350>
+              <div class="card-body">
+                <p class="card-text">Dog description .</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Husky</li>
+                <li class="list-group-item">7 months old</li>
+                <li class="list-group-item">Female</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </center>
+  <br>
+  <center>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card" align="center" style="width: 18rem;">
+              <div class="card-header">
+                <h5 class="card-title">Emily</h5>
+              </div>
+              <img class="card-img-top" src="labrador.jpg" alt="Dog image" width=200 height=350>
+              <div class="card-body">
+                <p class="card-text">Dog description .</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Labrador</li>
+                <li class="list-group-item">9 months old</li>
+                <li class="list-group-item">Female</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card" align="center" style="width: 18rem;">
+              <div class="card-header">
+                <h5 class="card-title">Rex</h5>
+              </div>
+              <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width=350 height=350>
+              <div class="card-body">
+                <p class="card-text">Dog description .</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Rottweiler</li>
+                <li class="list-group-item">4 years old</li>
+                <li class="list-group-item">Male</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </center>
 
 
-<center>
-<div class="jumbotron jumbotron-special">
-<h3 id="title">Owner Info</h3>
-<br>
-  <form class="needs-validation" novalidate>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom01">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="First name"  required>
-        <div class="valid-feedback">
-          Valid Input!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom02">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name"  required>
-        <div class="valid-feedback">
-            Valid Input!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationCustomUsername">Username</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
+  <center>
+    <div class="jumbotron jumbotron-special">
+      <h3 id="title">Owner Info</h3>
+      <br>
+      <form class="needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01">First name</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+            <div class="valid-feedback">
+              Valid Input!
+            </div>
           </div>
-          <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-          <div class="invalid-feedback">
-            Please choose a username.
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Last name</label>
+            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
+            <div class="valid-feedback">
+              Valid Input!
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustomUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+              </div>
+              <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username"
+                aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationCustom03">City</label>
-        <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-        <div class="invalid-feedback">
-          Please provide a valid city.
+        <div class="form-row">
+          <div class="col-md-8 mb-2">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="col-md-4 mb-2">
+            <label for="validationCustom03">City</label>
+            <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+
+
         </div>
-      </div>      
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom04">County</label>
-        <input type="text" class="form-control" id="validationCustom04" placeholder="County" required>
-        <div class="invalid-feedback">
-          Please provide a valid county.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom05">Zip</label>
-        <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
-      </div>
+
+        <br>
+        <h3 id="title">Dog Info</h3>
+        <form class="needs-validation" novalidate>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom01">Name</label>
+              <input type="text" class="form-control" id="validationCustom01" placeholder="Dog's name" required>
+              <div class="valid-feedback">
+                Valid Input!
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom02">Breed</label>
+              <input type="text" class="form-control" id="validationCustom02" placeholder="Breed" required>
+              <div class="valid-feedback">
+                Valid Input!
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="exampleFormControlSelect1">Age</label>
+              <select class="form-control" data-dropup-auto="false" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+              </select>
+            </div>
+
+          </div>
+          <br>
+
+          <div class="form-row">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value='Male'>
+              <label class="custom-control-label" for="customRadioInline1">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value='Female'>
+              <label class="custom-control-label" for="customRadioInline2">Female</label>
+            </div>
+          </div>
+          <br>
+          <br>
+          <h6 id="DogDays">Days that the Dog is availble</h6>
+          <br>
+          <br>
+          <div class="checkb">
+            <div class="col-md 10">
+              Monday <input type="checkbox" id="M" value='Monday'>
+              Tuesday <input type="checkbox" id="Tu" value='Tuesday'>
+              Wednesday<input type="checkbox" id="W" value='Wednesday'>
+              Thursday<input type="checkbox" id="Th" value='Thursday'>
+              Friday<input type="checkbox" id="F" value='Friday'>
+              Saturday<input type="checkbox" id="Sa" value='Saturday'>
+              Sunday<input type="checkbox" id="Su" value='Saturday'>
+
+              <button onclick="myFunction()">PREPI NA FI</button>
+              <!--Change that to submit button -->
+              <p id="demo"></p>
+              <!--Change that to JSON file-->
+              <script>
+                function myFunction() {
+                  array= []
+                  if (document.getElementById("M").checked == true){
+                    var x = document.getElementById("M").value;
+                    
+                    array.push(x)
+                  }
+                    
+                  if (document.getElementById("Tu").checked == true){
+                    var x = document.getElementById("Tu").value;
+                    array.push(x)
+                  }
+
+                  if (document.getElementById("W").checked == true){
+                    var x = document.getElementById("W").value;
+                    array.push(x)
+                  }
+
+                  if (document.getElementById("Th").checked == true){
+                    var x = document.getElementById("Th").value;
+                    array.push(x)
+                  }
+
+                  if (document.getElementById("F").checked == true){
+                    var x = document.getElementById("F").value;
+                    array.push(x)
+                  }
+                  if (document.getElementById("Sa").checked == true){
+                    var x = document.getElementById("Sa").value;
+                    array.push(x)
+                  }
+                  if (document.getElementById("Su").checked == true){
+                    var x = document.getElementById("Su").value;
+                    array.push(x)
+                  }
+
+                  
+                  document.getElementById("demo").innerHTML = array;
+                  }
+                  </script>
+
+            </div>
+          </div>
+
+
+
+        </form>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+
+      <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict';
+          window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+              form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+      </script>
+
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
-      </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </form>
-  
-  <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
-  </script>
-
-</div>
-</center>
-
-
-
-
-
-
-
-
-
+  </center>
 
 
 
 </body>
+
 </html>
