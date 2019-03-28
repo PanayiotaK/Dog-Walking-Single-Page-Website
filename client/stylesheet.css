@@ -1,0 +1,57 @@
+body {
+    background-image: url("12.jpg");
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+
+.jumbotron {  
+    padding-top: 30px;
+    padding-bottom: 14px;  
+    height: 700px;
+    width: 700px; 
+}
+
+.test {
+    margin: auto;
+   /* width: 100%;*/
+    padding-left: 30%;
+}
+
+.jumbotron-special{
+    padding-top: 30px;
+    padding-bottom: 14px;  
+    height: 900px;
+    width: 950px; 
+
+}
+
+#title {
+    color: blue;
+}
+
+.checkb input{
+    margin: 0 25px 0 2px;
+}
+
+.checkb {
+    text-align:center;
+}
+
+#DogDays{
+    float: left;
+    color:rgb(22, 98, 211);
+
+
+}
+
+.modal-body{
+
+    max-width: 1000px;
+    max-height: 1000px;
+}
+
+#modal_header{
+    text-align: center;
+}
