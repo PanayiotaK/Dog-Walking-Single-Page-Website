@@ -18,15 +18,15 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a75833dc;">
+ 
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(133, 77, 37);">
     <a class="navbar-brand" href="#">DogWalking</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
           <a class="nav-link" href="#buttons">Become a member <span class="sr-only">(current)</span></a>
         </li>
@@ -40,6 +40,10 @@
           <a class="nav-link" href="#ContactUs">Contact us</a>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+        <button id= "Login" class="btn btn-outline-dark" type="button">Login</button>
+      </form>
     </div>
   </nav>
 
@@ -160,8 +164,8 @@
                                       <h3 id="title">Dog Info</h3>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
-                                          <label for="validationCustom01">Name</label>
-                                          <input type="text" class="form-control" id="validationCustom01"
+                                          <label for="validationCustom01_">Name</label>
+                                          <input type="text" class="form-control" id="validationCustom01_"
                                             placeholder="Dog's name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
@@ -302,22 +306,23 @@
                                       <br>
                                       <br>
                                       <form>
-                                          <div class="form-group">
-                                            <label for="exampleFormControlFile1">Plz submit image</label>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                          </div>
-                                        </form>                                     
+                                        <div class="form-group">
+                                          <label for="exampleFormControlFile1">Plz submit image</label>
+                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                      </form>
                                       <br>
                                       <br>
-                                      <button class="btn btn-primary" type="submit">Submit form</button>
+                                      <button id="submitO"class="btn btn-primary" type="submit">Submit form</button>
                                     </form>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
+                          
                           </div>
                         </div>
                       </div>
@@ -325,8 +330,9 @@
                   </div>
                 </div>
               </div>
-              
-              
+            
+
+
               <div class="col">
                 <div class="card" align="center" style="width: 20rem;">
                   <img class="card-img-top" src="Volunteer.jpg" alt="Volunteer" width=100 height=250>
@@ -359,8 +365,8 @@
                                     <form class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
-                                          <label for="validationCustom01">First name</label>
-                                          <input type="text" class="form-control" id="validationCustom01"
+                                          <label for="validationCustom01V">First name</label>
+                                          <input type="text" class="form-control" id="validationCustom01V"
                                             placeholder="First name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
@@ -769,6 +775,23 @@
                 <div id="Owners_Data"></div>
               </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search form -->
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary ml-3" style="max-width: 45rem;">
+        <div class="card-body text-secondary">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-10 mb-3">
+                <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
+                <script src="index.js"></script>
+                <div id="search_data"></div>
+              </div>
             </div>
           </div>
         </div>

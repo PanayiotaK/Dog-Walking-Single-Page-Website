@@ -49,5 +49,80 @@ document.getElementById("Data_owners").addEventListener("click",function(event3)
 
 
 
+document.getElementById("search").addEventListener("keyup",function(event4){
+    if (event.keyCode === 13){
+        var usename =  document.getElementById("search").value ;
+        fetch('http://127.0.0.1:8090/search/'+usename)
+        .then(response => response.text())
+        .then(function(body){
+            document.getElementById("search_data").innerHTML = body;
+
+        });
+
+    }
+
+});
+
+document.getElementById("Login").addEventListener("click",function(event5){
+    var userID= document.getElementById("Login_In").value ;
+    fetch('http://127.0.0.1:8090/login/'+ userID )
+    .then(function(response){
+        console.log(response);
+        return response.text();
+        
+    })
+    .then(function(body){
+        if(body == 'user'){
+            window.location.href = "https://www.google.com";
+        }
+        if(body == 'admin'){
+            window.location.href = 'https://www.youtube.com/';
+        }
+
+
+    });
+    
+
+
+});
+
+document.getElementById('submitO').addEventListener("click", function(event6){
+    var Firstname = document.getElementById("validationCustom01").value;
+    console.log(Firstname)
+    /*(async () => {
+        const rawResponse = await fetch('https://127.0.0.1:8090/addOwners', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({name: Firstname})
+        });
+        const content = await rawResponse.json();
+      
+        console.log(content);
+      })();
+
+
+
+
+});
+
+*/
+
+
+
+fetch('http://127.0.0.1:8090/addOwners', {
+  method: 'post',
+  headers: {
+    'Accept': 'application/json, text/plain, /',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({name: document.getElementById("validationCustom01").value})
+}).then(res=>res.json())
+  .then(res => console.log(res))
+
+
+});
 
 }
