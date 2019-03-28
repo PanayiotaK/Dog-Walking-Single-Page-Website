@@ -1,0 +1,22 @@
+[	{
+		"name" : "Tom",
+		"last_n": "Ford",
+		"username": "TomF",
+		"email" : "tom.ford@gmail.com",
+		"city" : "Durham",		
+		"days": ["Wednesday","Saturday"]		
+		
+
+	},
+	{
+		"name" : "Jean",
+		"last_n": "Gaultier",
+		"username": "JeanGaul",
+		"email" : "jean.gaul@gmail.com",
+		"city" : "Durham",		
+		"days": ["Monday","Sunday"]			
+
+	}
+
+
+]	

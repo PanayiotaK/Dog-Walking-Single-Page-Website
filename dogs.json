@@ -1,0 +1,34 @@
+[
+	{
+		"name" : "Roberto",
+		"last_n": "Cavalli",
+		"username": "RobCav",
+		"email" : "roberto.cavali@gmail.com",
+		"city" : "Durham",
+		"Dogs_Name" :"Max",
+		"breed" : "Corgi",
+		"age" :"3",
+		"gender" : "Male",
+		"days": ["Monday","Sunday"],
+		"descr": ""
+	},
+	{
+		"name" : "Christian",
+		"last_n": "Louboutin",
+		"username": "ChrisL",
+		"email" : "chris.lou@gmail.com",
+		"city" : "Durham",
+		"Dogs_Name" :"Amy",
+		"breed" : "Husky",
+		"age" :"7",
+		"gender" : "Female",
+		"days": ["Wednesday","Saturday"],
+		"descr": "" 
+
+	}
+
+	
+
+
+
+]
