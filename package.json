@@ -2,13 +2,29 @@
   "name": "website-assigment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "file-system": "^2.2.2"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0",
+    "nodemon": "^1.18.10",
+    "supertest": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanayiotaK/Website-Assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PanayiotaK/Website-Assignment/issues"
+  },
+  "homepage": "https://github.com/PanayiotaK/Website-Assignment#readme"
 }
