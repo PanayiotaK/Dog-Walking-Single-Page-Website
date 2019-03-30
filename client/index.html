@@ -18,7 +18,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
- 
+
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(133, 77, 37);">
     <a class="navbar-brand" href="#">DogWalking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -42,7 +42,7 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
-        <button id= "Login" class="btn btn-outline-dark" type="button">Login</button>
+        <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
       </form>
     </div>
   </nav>
@@ -83,7 +83,7 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <div class="card" align="center" style="width: 20rem;">
+                <div class="card" style="width: 20rem;">
                   <img class="card-img-top" src="dogOwner.jpg" alt="Dog owners image" width=100 height=250>
                   <div class="card-body">
                     <p>Are you an<b> owner </b>with a busy schedule?</p>
@@ -109,11 +109,11 @@
                                     <h3 id="title">Owner Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                    <form class="needs-validation" novalidate>
+                                    <form action='./addOwners' method='post' id = "f1" class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01">First name</label>
-                                          <input type="text" class="form-control" id="validationCustom01"
+                                          <input type="text" name="name" class="form-control" id="validationCustom01"
                                             placeholder="First name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
@@ -122,19 +122,19 @@
                                         </div>
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom02">Last name</label>
-                                          <input type="text" class="form-control" id="validationCustom02"
+                                          <input type="text" name="last_n" class="form-control" id="validationCustom02"
                                             placeholder="Last name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
                                           </div>
 
-
                                         </div>
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustomUsername">Username</label>
                                           <div class="input-group">
-                                            <input type="text" class="form-control" id="validationCustomUsername"
-                                              placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                                            <input type="text" name="username" class="form-control"
+                                              id="validationCustomUsername" placeholder="Username"
+                                              aria-describedby="inputGroupPrepend" required>
                                             <div class="invalid-feedback">
                                               Please choose a username.
                                             </div>
@@ -144,36 +144,35 @@
                                       <div class="form-row">
                                         <div class="col-md-8 mb-2">
                                           <label for="exampleFormControlInput1">Email address</label>
-                                          <input type="email" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="name@example.com" required>
+                                          <input type="email" name="email" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="name@example.com" required>
                                           <div class="invalid-feedback">
                                             Please provide a valid email address.
                                           </div>
                                         </div>
                                         <div class="col-md-4 mb-2">
                                           <label for="validationCustom03">City</label>
-                                          <input type="text" class="form-control" id="validationCustom03"
+                                          <input type="text" name="city" class="form-control" id="validationCustom03"
                                             placeholder="City" required>
                                           <div class="invalid-feedback">
                                             Please provide a city.
                                           </div>
                                         </div>
                                       </div>
-
                                       <br>
                                       <h3 id="title">Dog Info</h3>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01_">Name</label>
-                                          <input type="text" class="form-control" id="validationCustom01_"
-                                            placeholder="Dog's name" required>
+                                          <input type="text" name="Dogs_Name" class="form-control"
+                                            id="validationCustom01_" placeholder="Dog's name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
                                           </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                          <label for="validationCustom02">Breed</label>
-                                          <input type="text" class="form-control" id="validationCustom02"
+                                          <label for="validationCustom02D">Breed</label>
+                                          <input type="text" name="breed" class="form-control" id="validationCustom02D"
                                             placeholder="Breed" required>
                                           <div class="valid-feedback">
                                             Valid Input!
@@ -182,7 +181,7 @@
 
                                         <div class="col-md-4 mb-3">
                                           <label for="exampleFormControlSelect1">Age</label>
-                                          <select class="form-control" data-dropup-auto="false"
+                                          <select class="form-control" name="age" data-dropup-auto="false"
                                             id="exampleFormControlSelect1">
                                             <option>1</option>
                                             <option>2</option>
@@ -207,12 +206,12 @@
 
                                       <div class="form-row">
                                         <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                                          <input type="radio" id="customRadioInline1" name="gender"
                                             class="custom-control-input" value='Male' required>
                                           <label class="custom-control-label" for="customRadioInline1">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                                          <input type="radio" id="customRadioInline2" name="gender"
                                             class="custom-control-input" value='Female' required>
                                           <label class="custom-control-label" for="customRadioInline2">Female</label>
                                         </div>
@@ -222,107 +221,68 @@
                                       <h6 id="DogDays">Days that the Dog is availble</h6>
                                       <br>
                                       <br>
+
                                       <div class="col-md 10">
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="M" value="Monday">
+                                          <input class="form-check-input" type="checkbox" id="M" name="days"
+                                            value="Monday">
                                           <label class="form-check-label" for="M">Monday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Tu" value="Tuesday">
+                                          <input class="form-check-input" type="checkbox" name="days" id="Tu"
+                                            value="Tuesday">
                                           <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="W" value="Wednesday">
+                                          <input class="form-check-input" type="checkbox" id="W" name="days"
+                                            value="Wednesday">
                                           <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Th" value="Thursday">
+                                          <input class="form-check-input" type="checkbox" name="days" id="Th"
+                                            value="Thursday">
                                           <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="F" value="Friday">
+                                          <input class="form-check-input" type="checkbox" id="F" name="days"
+                                            value="Friday">
                                           <label class="form-check-label" for="inlineCheckbox2">Friday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Sa" value="Saturday">
+                                          <input class="form-check-input" type="checkbox" id="Sa" name="days"
+                                            value="Saturday">
                                           <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Su" value="Sunday">
+                                          <input class="form-check-input" type="checkbox" id="Su" name="days"
+                                            value="Sunday">
                                           <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
                                         </div>
 
                                       </div>
 
-                                      <button onclick="myFunction()">PREPI NA FI</button>
-                                      <!--Change that to submit button -->
-                                      <p id="demo"></p>
-                                      <!--Change that to JSON file-->
-                                      <script>
-                                        function myFunction() {
-                                          array = []
-                                          if (document.getElementById("M").checked == true) {
-                                            var x = document.getElementById("M").value;
-
-                                            array.push(x)
-                                          }
-
-                                          if (document.getElementById("Tu").checked == true) {
-                                            var x = document.getElementById("Tu").value;
-                                            array.push(x)
-                                          }
-
-                                          if (document.getElementById("W").checked == true) {
-                                            var x = document.getElementById("W").value;
-                                            array.push(x)
-                                          }
-
-                                          if (document.getElementById("Th").checked == true) {
-                                            var x = document.getElementById("Th").value;
-                                            array.push(x)
-                                          }
-
-                                          if (document.getElementById("F").checked == true) {
-                                            var x = document.getElementById("F").value;
-                                            array.push(x)
-                                          }
-                                          if (document.getElementById("Sa").checked == true) {
-                                            var x = document.getElementById("Sa").value;
-                                            array.push(x)
-                                          }
-                                          if (document.getElementById("Su").checked == true) {
-                                            var x = document.getElementById("Su").value;
-                                            array.push(x)
-                                          }
-
-                                          document.getElementById("demo").innerHTML = array;
-                                        }
-                                      </script>
-
                                       <div class="input-group">
-                                        <textarea class="form-control" aria-label="With textarea"
+                                        <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
                                           placeholder="Briefly describe your dog (not nessesary)"></textarea>
                                       </div>
                                       <br>
                                       <br>
-                                      <form>
+                                     
                                         <div class="form-group">
                                           <label for="exampleFormControlFile1">Plz submit image</label>
                                           <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                        </div>
-                                      </form>
+                                        </div>                                      
+                                      <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
                                       <br>
                                       <br>
-                                      <button id="submitO"class="btn btn-primary" type="submit">Submit form</button>
                                     </form>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
-                          
                           </div>
                         </div>
                       </div>
@@ -330,11 +290,31 @@
                   </div>
                 </div>
               </div>
-            
+              <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function () {
+                  'use strict';
+                  window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');                   
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                      form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                      }, false);
+                    });
+                  }, false);
+                })();
 
-
+              </script>
+           
+         
               <div class="col">
-                <div class="card" align="center" style="width: 20rem;">
+                <div class="card" style="width: 20rem;">
                   <img class="card-img-top" src="Volunteer.jpg" alt="Volunteer" width=100 height=250>
                   <div class="card-body">
                     <p>Are you a huge<b> dog lover</b>, but you can't have your own dog?</p>
@@ -345,7 +325,7 @@
                     <div class="container">
                       <!-- Trigger the modal with a button -->
                       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> -->
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                      <button type="button" align = center class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
                         data-target="#myModal2">Start as Volunteer</button>
 
                       <!-- Modal -->
@@ -362,7 +342,7 @@
                                     <h3 id="title">Volunteer Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                    <form class="needs-validation" novalidate>
+                                    <form id = "f2" class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01V">First name</label>
@@ -376,8 +356,8 @@
                                           </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                          <label for="validationCustom02">Last name</label>
-                                          <input type="text" class="form-control" id="validationCustom02"
+                                          <label for="validationCustom02V">Last name</label>
+                                          <input type="text" class="form-control" id="validationCustom02V"
                                             placeholder="Last name" required>
                                           <div class="valid-feedback">
                                             Valid Input!
@@ -388,9 +368,9 @@
 
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                          <label for="validationCustomUsername">Username</label>
+                                          <label for="validationCustomUsernameV">Username</label>
                                           <div class="input-group">
-                                            <input type="text" class="form-control" id="validationCustomUsername"
+                                            <input type="text" class="form-control" id="validationCustomUsernameV"
                                               placeholder="Username" aria-describedby="inputGroupPrepend" required>
                                             <div class="invalid-feedback">
                                               Please choose a username.
@@ -400,23 +380,23 @@
                                       </div>
                                       <div class="form-row">
                                         <div class="col-md-8 mb-2">
-                                          <label for="exampleFormControlInput1">Email address</label>
-                                          <input type="email" class="form-control" id="exampleFormControlInput1"
+                                          <label for="exampleFormControlInput1V">Email address</label>
+                                          <input type="email" class="form-control" id="exampleFormControlInput1V"
                                             placeholder="name@example.com" required>
                                           <div class="invalid-feedback">
                                             Please provide a valid email address.
                                           </div>
                                         </div>
                                         <div class="col-md-4 mb-2">
-                                          <label for="validationCustom03">City</label>
-                                          <input type="text" class="form-control" id="validationCustom03"
+                                          <label for="validationCustom03V">City</label>
+                                          <input type="text" class="form-control" id="validationCustom03V"
                                             placeholder="City" required>
                                           <div class="invalid-feedback">
                                             Please provide a city.
                                           </div>
                                         </div>
                                       </div>
-                                      <h6 id="DogDays">Days that you want to volunteer</h6>
+                                      <h6 id="DogDaysV">Days that you want to volunteer</h6>
                                       <br>
                                       <br>
                                       <div class="col-md 8">
@@ -449,52 +429,7 @@
                                           <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
                                         </div>
                                       </div>
-
-                                      <button onclick="myFunction2()">PREPI NA FI2</button>
-                                      <!--Change that to submit button -->
-                                      <p id="demo2"></p>
-                                      <!--Change that to JSON file-->
-                                      <script>
-                                        function myFunction2() {
-                                          array2 = []
-                                          if (document.getElementById("M2").checked == true) {
-                                            var x2 = document.getElementById("M2").value;
-
-                                            array2.push(x2)
-                                          }
-
-                                          if (document.getElementById("Tu2").checked == true) {
-                                            var x2 = document.getElementById("Tu2").value;
-                                            array2.push(x2)
-                                          }
-
-                                          if (document.getElementById("W2").checked == true) {
-                                            var x2 = document.getElementById("W2").value;
-                                            array2.push(x2)
-                                          }
-
-                                          if (document.getElementById("Th2").checked == true) {
-                                            var x2 = document.getElementById("Th2").value;
-                                            array2.push(x2)
-                                          }
-
-                                          if (document.getElementById("F2").checked == true) {
-                                            var x2 = document.getElementById("F2").value;
-                                            array2.push(x2)
-                                          }
-                                          if (document.getElementById("Sa2").checked == true) {
-                                            var x2 = document.getElementById("Sa2").value;
-                                            array2.push(x2)
-                                          }
-                                          if (document.getElementById("Su2").checked == true) {
-                                            var x2 = document.getElementById("Su2").value;
-                                            array2.push(x2)
-                                          }
-
-                                          document.getElementById("demo2").innerHTML = array2;
-                                        }
-                                      </script>
-                                      <button class="btn btn-primary" type="submit">Submit form</button>
+                                      <button id="SubmitVol" class="btn btn-primary" type="submit">Submit form</button>
                                     </form>
                                   </div>
                                 </div>
@@ -554,7 +489,7 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <div class="card" align="center" style="width: 18rem;">
+                  <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       <h5 class="card-title">Max</h5>
                     </div>
@@ -571,7 +506,7 @@
                 </div>
                 <br>
                 <div class="col">
-                  <div class="card" align="center" style="width: 18rem;">
+                  <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       <h5 class="card-title">Amy</h5>
                     </div>
@@ -627,7 +562,7 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <div class="card" align="center" style="width: 18rem;">
+                  <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       <h5 class="card-title">Emily</h5>
                     </div>
@@ -644,7 +579,7 @@
                 </div>
 
                 <div class="col">
-                  <div class="card" align="center" style="width: 18rem;">
+                  <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       <h5 class="card-title">Rex</h5>
                     </div>
