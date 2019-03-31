@@ -86,12 +86,12 @@ window.onload = function () {
 
     });
 
-     
-    document.getElementById('f1').addEventListener('submit', async function (event) {
+
+  /*  document.getElementById('f1').addEventListener('submit', async function (event) {
         event.preventDefault();
         try {
             let name = document.getElementById('validationCustom01').value;
-            let Lname = document.getElementById('validationCustom02').value;
+            let Lname = document.getElementById('validationCustom02').value;            
             let uname = document.getElementById('validationCustomUsername').value
             let email = document.getElementById('exampleFormControlInput1').value
             let city = document.getElementById('validationCustom03').value
@@ -100,6 +100,10 @@ window.onload = function () {
             let age = document.getElementById('exampleFormControlSelect1').value
             let gen;
             let des = document.getElementById('des').value ;
+            let image = document.getElementById(dogImage).value;
+            console.log("image",image)
+
+
             if( document.getElementById('customRadioInline1').checked == true ){
                 gen = 'Male';
             }
@@ -140,6 +144,8 @@ window.onload = function () {
                 days.push(x)
             }
 
+         
+
             var data = {
                 name: name,
                 last_n: Lname,
@@ -162,7 +168,7 @@ window.onload = function () {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: "ded=" + ded
+                body: "ded=" + ded 
             })
 
             if (!response.ok) {
@@ -172,8 +178,8 @@ window.onload = function () {
             console.log(error)
             alert("problem: " + error);
         }
-
-    });
+    });*/
+   
     document.getElementById('f2').addEventListener('submit', async function (event) {
         event.preventDefault();
         try {

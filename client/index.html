@@ -109,7 +109,8 @@
                                     <h3 id="title">Owner Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                    <form action='./addOwners' method='post' id = "f1" class="needs-validation" novalidate>
+                                    <iframe name = "fromSending" hidden></iframe>
+                                    <form action='./addOwners'  enctype="multipart/form-data"  method='post'  id = "f1" class="needs-validation" novalidate target = "fromSending">
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01">First name</label>
@@ -270,8 +271,9 @@
                                      
                                         <div class="form-group">
                                           <label for="exampleFormControlFile1">Plz submit image</label>
-                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                        </div>                                      
+                                          <input type="file" class="form-control-file" id="dogImage" name = "dogImage">
+                                        </div> 
+                                                                         
                                       <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
                                       <br>
                                       <br>
