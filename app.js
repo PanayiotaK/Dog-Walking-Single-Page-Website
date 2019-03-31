@@ -4,10 +4,35 @@ var fs = require("fs");
 var obj1 = JSON.parse(fs.readFileSync("dogs.json"));
 var obj2 = JSON.parse(fs.readFileSync("volunteers.json"));
 
+app.use('/uploads',express.static('uploads'));
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb ){
+        cb(null, './uploads/');
+
+
+    },
+    filename : function(req, file, cb){
+        iName = Date.now() + '-' + file.originalname ;
+        cb(null,iName)
+    }
+
+});
+const fileFilter = (req, file, cb) =>{
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        cb(null, true);
+    }
+    else {
+        cb(null,false);
+    }
+};
+const upload = multer({storage : storage, fileFilter :fileFilter});
 
 app.use(express.static('client'));
 
@@ -91,22 +116,38 @@ app.get('/login/:userID', function (req, resp) {
 
 });
 
-app.post('/addOwners', function (req, resp) {
-    var j = req.body.ded;
-    console.log("j:",j);
-    var j_parsed = JSON.parse(j);
-    console.log(j_parsed);
-    const name = j_parsed.name;
-    const Lname = j_parsed.last_n;
-    const uname = j_parsed.username;
-    const email = j_parsed.email;
-    const city = j_parsed.city;
-    const Dname = j_parsed.Dogs_Name;
-    const breed = j_parsed.breed;
-    const age = j_parsed.age;
-    const gen = j_parsed.gender;
-    const days = j_parsed.days;
-    const description = j_parsed.descr;
+app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
+    console.log("req.file", req.file)
+    if (req.file) {
+        console.log('Uploading file...');
+        var filename = req.file.filename;
+        var uploadStatus = 'File Uploaded Successfully';
+        var p = "uploads/" + iName;
+       
+    } 
+    else {
+        console.log('No File Uploaded');
+        var filename = 'FILE NOT UPLOADED';
+        var uploadStatus = 'File Upload Failed';
+    }
+    
+    
+    var j = req.body;
+    console.log("j",j)
+    //var j_parsed = JSON.parse(j);    
+    //console.log(j_parsed);
+    const name = j.name;
+    const Lname = j.last_n;
+    const uname = j.username;
+    const email = j.email;
+    const city = j.city;
+    const Dname = j.Dogs_Name;
+    const breed = j.breed;
+    const age = j.age;
+    const gen = j.gender;
+    const days = j.days;
+    const description = j.descr;
+    const image_path =  "uploads/" + iName
 
     obj1.push({
         name: name,
@@ -119,7 +160,8 @@ app.post('/addOwners', function (req, resp) {
         age: age,
         gender: gen,
         days: days,
-        descr: description
+        descr: description,
+        dogImage : image_path
     })
 
     fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
@@ -127,8 +169,9 @@ app.post('/addOwners', function (req, resp) {
             return err;
         }
     });
+   
     resp.send("Fine that worked")
-
+    
 });
 
 app.post('/addVol', function (req, resp) {
