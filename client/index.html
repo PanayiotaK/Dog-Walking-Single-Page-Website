@@ -43,9 +43,20 @@
       <form class="form-inline my-2 my-lg-0">
         <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
         <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
-      </form>
+      </form>     
     </div>
   </nav>
+
+<div id = "LoginPopUp">
+  <form class="dropdown-menu p-4">    
+    <div class="form-group">
+      <label for="exampleDropdownFormPassword2">Password</label>
+      <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+</div>
+
 
   <div id="info">
     <br>
@@ -109,8 +120,9 @@
                                     <h3 id="title">Owner Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                    <iframe name = "fromSending" hidden></iframe>
-                                    <form action='./addOwners'  enctype="multipart/form-data"  method='post'  id = "f1" class="needs-validation" novalidate target = "fromSending">
+                                    <iframe name="fromSending" hidden></iframe>
+                                    <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1"
+                                      class="needs-validation" novalidate target="fromSending">
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01">First name</label>
@@ -218,11 +230,23 @@
                                         </div>
                                       </div>
                                       <br>
-                                      <br>
+                                      <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#pr').click(function() {
+                                              checked = $("input[type=checkbox]:checked").length;
+                                        
+                                              if(!checked) {
+                                                alert("You must check at least one checkbox.");
+                                                return false;
+                                              }
+                                        
+                                            });
+                                        });                                        
+                                        </script>
+
                                       <h6 id="DogDays">Days that the Dog is availble</h6>
                                       <br>
                                       <br>
-
                                       <div class="col-md 10">
                                         <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="checkbox" id="M" name="days"
@@ -234,9 +258,9 @@
                                             value="Tuesday">
                                           <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
                                         </div>
-                                        <div class="form-check form-check-inline">
+                                        <div class="form-check form-check-inline">                                         
                                           <input class="form-check-input" type="checkbox" id="W" name="days"
-                                            value="Wednesday">
+                                            value="Wednesday" >
                                           <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -259,24 +283,29 @@
                                             value="Sunday">
                                           <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
                                         </div>
-
+                                     
                                       </div>
-
+                                      <br>
                                       <div class="input-group">
                                         <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
                                           placeholder="Briefly describe your dog (not nessesary)"></textarea>
                                       </div>
                                       <br>
+                                      
+                                      <div class="form-group">
+                                        <label for="exampleFormControlFile1">Plz submit image</label>
+                                        <input type="file" class="form-control-file" id="dogImage" name="dogImage" required>
+                                        <small id="passwordHelpInline" class="text-muted">
+                                            Must be jpeg or png.
+                                          </small>
+                                         <div class="invalid-feedback"> Plz submit an appropriate photo </div>
+                                      </div>
+                                                                      
                                       <br>
-                                     
-                                        <div class="form-group">
-                                          <label for="exampleFormControlFile1">Plz submit image</label>
-                                          <input type="file" class="form-control-file" id="dogImage" name = "dogImage">
-                                        </div> 
-                                                                         
                                       <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
                                       <br>
                                       <br>
+                                      <div id = "message"></div>
                                     </form>
                                   </div>
                                 </div>
@@ -298,23 +327,28 @@
                   'use strict';
                   window.addEventListener('load', function () {
                     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');                   
+                    var forms = document.getElementsByClassName('needs-validation');
+                                       
                     // Loop over them and prevent submission
                     var validation = Array.prototype.filter.call(forms, function (form) {
                       form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
+                        if (form.checkValidity() === false ) {
+                          console.log("prevent")                         
                           event.preventDefault();
                           event.stopPropagation();
+                          document.getElementById("message").innerHTML = "Not successful ";
                         }
+                        else{
                         form.classList.add('was-validated');
+                        document.getElementById("message").innerHTML = "Success!";}
                       }, false);
                     });
                   }, false);
                 })();
 
               </script>
-           
-         
+
+
               <div class="col">
                 <div class="card" style="width: 20rem;">
                   <img class="card-img-top" src="Volunteer.jpg" alt="Volunteer" width=100 height=250>
@@ -327,8 +361,8 @@
                     <div class="container">
                       <!-- Trigger the modal with a button -->
                       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> -->
-                      <button type="button" align = center class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#myModal2">Start as Volunteer</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-toggle="modal" data-target="#myModal2">Start as Volunteer</button>
 
                       <!-- Modal -->
                       <div class="modal fade" id="myModal2" ole="dialog">
@@ -344,7 +378,7 @@
                                     <h3 id="title">Volunteer Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                    <form id = "f2" class="needs-validation" novalidate>
+                                    <form id="f2" class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01V">First name</label>
@@ -539,10 +573,6 @@
     </div>
 
     <script type="text/javascript">
-      window.onload = function () {
-        document.getElementById('DogsAv2').style.display = 'none';
-      }
-
       function F() {
         var x = document.getElementById('DogsAv2');
         if (x.style.display === "none") {
@@ -601,12 +631,17 @@
           </div>
         </div>
       </div>
+    
+    <br>
+    <div id ="moreDogs">
     </div>
+        </div>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function () {
         'use strict';
         window.addEventListener('load', function () {
+          document.getElementById("DogsAv2").style.display = "none";
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
           // Loop over them and prevent submission
@@ -622,7 +657,10 @@
         }, false);
       })();
     </script>
-
+<br>
+<br>
+<br>
+<br>
     <div id="Gallery">
       <br>
       <br>

@@ -4,7 +4,7 @@ var fs = require("fs");
 var obj1 = JSON.parse(fs.readFileSync("dogs.json"));
 var obj2 = JSON.parse(fs.readFileSync("volunteers.json"));
 
-app.use('/uploads',express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -13,34 +13,39 @@ app.use(bodyParser.urlencoded({
 
 const multer = require('multer');
 const storage = multer.diskStorage({
-    destination: function(req, file, cb ){
+    destination: function (req, file, cb) {
         cb(null, './uploads/');
 
 
     },
-    filename : function(req, file, cb){
-        iName = Date.now() + '-' + file.originalname ;
-        cb(null,iName)
+    filename: function (req, file, cb) {
+        iName = Date.now() + '-' + file.originalname;
+        cb(null, iName)
     }
 
 });
-const fileFilter = (req, file, cb) =>{
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true);
-    }
-    else {
-        cb(null,false);
+    } else {
+        cb(null, false);
     }
 };
-const upload = multer({storage : storage, fileFilter :fileFilter});
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 
 app.use(express.static('client'));
 
 app.get('/dogs', function (req, resp) {
     resp.send(obj1);
-
-
 });
+
+app.get('/showDogs', function (req, resp) {
+    resp.send(obj1);
+});
+
 
 app.get('/volunteers', function (req, resp) {
     resp.send(obj2);
@@ -123,19 +128,16 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
         var filename = req.file.filename;
         var uploadStatus = 'File Uploaded Successfully';
         var p = "uploads/" + iName;
-       
-    } 
-    else {
+
+    } else {
         console.log('No File Uploaded');
         var filename = 'FILE NOT UPLOADED';
         var uploadStatus = 'File Upload Failed';
+ 
     }
-    
-    
+
     var j = req.body;
-    console.log("j",j)
-    //var j_parsed = JSON.parse(j);    
-    //console.log(j_parsed);
+    console.log("j", j);    
     const name = j.name;
     const Lname = j.last_n;
     const uname = j.username;
@@ -147,7 +149,7 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     const gen = j.gender;
     const days = j.days;
     const description = j.descr;
-    const image_path =  "uploads/" + iName
+    const image_path = "uploads/" + iName
 
     obj1.push({
         name: name,
@@ -161,17 +163,16 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
         gender: gen,
         days: days,
         descr: description,
-        dogImage : image_path
+        dogImage: image_path
     })
 
     fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
         if (err) {
-            return err;
+            prompt("error submission not succesful");
         }
-    });
-   
+    });    
     resp.send("Fine that worked")
-    
+
 });
 
 app.post('/addVol', function (req, resp) {
