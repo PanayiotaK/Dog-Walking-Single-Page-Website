@@ -1,34 +1,40 @@
-[
-	{
-		"name" : "Roberto",
-		"last_n": "Cavalli",
-		"username": "RobCav",
-		"email" : "roberto.cavali@gmail.com",
-		"city" : "Durham",
-		"Dogs_Name" :"Max",
-		"breed" : "Corgi",
-		"age" :"3",
-		"gender" : "Male",
-		"days": ["Monday","Sunday"],
-		"descr": ""
-	},
-	{
-		"name" : "Christian",
-		"last_n": "Louboutin",
-		"username": "ChrisL",
-		"email" : "chris.lou@gmail.com",
-		"city" : "Durham",
-		"Dogs_Name" :"Amy",
-		"breed" : "Husky",
-		"age" :"7",
-		"gender" : "Female",
-		"days": ["Wednesday","Saturday"],
-		"descr": "" 
-
-	}
-
-	
-
-
-
-]
+[{
+    "name": "Panagiota",
+    "last_n": "Konstantinou",
+    "username": "hello",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "Dogs_Name": "Panagiota Konstantinou",
+    "breed": "Labrador",
+    "age": "1",
+    "gender": "Female",
+    "days": "Tuesday",
+    "descr": "",
+    "dogImage": "uploads/1554124299645-7.jpg"
+}, {
+    "name": "Panagiota",
+    "last_n": "Konstantinou",
+    "username": "maria",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "Dogs_Name": "Panagiota Konstantinou",
+    "breed": "Labrador",
+    "age": "1",
+    "gender": "Female",
+    "days": "Monday",
+    "descr": "",
+    "dogImage": "uploads/1554309826894-4.jpg"
+}, {
+    "name": "Panagiota",
+    "last_n": "Konstantinou",
+    "username": "maria",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "Dogs_Name": "Panagiota Konstantinou",
+    "breed": "Labrador",
+    "age": "1",
+    "gender": "Female",
+    "days": "Monday",
+    "descr": "",
+    "dogImage": "uploads/1554309863221-dog2.jpg"
+}]
