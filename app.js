@@ -38,8 +38,22 @@ const upload = multer({
 
 app.use(express.static('client'));
 
-app.get('/dogs', function (req, resp) {
-    resp.send(obj1);
+app.get('/dogs', function (req, resp) { 
+    var list = [] ;
+    for (var i = 0; i < obj1.length; i++) {
+        list.push({
+            Dname: obj1[i].Dogs_Name,
+            Oname : obj1[i].name,
+            Lname : obj1[i].last_n,
+            email : obj1[i].email,
+            city : obj1[i].city,
+            Dage : obj1[i].age,
+            Dgen : obj1[i].gender ,
+            breed : obj1[i].breed
+        
+        });
+    }   
+    resp.send(list);
 });
 
 app.get('/showDogs', function (req, resp) {
@@ -54,6 +68,52 @@ app.get('/volunteers', function (req, resp) {
 
 app.get('/owners', function (req, resp) {
     resp.send(obj1);
+});
+
+app.get('/matchDogs', function (req, resp) {
+    let dogs = obj1;
+    let volunt = obj2;
+    var l = 0;
+    var obj3 = [];
+    day = obj1[1].days;
+    for (var i = 0; i < obj1.length; i++) {
+        for (var j = 0; j < obj2.length; j++) {
+            l = 0;
+            if (typeof (obj1[i].days) == 'object') {
+                for (var k = 0; k < dogs[i].days.length; k++) {
+                    volunt[j].days.forEach(function (Vday) {
+                        if (obj1[i].days[k] == Vday) {
+                            volunt[j].days.splice(l, 1);
+                            l += 1;
+                            obj3.push({
+                                day: obj1[i].days[k],
+                                dog: obj1[i],
+                                vol: obj2[j]
+                            });
+                        }
+                    })
+
+
+                }
+            } else {
+                volunt[j].days.forEach(function (Vday) {
+                    if (obj1[i].days == Vday) {
+                        volunt[j].days.splice(l, 1);
+                        l += 1;
+                        obj3.push({
+                            day: obj1[i].days,
+                            dog: obj1[i],
+                            vol: obj2[j]
+                        });
+                    }
+                })
+
+
+            }
+        }
+
+    }
+    resp.send(obj3)
 });
 
 app.get('/search/:username', function (req, resp) {
@@ -105,7 +165,6 @@ app.get('/login/:userID', function (req, resp) {
             foundV = true;
             resp.send('user');
             break;
-
         }
     }
 
@@ -122,7 +181,7 @@ app.get('/login/:userID', function (req, resp) {
 });
 
 app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
-    console.log("req.file", req.file)
+    //console.log("req.file", req.file)
     if (req.file) {
         console.log('Uploading file...');
         var filename = req.file.filename;
@@ -133,11 +192,10 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
         console.log('No File Uploaded');
         var filename = 'FILE NOT UPLOADED';
         var uploadStatus = 'File Upload Failed';
- 
-    }
 
+    }
+    let daysA = [];
     var j = req.body;
-    console.log("j", j);    
     const name = j.name;
     const Lname = j.last_n;
     const uname = j.username;
@@ -170,7 +228,7 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
         if (err) {
             prompt("error submission not succesful");
         }
-    });    
+    });
     resp.send("Fine that worked")
 
 });

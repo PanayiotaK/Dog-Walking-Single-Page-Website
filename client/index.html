@@ -13,8 +13,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-  <link rel="stylesheet" href="stylesheet.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <link rel="stylesheet/less" type="text/css" href="stylesheet.less" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  <link rel="shortcut icon" type="image/png" href="favicon1.png">
   <title>Dog Walking</title>
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -43,19 +48,19 @@
       <form class="form-inline my-2 my-lg-0">
         <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
         <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
-      </form>     
+      </form>
     </div>
   </nav>
 
-<div id = "LoginPopUp">
-  <form class="dropdown-menu p-4">    
-    <div class="form-group">
-      <label for="exampleDropdownFormPassword2">Password</label>
-      <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </form>
-</div>
+  <div id="LoginPopUp">
+    <form class="dropdown-menu p-4">
+      <div class="form-group">
+        <label for="exampleDropdownFormPassword2">Password</label>
+        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+  </div>
 
 
   <div id="info">
@@ -232,17 +237,17 @@
                                       <br>
                                       <script type="text/javascript">
                                         $(document).ready(function () {
-                                            $('#pr').click(function() {
-                                              checked = $("input[type=checkbox]:checked").length;
-                                        
-                                              if(!checked) {
-                                                alert("You must check at least one checkbox.");
-                                                return false;
-                                              }
-                                        
-                                            });
-                                        });                                        
-                                        </script>
+                                          $('#pr').click(function () {
+                                            checked = $("input[type=checkbox]:checked").length;
+
+                                            if (!checked) {
+                                              alert("You must check at least one checkbox.");
+                                              return false;
+                                            }
+
+                                          });
+                                        });
+                                      </script>
 
                                       <h6 id="DogDays">Days that the Dog is availble</h6>
                                       <br>
@@ -258,9 +263,9 @@
                                             value="Tuesday">
                                           <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
                                         </div>
-                                        <div class="form-check form-check-inline">                                         
+                                        <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="checkbox" id="W" name="days"
-                                            value="Wednesday" >
+                                            value="Wednesday">
                                           <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -283,7 +288,7 @@
                                             value="Sunday">
                                           <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
                                         </div>
-                                     
+
                                       </div>
                                       <br>
                                       <div class="input-group">
@@ -291,21 +296,22 @@
                                           placeholder="Briefly describe your dog (not nessesary)"></textarea>
                                       </div>
                                       <br>
-                                      
+
                                       <div class="form-group">
                                         <label for="exampleFormControlFile1">Plz submit image</label>
-                                        <input type="file" class="form-control-file" id="dogImage" name="dogImage" required>
+                                        <input type="file" class="form-control-file" id="dogImage" name="dogImage"
+                                          required>
                                         <small id="passwordHelpInline" class="text-muted">
-                                            Must be jpeg or png.
-                                          </small>
-                                         <div class="invalid-feedback"> Plz submit an appropriate photo </div>
+                                          Must be jpeg or png.
+                                        </small>
+                                        <div class="invalid-feedback"> Plz submit an appropriate photo </div>
                                       </div>
-                                                                      
+
                                       <br>
                                       <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
                                       <br>
                                       <br>
-                                      <div id = "message"></div>
+                                      <div id="message"></div>
                                     </form>
                                   </div>
                                 </div>
@@ -328,24 +334,23 @@
                   window.addEventListener('load', function () {
                     // Fetch all the forms we want to apply custom Bootstrap validation styles to
                     var forms = document.getElementsByClassName('needs-validation');
-                                       
+
                     // Loop over them and prevent submission
                     var validation = Array.prototype.filter.call(forms, function (form) {
                       form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false ) {
-                          console.log("prevent")                         
+                        if (form.checkValidity() === false) {
+                          console.log("prevent")
                           event.preventDefault();
                           event.stopPropagation();
                           document.getElementById("message").innerHTML = "Not successful ";
+                        } else {
+                          form.classList.add('was-validated');
+                          document.getElementById("message").innerHTML = "Success!";
                         }
-                        else{
-                        form.classList.add('was-validated');
-                        document.getElementById("message").innerHTML = "Success!";}
                       }, false);
                     });
                   }, false);
                 })();
-
               </script>
 
 
@@ -361,8 +366,8 @@
                     <div class="container">
                       <!-- Trigger the modal with a button -->
                       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> -->
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        data-toggle="modal" data-target="#myModal2">Start as Volunteer</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                        data-target="#myModal2">Start as Volunteer</button>
 
                       <!-- Modal -->
                       <div class="modal fade" id="myModal2" ole="dialog">
@@ -631,11 +636,11 @@
           </div>
         </div>
       </div>
-    
-    <br>
-    <div id ="moreDogs">
+
+      <br>
+      <div id="moreDogs">
+      </div>
     </div>
-        </div>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function () {
@@ -657,10 +662,10 @@
         }, false);
       })();
     </script>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div id="Gallery">
       <br>
       <br>
@@ -749,6 +754,11 @@
                 <script src="index.js"></script>
                 <div id="Owners_Data"></div>
               </div>
+              <div class="col-sm-10 mb-3">
+                <button id="MatchDogsVol"> Get the weekly timetable</button>
+                <script src="index.js"></script>
+                <div id="MatchData"></div>
+              </div>
 
             </div>
           </div>
@@ -772,6 +782,398 @@
         </div>
       </div>
     </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary ml-3" style="max-width: 85rem;">
+        <div class="card-body text-secondary">
+          <div class="container">
+            <div class="table-responsive-md">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th style="width: 10%"> Name</th>
+                    <th style="width: 5%">Age</th>
+                    <th style="width: 5%">Gender</th>
+                    <th style="width: 15%">Breed</th>
+                    <th style="width: 20%"> First Name</th>
+                    <th style="width: 20%"> Last Name</th>
+                    <th style="width: 15%">email</th>
+                    <th style="width: 10%">City</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Val 1</td>
+                    <td>Val 2</td>
+                    <td>Val 3</td>
+                    <td>Val 4</td>
+                    <td>Val 5</td>
+                    <td>Val 6</td>
+                    <td>Val 7</td>
+                    <td>Val 8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary ml-3" style="max-width: 85rem;">
+        <div class="card-body text-secondary">
+          <div class="container">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <div class="table-responsive">
+            <table id = "Calendar">
+              <thead id = "CalendarHead">
+                <tr>
+                  <th></th>
+                  <th>
+                    <span class="day">1</span>
+                    <span class="long">Monday</span>
+                    <span class="short">Mon</span>
+                  </th>
+                  <th>
+                    <span class="day">2</span>
+                    <span class="long">Tuesday</span>
+                    <span class="short">Tue</span>
+                  </th>
+                  <th>
+                    <span class="day">3</span>
+                    <span class="long">Wendsday</span>
+                    <span class="short">We</span>
+                  </th>
+                  <th>
+                    <span class="day">4</span>
+                    <span class="long">Thursday</span>
+                    <span class="short">Thur</span>
+                  </th>
+                  <th>
+                    <span class="day active">5</span>
+                    <span class="long">Friday</span>
+                    <span class="short">Fri</span>
+                  </th>
+                  <th>
+                    <span class="day">6</span>
+                    <span class="long">Saturday</span>
+                    <span class="short">Sat</span>
+                  </th>
+                  <th>
+                    <span class="day">7</span>
+                    <span class="long">Sunday</span>
+                    <span class="short">Sun</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id = "CalendarBody">
+                <tr>
+                  <td class="hour" rowspan="4"><span>1:00</span></td>
+                  <td>fsdssdvhjsabdjvashudf<br> vgvgv</td>
+                  <td>sdfbahsbgfhsvfhvysadvh</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>2:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="hour" rowspan="4"><span>3:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>4:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>5:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>6:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>7:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="hour" rowspan="4"><span>8:00</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <br>
     <br>

@@ -5,12 +5,30 @@ window.onload = function () {
                 return response.json();
             })
             .then(body => {
-                var list = []
+                console.log(body);
+                var Dogs = "";
+                var Dogs = "";
+                var OwnersF = "";
+                var OwnersL = "";
+                var email = "";
+                var city = "";
+                var age = "";
+                var gender = "";
+                var breed = "";
+
                 for (var i = 0; i < body.length; i++) {
-                    list.push(body[i].Dogs_Name);
+                    Dogs += body[i].Dname + "";
+                    OwnersF += body[i].Oname;
+                    OwnersL += body[i].Lname;
+                    email += body[i].email;
+                    city += body[i].city;
+                    age += body[i].Dage;
+                    gender += body[i].Dgen;
+                    breed += body[i].breed;
+
                 }
-                //console.log(list);
-                document.getElementById("Dogs_Data").innerHTML = list;
+
+                document.getElementById("Dogs_Data").innerHTML = Dogs;
             })
         //document.getElementById("Dogs_Data").innerHTML= body.Age;
     });
@@ -47,7 +65,62 @@ window.onload = function () {
 
     });
 
+    document.getElementById("MatchDogsVol").addEventListener("click", function (event7) {
+        fetch("http://127.0.0.1:8090/matchDogs")
+            .then(function (response) {
+                return response.json()
 
+            })
+
+            .then(function (body) {
+                var M = "";
+                var Te = "";
+                var W = "";
+                var Th = "";
+                var F = "";
+                var Sa = "";
+                var Su = "";
+                var timetable = "";
+
+                for (var i = 0; i < body.length; i++) {
+
+                    if (body[i].day == 'Monday') {
+                        M += "  Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
+                    }
+                    if (body[i].day == 'Tuesday') {
+                        Te += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+
+                    }
+                    if (body[i].day == 'Wednesday') {
+                        W += "  Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+                    }
+
+                    if (body[i].day == 'Thursday') {
+                        Th += "  Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
+                    }
+                    if (body[i].day == 'Friday') {
+                        F += "   Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
+
+                    }
+                    if (body[i].day == 'Saturday') {
+                        Sa += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+
+                    }
+                    if (body[i].day == 'Sunday') {
+                        Su += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+
+                    }
+
+
+                }
+
+                timetable += "Monday: " + M + "<br>" + " Tuesday: " + Te + "<br>" + " Wednesday:  " + W + "<br>" + " Thursday:" + Th + "<br>" + "Friday: " + F + "<br>" + " Saturday:" + Sa + "<br>" + "  Sunday: " + Su;
+
+                document.getElementById("MatchData").innerHTML = timetable;
+            })
+
+
+    });
 
     document.getElementById("search").addEventListener("keyup", function (event4) {
         if (event.keyCode === 13) {
@@ -260,28 +333,94 @@ window.onload = function () {
 
 
 
-document.getElementById("showMore").addEventListener('click',  C()
-);
+document.getElementById("showMore").addEventListener('click', C());
 
-function C () {
+function C() {
     fetch('http://127.0.0.1:8090/showDogs')
-    .then(response => response.json())
-    .then(function (body) {
-    //console.log(body);
-    let length = body.length;
-    console.log("CARDS", length / 2)
-    let rlength = Math.floor(length / 2);
-    console.log("rlength", rlength)
-    let k = 0
-    let code1 = "";
-    if (length % 2 == 0) {
-        for (var i = 0; i < length / 2; i++) {
-            code1 += '<div class="d-flex justify-content-center"> ';
-            code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-            code1 += '<div class="card-body text-secondary">';
-            code1 += '  <div class="container">';
-            code1 += ' <div class="row">';
-            for (var j = 0; j < 2; j++) {
+        .then(response => response.json())
+        .then(function (body) {
+            //console.log(body);
+            let length = body.length;
+
+            let rlength = Math.floor(length / 2);
+
+            let k = 0
+            let code1 = "";
+            if (length % 2 == 0) {
+                for (var i = 0; i < length / 2; i++) {
+                    code1 += '<div class="d-flex justify-content-center"> ';
+                    code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                    code1 += '<div class="card-body text-secondary">';
+                    code1 += '  <div class="container">';
+                    code1 += ' <div class="row">';
+                    for (var j = 0; j < 2; j++) {
+                        code1 += '<div class="col">';
+                        code1 += '<div class="card" style="width: 18rem;">';
+                        code1 += '<div class="card-header">';
+                        code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
+                        code1 += '</div>';
+                        code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
+                        code1 += '<div class="card-body">';
+                        code1 += ' <p class="card-text">' + body[k].descr + '</p>';
+                        code1 += '</div>';
+                        code1 += ' <ul class="list-group list-group-flush">';
+                        code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
+                        code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
+                        code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
+                        code1 += '</ul>';
+                        code1 += '</div>';
+                        code1 += '</div>';
+                        k += 1;
+                    }
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    document.getElementById("moreDogs").innerHTML = code1;
+
+                }
+                //console.log("K_telos for loop1",k) 
+            } else {
+                for (var i = 0; i < rlength; i++) {
+                    code1 += '<div class="d-flex justify-content-center"> ';
+                    code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                    code1 += '<div class="card-body text-secondary">';
+                    code1 += '  <div class="container">';
+                    code1 += ' <div class="row">';
+                    for (var j = 0; j < 2; j++) {
+                        code1 += '<div class="col">';
+                        code1 += '<div class="card" style="width: 18rem;">';
+                        code1 += '<div class="card-header">';
+                        code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
+                        code1 += '</div>';
+                        code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
+                        code1 += '<div class="card-body">';
+                        code1 += ' <p class="card-text">' + body[k].descr + '</p>';
+                        code1 += '</div>';
+                        code1 += ' <ul class="list-group list-group-flush">';
+                        code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
+                        code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
+                        code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
+                        code1 += '</ul>';
+                        code1 += '</div>';
+                        code1 += '</div>';
+                        k += 1;
+                    }
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                }
+
+                k = length - 1;
+                code1 += '<div class="d-flex justify-content-center"> ';
+                code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                code1 += '<div class="card-body text-secondary">';
+                code1 += '  <div class="container">';
+                code1 += ' <div class="row">';
+
                 code1 += '<div class="col">';
                 code1 += '<div class="card" style="width: 18rem;">';
                 code1 += '<div class="card-header">';
@@ -298,90 +437,16 @@ function C () {
                 code1 += '</ul>';
                 code1 += '</div>';
                 code1 += '</div>';
-                k += 1;
+                document.getElementById("moreDogs").innerHTML = code1;
+
+
+
             }
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-            document.getElementById("moreDogs").innerHTML = code1;
-            console.log(document.getElementById("moreDogs").innerHTML);
-        }
-        //console.log("K_telos for loop1",k) 
-    } else {
-        for (var i = 0; i < rlength; i++) {
-            code1 += '<div class="d-flex justify-content-center"> ';
-            code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-            code1 += '<div class="card-body text-secondary">';
-            code1 += '  <div class="container">';
-            code1 += ' <div class="row">';
-            for (var j = 0; j < 2; j++) {
-                code1 += '<div class="col">';
-                code1 += '<div class="card" style="width: 18rem;">';
-                code1 += '<div class="card-header">';
-                code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
-                code1 += '</div>';
-                code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
-                code1 += '<div class="card-body">';
-                code1 += ' <p class="card-text">' + body[k].descr + '</p>';
-                code1 += '</div>';
-                code1 += ' <ul class="list-group list-group-flush">';
-                code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
-                code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
-                code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
-                code1 += '</ul>';
-                code1 += '</div>';
-                code1 += '</div>';
-                k += 1;
-            }
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-            code1 += '</div>';
-        }
-
-        k = length - 1;
-        code1 += '<div class="d-flex justify-content-center"> ';
-        code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-        code1 += '<div class="card-body text-secondary">';
-        code1 += '  <div class="container">';
-        code1 += ' <div class="row">';
-
-        code1 += '<div class="col">';
-        code1 += '<div class="card" style="width: 18rem;">';
-        code1 += '<div class="card-header">';
-        code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
-        code1 += '</div>';
-        code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
-        code1 += '<div class="card-body">';
-        code1 += ' <p class="card-text">' + body[k].descr + '</p>';
-        code1 += '</div>';
-        code1 += ' <ul class="list-group list-group-flush">';
-        code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
-        code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
-        code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
-        code1 += '</ul>';
-        code1 += '</div>';
-        code1 += '</div>';
-        document.getElementById("moreDogs").innerHTML = code1;
-        console.log(document.getElementById("moreDogs").innerHTML);
-
-
-    }
-});
+        });
 
 }
 
-
-setInterval(C,3000);
-
-    
-
-
-
-
+setInterval(C, 3000);
 
 
 
