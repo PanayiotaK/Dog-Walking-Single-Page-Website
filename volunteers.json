@@ -1,22 +1,22 @@
-[	{
-		"name" : "Tom",
-		"last_n": "Ford",
-		"username": "TomF",
-		"email" : "tom.ford@gmail.com",
-		"city" : "Durham",		
-		"days": ["Wednesday","Saturday"]		
-		
-
-	},
-	{
-		"name" : "Jean",
-		"last_n": "Gaultier",
-		"username": "JeanGaul",
-		"email" : "jean.gaul@gmail.com",
-		"city" : "Durham",		
-		"days": ["Monday","Sunday"]			
-
-	}
-
-
-]	
+[{
+    "name": "Tom",
+    "last_n": "Ford",
+    "username": "TomF",
+    "email": "tom.ford@gmail.com",
+    "city": "Durham",
+    "days": ["Wednesday", "Saturday"]
+}, {
+    "name": "Jean",
+    "last_n": "Gaultier",
+    "username": "JeanGaul",
+    "email": "jean.gaul@gmail.com",
+    "city": "Durham",
+    "days": ["Monday", "Sunday"]
+}, {
+    "name": "Panagiota",
+    "last_n": "Konstantinou",
+    "username": "Pank",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "days": ["Tuesday"]
+}]

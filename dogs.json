@@ -10,31 +10,31 @@
     "gender": "Female",
     "days": "Tuesday",
     "descr": "",
-    "dogImage": "uploads/1554124299645-7.jpg"
-}, {
-    "name": "Panagiota",
-    "last_n": "Konstantinou",
-    "username": "maria",
-    "email": "panagiota.konstantinou@durham.ac.uk",
-    "city": "Durham",
-    "Dogs_Name": "Panagiota Konstantinou",
-    "breed": "Labrador",
-    "age": "1",
-    "gender": "Female",
-    "days": "Monday",
-    "descr": "",
-    "dogImage": "uploads/1554309826894-4.jpg"
-}, {
-    "name": "Panagiota",
-    "last_n": "Konstantinou",
-    "username": "maria",
-    "email": "panagiota.konstantinou@durham.ac.uk",
-    "city": "Durham",
-    "Dogs_Name": "Panagiota Konstantinou",
-    "breed": "Labrador",
-    "age": "1",
-    "gender": "Female",
-    "days": "Monday",
-    "descr": "",
     "dogImage": "uploads/1554309863221-dog2.jpg"
+}, {
+    "name": "Maria",
+    "last_n": "Eustathiou",
+    "username": "MarEu",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "Dogs_Name": "Coco",
+    "breed": "Labrador",
+    "age": "1",
+    "gender": "Female",
+    "days": ["Monday", "Tuesday", "Wednesday"],
+    "descr": "",
+    "dogImage": "uploads/1554366299935-2.jpg"
+}, {
+    "name": "Elena",
+    "last_n": "Christodoulou",
+    "username": "ECh",
+    "email": "panagiota.konstantinou@durham.ac.uk",
+    "city": "Durham",
+    "Dogs_Name": "Cardier",
+    "breed": "Labrador",
+    "age": "1",
+    "gender": "Male",
+    "days": "Wednesday",
+    "descr": "",
+    "dogImage": "uploads/1554366396258-1.jpg"
 }]
