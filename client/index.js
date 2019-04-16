@@ -30,7 +30,7 @@ window.onload = function () {
 
                 document.getElementById("Dogs_Data").innerHTML = Dogs;
             })
-        //document.getElementById("Dogs_Data").innerHTML= body.Age;
+        
     });
 
     document.getElementById("Data_Vol").addEventListener("click", function (_event2) {
@@ -59,7 +59,6 @@ window.onload = function () {
                 for (var i = 0; i < body.length; i++) {
                     owners += body[i].name + " " + body[i].last_n + " " + body[i].email + " " + body[i].city + " " + body[i].Dogs_Name + "<br>";
                 }
-
                 document.getElementById("Owners_Data").innerHTML = owners;
             });
 
@@ -87,8 +86,7 @@ window.onload = function () {
                 code +='<th> <span class="long">Wendsday</span> <span class="short">We</span>  </th>  <th>  <span class="long">Thursday</span>  <span class="short">Thur</span>  </th>'
                 code += '<th>  <span class="long">Friday</span> <span class="short">Fri</span>  </th> <th>  <span class="long">Saturday</span>  <span class="short">Sat</span>  </th>'
                 code +=' <th> <span class="long">Sunday</span>   <span class="short">Sun</span>  </th> </tr>  </thead>   <tbody id = "CalendarBody">';
-                
-              
+           
                 let foundM = false;
                 let foundTue = false;
                 let foundW = false;
@@ -98,6 +96,13 @@ window.onload = function () {
                 let foundSun = false;
                 let count = 0;
                 for (var i = 0; i < body.length; i++) {
+                     foundM = false;
+                     foundTue = false;
+                     foundW = false;
+                     foundTh = false;
+                     foundF = false;
+                     foundSat = false;
+                     foundSun = false;
                     code += '<tr>' 
                     count += 1               
                     if (body[i].day == 'Monday') {
@@ -113,7 +118,6 @@ window.onload = function () {
                         foundW = true;
                        
                     }
-
                     if (body[i].day == 'Thursday') {
                         foundTh = true;
                         
@@ -134,7 +138,7 @@ window.onload = function () {
 
      
                 if (foundM === true){
-                    code += '<td><div id = "Mon1">' + '<b>Dog</b>: '+ body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name +' </div></td>'
+                    code += '<td><div >' + '<b>Dog</b>: '+ body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name +' </div></td>'
 
                 }
                 else if (foundM === false){
@@ -188,8 +192,7 @@ window.onload = function () {
                 while(count % 4 !=0 ){
                     code+= '<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>'
                     count += 1
-                }
-                
+                }                
                 code += '  </tbody>  </table>   </div> </div>  </div>  </div>  </div>   </div>'
                 document.getElementById("MatchData").innerHTML = code;
             })
@@ -326,9 +329,6 @@ var userID
         }
 
     });
-
-
-
 
 
 document.getElementById("percal").addEventListener('click',  function (event) {   
