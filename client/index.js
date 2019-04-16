@@ -81,42 +81,117 @@ window.onload = function () {
                 var Sa = "";
                 var Su = "";
                 var timetable = "";
-
+                code = '"<div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary">    <div class="container"> '
+                code += ' <meta name="viewport" content="width=device-width, initial-scale=1.0">  <div class="table-responsive">   <table id = "Calendar">     <thead id = "CalendarHead">    <tr>'
+                code +=' <th> <span class="long">Monday</span>  <span class="short">Mon</span>  </th>  <th>  <span class="long">Tuesday</span>  <span class="short">Tue</span>  </th>'
+                code +='<th> <span class="long">Wendsday</span> <span class="short">We</span>  </th>  <th>  <span class="long">Thursday</span>  <span class="short">Thur</span>  </th>'
+                code += '<th>  <span class="long">Friday</span> <span class="short">Fri</span>  </th> <th>  <span class="long">Saturday</span>  <span class="short">Sat</span>  </th>'
+                code +=' <th> <span class="long">Sunday</span>   <span class="short">Sun</span>  </th> </tr>  </thead>   <tbody id = "CalendarBody">';
+                
+              
+                let foundM = false;
+                let foundTue = false;
+                let foundW = false;
+                let foundTh = false;
+                let foundF = false;
+                let foundSat = false;
+                let foundSun = false;
+                let count = 0;
                 for (var i = 0; i < body.length; i++) {
-
+                    code += '<tr>' 
+                    count += 1               
                     if (body[i].day == 'Monday') {
-                        M += "  Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
+                        foundM = true;
+                      
                     }
                     if (body[i].day == 'Tuesday') {
-                        Te += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+                        foundTue = true;
+                       
 
                     }
                     if (body[i].day == 'Wednesday') {
-                        W += "  Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+                        foundW = true;
+                       
                     }
 
                     if (body[i].day == 'Thursday') {
-                        Th += "  Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
+                        foundTh = true;
+                        
                     }
                     if (body[i].day == 'Friday') {
-                        F += "   Dog: " + body[i].dog.Dogs_Name + "    Volunteer: " + body[i].vol.name;
-
+                        foundF = true;
+                      
                     }
                     if (body[i].day == 'Saturday') {
-                        Sa += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
+                        foundSat = true;
+                       
 
                     }
                     if (body[i].day == 'Sunday') {
-                        Su += "   Dog: " + body[i].dog.Dogs_Name + "   Volunteer: " + body[i].vol.name;
-
+                        foundSun = true;
+                       
                     }
+
+     
+                if (foundM === true){
+                    code += '<td><div id = "Mon1">' + '<b>Dog</b>: '+ body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name +' </div></td>'
+
+                }
+                else if (foundM === false){
+                    code+= ' <td></td>'
+
+                }
+                if (foundTue === true ){
+                    code += '<td>  <b>Dog</b>: '+ body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name + '</td>';
+
+                }
+                else if (foundTue === false){
+                    code += '<td></td>'
+                }
+                if(foundW === true ){
+                    code+= "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name +"</td>";
+                }
+                else if (foundW === false){
+                    code += '<td></td>'
+                }
+                if(foundTh === true ){
+                    code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>';
+                }
+                else if (foundTh === false){
+                    code += '<td></td>'
+                }
+                if  (foundF === true ){
+                    code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>'
 
 
                 }
+                else if (foundF === false){
+                    code += '<td></td>'
+                }
+                if  (foundSat === true ){
+                    code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>'
 
-                timetable += "Monday: " + M + "<br>" + " Tuesday: " + Te + "<br>" + " Wednesday:  " + W + "<br>" + " Thursday:" + Th + "<br>" + "Friday: " + F + "<br>" + " Saturday:" + Sa + "<br>" + "  Sunday: " + Su;
+                }
+                else if (foundSat === false){
+                    code += '<td></td>'
+                }
+                if  (foundSun === true ){
+                    code += "<td> <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b> Volunteer</b>: " + body[i].vol.name + '</td>'
 
-                document.getElementById("MatchData").innerHTML = timetable;
+                }
+                else if (foundSun === false){
+                    code += '<td></td>'
+                }
+                code += '</tr>'
+                }
+
+                while(count % 4 !=0 ){
+                    code+= '<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>'
+                    count += 1
+                }
+                
+                code += '  </tbody>  </table>   </div> </div>  </div>  </div>  </div>   </div>'
+                document.getElementById("MatchData").innerHTML = code;
             })
 
 
