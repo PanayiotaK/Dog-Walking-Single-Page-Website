@@ -69,26 +69,30 @@ app.get('/volunteers', function (req, resp) {
 app.get('/owners', function (req, resp) {
     resp.send(obj1);
 });
-
+var obj3
 app.get('/matchDogs', function (req, resp) {
+  
+    var volunt  = JSON.parse(JSON.stringify(obj2));;
     let dogs = obj1;
-    let volunt = obj2;
     var l = 0;
-    var obj3 = [];
+    obj3 = [];
     day = obj1[1].days;
     for (var i = 0; i < obj1.length; i++) {
-        for (var j = 0; j < obj2.length; j++) {
+        for (var j = 0; j < volunt.length; j++) {
             l = 0;
-            if (typeof (obj1[i].days) == 'object') {
-                for (var k = 0; k < dogs[i].days.length; k++) {
+            if (typeof (obj1[i].days) == 'object') {                
+                for (var k = 0; k < dogs[i].days.length; k++) { 
+                                       
                     volunt[j].days.forEach(function (Vday) {
-                        if (obj1[i].days[k] == Vday) {
+                     
+                        if (obj1[i].days[k] == Vday) {             ///DAME
+                           
                             volunt[j].days.splice(l, 1);
                             l += 1;
                             obj3.push({
                                 day: obj1[i].days[k],
                                 dog: obj1[i],
-                                vol: obj2[j]
+                                vol: volunt[j]
                             });
                         }
                     })
@@ -113,8 +117,13 @@ app.get('/matchDogs', function (req, resp) {
         }
 
     }
+    
     resp.send(obj3)
 });
+
+
+
+
 
 app.get('/search/:username', function (req, resp) {
     var search_item = req.params.username;
@@ -147,6 +156,7 @@ app.get('/search/:username', function (req, resp) {
 });
 
 app.get('/login/:userID', function (req, resp) {
+    //console.log(obj3)
     var search_item = req.params.userID;
     var foundO = false;
     var foundV = false;
@@ -167,7 +177,21 @@ app.get('/login/:userID', function (req, resp) {
             break;
         }
     }
+    /*
+    var walk_days = []
+    for (var i = 0; i < obj3.length; i++) {
+        if (search_item == obj3[i].vol.username ) {
+            walk_days.push({
+                day: obj3[i].day,
+                dog: obj3[i].dog                                
 
+            });
+
+    }
+  
+}
+console.log(walk_days)
+*/
     if (search_item == 'admin') {
         resp.send('admin');
     }
@@ -233,11 +257,34 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
 
 });
 
+app.get('/loginCal/:userID', function(req,resp){  
+    userid = req.params.userID;
+    console.log("o user einai : ",userid)
+    var walk_days = []
+    for (var i = 0; i < obj3.length; i++) {
+        if (userid == obj3[i].vol.username ) {
+            walk_days.push({
+                day: obj3[i].day,
+                dog: obj3[i].dog.Dogs_Name                               
+
+            });
+
+    }
+  
+}
+console.log("USER: ",userid)
+console.log(walk_days)
+resp.send(walk_days)
+
+
+
+});
+
 app.post('/addVol', function (req, resp) {
 
     var jV = req.body.dedV
     var j_parsedV = JSON.parse(jV);
-    console.log(j_parsedV);
+    //console.log(j_parsedV);
     const name = j_parsedV.name;
     const Lname = j_parsedV.last_n;
     const uname = j_parsedV.username;

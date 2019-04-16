@@ -136,11 +136,14 @@ window.onload = function () {
 
     });
 
+var userID
+
     document.getElementById("Login").addEventListener("click", function (event5) {
-        var userID = document.getElementById("Login_In").value;
+        var loged_in = false;
+        userID = document.getElementById("Login_In").value;
         console.log("user id: ", userID);
         var x = document.getElementById("LoginPopUp");
-        var userID = document.getElementById("Login_In").value;
+        
 
         if (userID == "admin") {
             pas = prompt("Give password: ");
@@ -157,105 +160,27 @@ window.onload = function () {
 
             })
             .then(function (body) {
+              
                 if (body == 'user') {
-                    window.location.href = "https://www.google.com";
+                    loged_in = true
+                    //window.location.href = "https://www.google.com";
+                    var x = document.getElementById('logIn');
+                    if (x.style.display === "none") {
+                      x.style.display = "block";
+                    } else {
+                      x.style.display = "none";
+            
+            
+                    }
+                
+                code_text = "<p><b>Welcome</b>  "+ userID+"</p>"
+                document.getElementById("Welcome").innerHTML = code_text;
                 }
+
             });
     });
 
 
-    /*  document.getElementById('f1').addEventListener('submit', async function (event) {
-          event.preventDefault();
-          try {
-              let name = document.getElementById('validationCustom01').value;
-              let Lname = document.getElementById('validationCustom02').value;
-              let uname = document.getElementById('validationCustomUsername').value
-              let email = document.getElementById('exampleFormControlInput1').value
-              let city = document.getElementById('validationCustom03').value
-              let Dname = document.getElementById('validationCustom01_').value
-              let breed = document.getElementById('validationCustom02D').value
-              let age = document.getElementById('exampleFormControlSelect1').value
-              let gen;
-              let des = document.getElementById('des').value ;
-              let image = document.getElementById(dogImage).value;
-              console.log("image",image)
-
-
-              if( document.getElementById('customRadioInline1').checked == true ){
-                  gen = 'Male';
-              }
-              else{
-                  gen = 'Female';
-              }
-              var days = []
-              if (document.getElementById("M").checked == true) {
-                  var x = document.getElementById("M").value;
-                  days.push(x)
-              }
-
-              if (document.getElementById("Tu").checked == true) {
-                  var x = document.getElementById("Tu").value;
-                  days.push(x)
-              }
-
-              if (document.getElementById("W").checked == true) {
-                  var x = document.getElementById("W").value;
-                  days.push(x)
-              }
-
-              if (document.getElementById("Th").checked == true) {
-                  var x = document.getElementById("Th").value;
-                  days.push(x)
-              }
-
-              if (document.getElementById("F").checked == true) {
-                  var x = document.getElementById("F").value;
-                  days.push(x)
-              }
-              if (document.getElementById("Sa").checked == true) {
-                  var x = document.getElementById("Sa").value;
-                  days.push(x)
-              }
-              if (document.getElementById("Su").checked == true) {
-                  var x = document.getElementById("Su").value;
-                  days.push(x)
-              }
-
-
-
-              var data = {
-                  name: name,
-                  last_n: Lname,
-                  username: uname,
-                  email: email,
-                  city: city,
-                  Dogs_Name: Dname,
-                  breed: breed,
-                  age: age,
-                  gender: gen,
-                  days: days,
-                  descr: des
-
-              };
-
-              ded = JSON.stringify(data)
-
-              let response = await fetch('http://127.0.0.1:8090/addOwners', {
-                  method: "POST",
-                  headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
-                  },
-                  body: "ded=" + ded
-              })
-
-              if (!response.ok) {
-                  throw new Error("problem adding name" + response.code);
-              }
-          } catch (error) {
-              console.log(error)
-              alert("problem: " + error);
-          }
-      });*/
 
     document.getElementById('f2').addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -328,9 +253,62 @@ window.onload = function () {
     });
 
 
-}
 
 
+
+document.getElementById("percal").addEventListener('click',  function (event) {   
+        //var userid = document.getElementById("Login_In").value;
+        console.log("USER",userID)
+        fetch('http://127.0.0.1:8090/loginCal/'+ userID)
+        .then(function (response) {
+            a = response.json()
+            console.log(a);
+            return a;
+
+        })
+        
+
+        .then(function (body) {
+        
+        for (var i = 0; i< body.length; i++ ){
+            let a = body[i].dog
+            if (body[i].day == 'Monday'){
+                
+                console.log(a)
+                document.getElementById("Mon1").innerHTML = a;
+            }
+            if(body[i].day == 'Tuesday'){
+                document.getElementById("Tue1").innerHTML =  a;
+
+            }
+            if(body[i].day == 'Wednesday'){
+                document.getElementById("Wed1").innerHTML =  a;
+
+            }
+            if(body[i].day == 'Thursday'){
+                document.getElementById("Thu1").innerHTML =  a;
+
+            }
+            if(body.day == 'Friday'){
+                document.getElementById("F1").innerHTML =  a;
+
+            }
+
+            if(body[i].day == 'Saterday'){
+                document.getElementById("Sat1").innerHTML =  a;
+
+            }
+            if(body[i].day == 'Sunday'){
+                document.getElementById("Sun1").innerHTML =  a;
+
+            }
+        }
+    })
+
+
+
+
+});
 
 
 document.getElementById("showMore").addEventListener('click', C());
@@ -447,6 +425,6 @@ function C() {
 }
 
 setInterval(C, 3000);
-
+}
 
 
