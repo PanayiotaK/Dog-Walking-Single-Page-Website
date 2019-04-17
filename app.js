@@ -25,10 +25,11 @@ const storage = multer.diskStorage({
 
 });
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {        
         cb(null, true);
-    } else {
-        cb(null, false);
+    } else {      
+        return cb(new Error('Only jpeg/jpg/png images allowed'))
+        //cb(null, false);
     }
 };
 const upload = multer({
@@ -38,21 +39,21 @@ const upload = multer({
 
 app.use(express.static('client'));
 
-app.get('/dogs', function (req, resp) { 
-    var list = [] ;
+app.get('/dogs', function (req, resp) {
+    var list = [];
     for (var i = 0; i < obj1.length; i++) {
         list.push({
             Dname: obj1[i].Dogs_Name,
-            Oname : obj1[i].name,
-            Lname : obj1[i].last_n,
-            email : obj1[i].email,
-            city : obj1[i].city,
-            Dage : obj1[i].age,
-            Dgen : obj1[i].gender ,
-            breed : obj1[i].breed
-        
+            Oname: obj1[i].name,
+            Lname: obj1[i].last_n,
+            email: obj1[i].email,
+            city: obj1[i].city,
+            Dage: obj1[i].age,
+            Dgen: obj1[i].gender,
+            breed: obj1[i].breed
+
         });
-    }   
+    }
     resp.send(list);
 });
 
@@ -71,8 +72,8 @@ app.get('/owners', function (req, resp) {
 });
 var obj3
 app.get('/matchDogs', function (req, resp) {
-      
-    var volunt  = JSON.parse(JSON.stringify(obj2));;
+
+    var volunt = JSON.parse(JSON.stringify(obj2));;
     var dogs = JSON.parse(JSON.stringify(obj1));
     var l = 0;
     obj3 = [];
@@ -82,10 +83,10 @@ app.get('/matchDogs', function (req, resp) {
             l = 0;
             //console.log("dog: "+ dogs[i].Dogs_Name+ "  days: "+ dogs[i].days)
             //console.log("vol: " + volunt[j].name + " days: "+ volunt[j].days)
-            if (typeof (dogs[i].days) == 'object') {                
-                for (var k = 0; k < dogs[i].days.length; k++) {                                        
-                    volunt[j].days.forEach(function (Vday) {                     
-                        if (dogs[i].days[k] == Vday) {                              
+            if (typeof (dogs[i].days) == 'object') {
+                for (var k = 0; k < dogs[i].days.length; k++) {
+                    volunt[j].days.forEach(function (Vday) {
+                        if (dogs[i].days[k] == Vday) {
                             volunt[j].days.splice(l, 1);
                             l += 1;
                             obj3.push({
@@ -93,7 +94,7 @@ app.get('/matchDogs', function (req, resp) {
                                 dog: dogs[i],
                                 vol: volunt[j]
                             });
-                            dogs[i].days.splice(k,1);
+                            dogs[i].days.splice(k, 1);
                         }
                     })
 
@@ -129,22 +130,22 @@ app.get('/matchDogs', function (req, resp) {
 app.get('/search/:username', function (req, resp) {
     var search_item = req.params.username;
     var foundO = false;
-    var foundV = false;    
+    var foundV = false;
     var data12 = [];
-    
+
     for (var i = 0; i < obj1.length; i++) {
         if (search_item == obj1[i].username) {
             foundO == true;
             data12.push({
-                Fname : obj1[i].name,
-                Lname : obj1[i].last_n,                
-                email : obj1[i].email,
-                Dname : obj1[i].Dogs_Name,
-                Gender : obj1[i].gender,
-                Breed : obj1[i].breed,
-                Days :  obj1[i].days
+                Fname: obj1[i].name,
+                Lname: obj1[i].last_n,
+                email: obj1[i].email,
+                Dname: obj1[i].Dogs_Name,
+                Gender: obj1[i].gender,
+                Breed: obj1[i].breed,
+                Days: obj1[i].days
 
-            }) ;  
+            });
             break;
 
         }
@@ -154,12 +155,12 @@ app.get('/search/:username', function (req, resp) {
         if (search_item == obj2[j].username) {
             foundV = true;
             data12.push({
-                Fname : obj2[j].name,
-                Lname : obj2[j].last_n,                
-                email : obj2[j].email,
-                Days : obj2[j].days
+                Fname: obj2[j].name,
+                Lname: obj2[j].last_n,
+                email: obj2[j].email,
+                Days: obj2[j].days
             });
-                       
+
             break;
 
         }
@@ -172,7 +173,7 @@ app.get('/search/:username', function (req, resp) {
     }
 });
 
-app.get('/login/:userID', function (req, resp) {    
+app.get('/login/:userID', function (req, resp) {
     var search_item = req.params.userID;
     var foundO = false;
     var foundV = false;
@@ -193,7 +194,7 @@ app.get('/login/:userID', function (req, resp) {
             break;
         }
     }
-  
+
     if (search_item == 'admin') {
         resp.send('admin');
     }
@@ -216,7 +217,8 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
 
     } else {
         console.log('No File Uploaded');
-        var filename = 'FILE NOT UPLOADED';
+        //resp.send("uns");
+        var filename = 'FILE NOT UPLOADED';      
         var uploadStatus = 'File Upload Failed';
 
     }
@@ -259,24 +261,24 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
 
 });
 
-app.get('/loginCal/:userID', function(req,resp){  
+app.get('/loginCal/:userID', function (req, resp) {
     userid = req.params.userID;
-    console.log("o user einai : ",userid)
+    console.log("o user einai : ", userid)
     var walk_days = []
     for (var i = 0; i < obj3.length; i++) {
-        if (userid == obj3[i].vol.username ) {
+        if (userid == obj3[i].vol.username) {
             walk_days.push({
                 day: obj3[i].day,
-                dog: obj3[i].dog.Dogs_Name                               
+                dog: obj3[i].dog.Dogs_Name
 
             });
 
+        }
+
     }
-  
-}
-console.log("USER: ",userid)
-console.log(walk_days)
-resp.send(walk_days)
+    console.log("USER: ", userid)
+    console.log(walk_days)
+    resp.send(walk_days)
 
 
 

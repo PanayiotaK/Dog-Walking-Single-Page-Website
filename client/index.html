@@ -45,26 +45,25 @@
           <a class="nav-link" href="#ContactUs">Contact us</a>
         </li>
         <div id="Nav_Cal">
-        <li  class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="#PernsonalCal">Calendar</a>
-        </li>
+          </li>
         </div>
       </ul>
 
       <script>
-          window.addEventListener('load', function () {
-            document.getElementById("Nav_Cal").style.display = "none";
-          });
-
+        window.addEventListener('load', function () {
+          document.getElementById("Nav_Cal").style.display = "none";
+        });
       </script>
 
-      <div id = "logIn">
-      <form class="form-inline my-2 my-lg-0">
-        <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
-        <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
-      </form>
-    </div>
-    <div id = "Welcome"></div>
+      <div id="logIn">
+        <form class="form-inline my-2 my-lg-0">
+          <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+          <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
+        </form>
+      </div>
+      <div id="Welcome"></div>
     </div>
   </nav>
 
@@ -94,7 +93,7 @@
               <div class="col-sm-10 mb-3">
                 <p>Welcome welcome welcame welcame welcame welcame welcame welcame welcame welcame welcame</p>
                 <p><b>Welcome</b> sjjs</p>
-               
+
               </div>
             </div>
           </div>
@@ -324,7 +323,6 @@
                                         </small>
                                         <div class="invalid-feedback"> Plz submit an appropriate photo </div>
                                       </div>
-
                                       <br>
                                       <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
                                       <br>
@@ -350,12 +348,13 @@
                 (function () {
                   'use strict';
                   window.addEventListener('load', function () {
+
                     // Fetch all the forms we want to apply custom Bootstrap validation styles to
                     var forms = document.getElementsByClassName('needs-validation');
-
                     // Loop over them and prevent submission
                     var validation = Array.prototype.filter.call(forms, function (form) {
                       form.addEventListener('submit', function (event) {
+                      
                         if (form.checkValidity() === false) {
                           console.log("prevent")
                           event.preventDefault();
@@ -775,7 +774,7 @@
               <div class="col-sm-10 mb-3">
                 <button id="MatchDogsVol"> Get the weekly timetable</button>
                 <script src="index.js"></script>
-                
+
               </div>
 
             </div>
@@ -839,194 +838,277 @@
 
     </div>
     <br>
-<div id= "PernsonalCal">
-<button id = "percal" type="button" >Show personalised calendar</button>
-    <br>
-    <div id = "cal">
-    <div class="d-flex justify-content-center">
-      <div class="card border-secondary ml-3" style="max-width: 85rem;">
-        <div class="card-body text-secondary">
-          <div class="container">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <div class="table-responsive">
-            <table id = "Calendar">
-              <thead id = "CalendarHead">
+    <div id="PernsonalCal">
+      <button id="percal" type="button">Show personalised calendar</button>
+      <br>
+      <div id="cal">
+        <div class="d-flex justify-content-center">
+          <div class="card border-secondary ml-3" style="max-width: 85rem;">
+            <div class="card-body text-secondary">
+              <div class="container">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <div class="table-responsive">
+                  <table id="Calendar">
+                    <thead id="CalendarHead">
+                      <tr>
+
+                        <th>
+
+                          <span class="long">Monday</span>
+                          <span class="short">Mon</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Tuesday</span>
+                          <span class="short">Tue</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Wendsday</span>
+                          <span class="short">We</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Thursday</span>
+                          <span class="short">Thur</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Friday</span>
+                          <span class="short">Fri</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Saturday</span>
+                          <span class="short">Sat</span>
+                        </th>
+                        <th>
+
+                          <span class="long">Sunday</span>
+                          <span class="short">Sun</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="CalendarBody">
+                      <tr>
+                        <td>
+                          <div id="Mon1"></div>
+                        </td>
+                        <td>
+                          <div id="Tue1"></div>
+                        </td>
+                        <td>
+                          <div id="Wed1"></div>
+                        </td>
+                        <td>
+                          <div id="Thu1"></div>
+                        </td>
+                        <td>
+                          <div id="F1"></div>
+                        </td>
+                        <td>
+                          <div id="Sat1"></div>
+                        </td>
+                        <td>
+                          <div id="Sun1"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div id="Mon2"></div>
+                        </td>
+                        <td>
+                          <div id="Tue2"></div>
+                        </td>
+                        <td>
+                          <div id="Wed2"></div>
+                        </td>
+                        <td>
+                          <div id="Thu2"></div>
+                        </td>
+                        <td>
+                          <div id="Fu2"></div>
+                        </td>
+                        <td>
+                          <div id="Sat2"></div>
+                        </td>
+                        <td>
+                          <div id="Sun2"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div id="Mon3"></div>
+                        </td>
+                        <td>
+                          <div id="Tue3"></div>
+                        </td>
+                        <td>
+                          <div id="Wed3"></div>
+                        </td>
+                        <td>
+                          <div id="Thu3"></div>
+                        </td>
+                        <td>
+                          <div id="F3"></div>
+                        </td>
+                        <td>
+                          <div id="Sat3"></div>
+                        </td>
+                        <td>
+                          <div id="Sun3"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div id="Mon4"></div>
+                        </td>
+                        <td>
+                          <div id="Tue4"></div>
+                        </td>
+                        <td>
+                          <div id="Wed4"></div>
+                        </td>
+                        <td>
+                          <div id="Thu4"></div>
+                        </td>
+                        <td>
+                          <div id="F4"></div>
+                        </td>
+                        <td>
+                          <div id="Sat4"></div>
+                        </td>
+                        <td>
+                          <div id="Sun4"></div>
+                        </td>
+                      </tr>
+                </div>
                 <tr>
-                  
-                  <th>
-                    
-                    <span class="long">Monday</span>
-                    <span class="short">Mon</span>
-                  </th>
-                  <th>
-                   
-                    <span class="long">Tuesday</span>
-                    <span class="short">Tue</span>
-                  </th>
-                  <th>
-                   
-                    <span class="long">Wendsday</span>
-                    <span class="short">We</span>
-                  </th>
-                  <th>
-                    
-                    <span class="long">Thursday</span>
-                    <span class="short">Thur</span>
-                  </th>
-                  <th>
-                    
-                    <span class="long">Friday</span>
-                    <span class="short">Fri</span>
-                  </th>
-                  <th>
-                   
-                    <span class="long">Saturday</span>
-                    <span class="short">Sat</span>
-                  </th>
-                  <th>
-                   
-                    <span class="long">Sunday</span>
-                    <span class="short">Sun</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody id = "CalendarBody">
-                 <tr >                  
-                  <td><div id = "Mon1"></div></td>
-                  <td><div id = "Tue1"></div></td>
-                  <td><div id = "Wed1"></div></td>
-                  <td><div id = "Thu1"></div></td>
-                  <td><div id = "F1"></div></td>
-                  <td><div id = "Sat1"></div></td>
-                  <td><div id = "Sun1"></div></td>
+
+                  <td>
+                    <div id="Mon5"></div>
+                  </td>
+                  <td>
+                    <div id="Tue5"></div>
+                  </td>
+                  <td>
+                    <div id="Wed5"></div>
+                  </td>
+                  <td>
+                    <div id="Thu5"></div>
+                  </td>
+                  <td>
+                    <div id="F5"></div>
+                  </td>
+                  <td>
+                    <div id="Sat5"></div>
+                  </td>
+                  <td>
+                    <div id="Sun5"></div>
+                  </td>
                 </tr>
                 <tr>
-                  <td><div id = "Mon2"></div></td>
-                  <td><div id = "Tue2"></div></td>
-                  <td><div id = "Wed2"></div></td>
-                  <td><div id = "Thu2"></div></td>
-                  <td><div id = "Fu2"></div></td>
-                  <td><div id = "Sat2"></div></td>
-                  <td><div id = "Sun2"></div></td>
+                  <td>
+                    <div id="Mon6"></div>
+                  </td>
+                  <td>
+                    <div id="Tue6"></div>
+                  </td>
+                  <td>
+                    <div id="Wed6"></div>
+                  </td>
+                  <td>
+                    <div id="Thu6"></div>
+                  </td>
+                  <td>
+                    <div id="F6"></div>
+                  </td>
+                  <td>
+                    <div id="Sat6"></div>
+                  </td>
+                  <td>
+                    <div id="Sun6"></div>
+                  </td>
                 </tr>
                 <tr>
-                  <td><div id = "Mon3"></div></td>
-                  <td><div id = "Tue3"></div></td>
-                  <td><div id = "Wed3"></div></td>
-                  <td><div id = "Thu3"></div></td>
-                  <td><div id = "F3"></div></td>
-                  <td><div id = "Sat3"></div></td>
-                  <td><div id = "Sun3"></div></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td><div id = "Mon4"></div></td>
-                    <td><div id = "Tue4"></div></td>
-                    <td><div id = "Wed4"></div></td>
-                    <td><div id = "Thu4"></div></td>
-                    <td><div id = "F4"></div></td>
-                    <td><div id = "Sat4"></div></td>
-                    <td><div id = "Sun4"></div></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
+
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                </tbody>
+                </table>
               </div>
-                <tr>
-                  
-                    <td><div id = "Mon5"></div></td>
-                    <td><div id = "Tue5"></div></td>
-                    <td><div id = "Wed5"></div></td>
-                    <td><div id = "Thu5"></div></td>
-                    <td><div id = "F5"></div></td>
-                    <td><div id = "Sat5"></div></td>
-                    <td><div id = "Sun5"></div></td>
-                </tr>
-                <tr>
-                    <td><div id = "Mon6"></div></td>
-                    <td><div id = "Tue6"></div></td>
-                    <td><div id = "Wed6"></div></td>
-                    <td><div id = "Thu6"></div></td>
-                    <td><div id = "F6"></div></td>
-                    <td><div id = "Sat6"></div></td>
-                    <td><div id = "Sun6"></div></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-                <tr>                
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-              </tbody>
-            </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script>
-    window.addEventListener('load', function () {
-      document.getElementById("PernsonalCal").style.display = "none";
-    })
-      
-</script>
-</div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <script>
+      window.addEventListener('load', function () {
+        document.getElementById("PernsonalCal").style.display = "none";
+      })
+    </script>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 
 </body>
