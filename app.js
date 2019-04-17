@@ -71,29 +71,29 @@ app.get('/owners', function (req, resp) {
 });
 var obj3
 app.get('/matchDogs', function (req, resp) {
-  
+      
     var volunt  = JSON.parse(JSON.stringify(obj2));;
-    let dogs = obj1;
+    var dogs = JSON.parse(JSON.stringify(obj1));
     var l = 0;
     obj3 = [];
     day = obj1[1].days;
-    for (var i = 0; i < obj1.length; i++) {
+    for (var i = 0; i < dogs.length; i++) {
         for (var j = 0; j < volunt.length; j++) {
             l = 0;
-            if (typeof (obj1[i].days) == 'object') {                
-                for (var k = 0; k < dogs[i].days.length; k++) { 
-                                       
-                    volunt[j].days.forEach(function (Vday) {
-                     
-                        if (obj1[i].days[k] == Vday) {             ///DAME
-                           
+            //console.log("dog: "+ dogs[i].Dogs_Name+ "  days: "+ dogs[i].days)
+            //console.log("vol: " + volunt[j].name + " days: "+ volunt[j].days)
+            if (typeof (dogs[i].days) == 'object') {                
+                for (var k = 0; k < dogs[i].days.length; k++) {                                        
+                    volunt[j].days.forEach(function (Vday) {                     
+                        if (dogs[i].days[k] == Vday) {                              
                             volunt[j].days.splice(l, 1);
                             l += 1;
                             obj3.push({
-                                day: obj1[i].days[k],
-                                dog: obj1[i],
+                                day: dogs[i].days[k],
+                                dog: dogs[i],
                                 vol: volunt[j]
                             });
+                            dogs[i].days.splice(k,1);
                         }
                     })
 
@@ -101,14 +101,15 @@ app.get('/matchDogs', function (req, resp) {
                 }
             } else {
                 volunt[j].days.forEach(function (Vday) {
-                    if (obj1[i].days == Vday) {
+                    if (dogs[i].days == Vday) {
                         volunt[j].days.splice(l, 1);
                         l += 1;
                         obj3.push({
-                            day: obj1[i].days,
-                            dog: obj1[i],
+                            day: dogs[i].days,
+                            dog: dogs[i],
                             vol: obj2[j]
                         });
+                        dogs[i].days = [];
                     }
                 })
 
@@ -117,7 +118,7 @@ app.get('/matchDogs', function (req, resp) {
         }
 
     }
-    
+    console.log(obj3)
     resp.send(obj3)
 });
 
@@ -128,35 +129,50 @@ app.get('/matchDogs', function (req, resp) {
 app.get('/search/:username', function (req, resp) {
     var search_item = req.params.username;
     var foundO = false;
-    var foundV = false;
-    var data1 = "";
-    var data2 = "";
+    var foundV = false;    
+    var data12 = [];
+    
     for (var i = 0; i < obj1.length; i++) {
         if (search_item == obj1[i].username) {
             foundO == true;
-            data1 += obj1[i].name + " " + obj1[i].last_n + " " + obj1[i].username + " " +
-                obj1[i].Dogs_Name + " " + obj1[i].breed + " " + obj1[i].age + " " + obj1[i].gender;
-            resp.send(data1);
+            data12.push({
+                Fname : obj1[i].name,
+                Lname : obj1[i].last_n,                
+                email : obj1[i].email,
+                Dname : obj1[i].Dogs_Name,
+                Gender : obj1[i].gender,
+                Breed : obj1[i].breed,
+                Days :  obj1[i].days
+
+            }) ;  
             break;
 
         }
     }
+
     for (var j = 0; j < obj2.length; j++) {
         if (search_item == obj2[j].username) {
             foundV = true;
-            data2 += obj2[j].name + " " + obj2[j].last_n + " " + obj2[j].username + " " + obj2[j].email;
-            resp.send(data2);
+            data12.push({
+                Fname : obj2[j].name,
+                Lname : obj2[j].last_n,                
+                email : obj2[j].email,
+                Days : obj2[j].days
+            });
+                       
             break;
 
         }
     }
+
+    resp.send(data12);
+
     if (foundO === false && foundV === false) {
         resp.send(404);
     }
 });
 
-app.get('/login/:userID', function (req, resp) {
-    //console.log(obj3)
+app.get('/login/:userID', function (req, resp) {    
     var search_item = req.params.userID;
     var foundO = false;
     var foundV = false;
@@ -177,21 +193,7 @@ app.get('/login/:userID', function (req, resp) {
             break;
         }
     }
-    /*
-    var walk_days = []
-    for (var i = 0; i < obj3.length; i++) {
-        if (search_item == obj3[i].vol.username ) {
-            walk_days.push({
-                day: obj3[i].day,
-                dog: obj3[i].dog                                
-
-            });
-
-    }
   
-}
-console.log(walk_days)
-*/
     if (search_item == 'admin') {
         resp.send('admin');
     }
