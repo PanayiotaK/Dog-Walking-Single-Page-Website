@@ -5,47 +5,72 @@ window.onload = function () {
                 return response.json();
             })
             .then(body => {
-                console.log(body);
-                var Dogs = "";
-                var Dogs = "";
-                var OwnersF = "";
-                var OwnersL = "";
-                var email = "";
-                var city = "";
-                var age = "";
-                var gender = "";
-                var breed = "";
-
+               table_code = '<div class="d-flex justify-content-center"> <div class="card border-secondary lg-8" style="max-width: 99rem;">  <div class="card-body text-secondary">'
+               table_code += '<div class="container">  <div class="table-responsive-md"> <table class="table table-hover">  <thead>  <tr>  <th style="width: 10%">Dog</th> '
+               table_code +=' <th style="width: 5%">Age</th>'
+               table_code +=' <th style="width: 5%">Gender</th>'
+               table_code +=' <th style="width: 15%">Breed</th>'
+               table_code +=' <th style="width: 20%"> First Name</th>'
+               table_code +=' <th style="width: 20%"> Last Name</th>'
+               table_code +=' <th style="width: 15%">email</th>'
+               table_code +=' <th style="width: 10%">City</th>'
+               table_code +='</tr>  </thead> <tbody>'
+           
+               
                 for (var i = 0; i < body.length; i++) {
-                    Dogs += body[i].Dname + "";
-                    OwnersF += body[i].Oname;
-                    OwnersL += body[i].Lname;
-                    email += body[i].email;
-                    city += body[i].city;
-                    age += body[i].Dage;
-                    gender += body[i].Dgen;
-                    breed += body[i].breed;
-
+                    table_code += '<tr>';                    
+                    table_code += ' <td>'+ body[i].Dname + '</td>';
+                    table_code += ' <td>'+ body[i].Dage + '</td>';
+                    table_code += '<td>' + body[i].Dgen  + '</td>';
+                    table_code += '<td>' + body[i].breed  + '</td>';
+                    table_code += '<td>' + body[i].Oname + '</td>';
+                    table_code += '<td>' + body[i].Lname   + '</td>';
+                    table_code += '<td>' +body[i].email + '</td>' ;
+                    table_code += '<td>' + body[i].city +'</td>';
+                    table_code += '</tr>'
                 }
 
-                document.getElementById("Dogs_Data").innerHTML = Dogs;
+                table_code += '</tbody> </table> </div>  </div>  </div> </div>  </div>'
+                document.getElementById("Dogs_Data").innerHTML = table_code;
             })
         
     });
+              
 
     document.getElementById("Data_Vol").addEventListener("click", function (_event2) {
+        let days
         fetch('http://127.0.0.1:8090/volunteers')
             .then(response => response.json())
             .then(function (body) {
-                var volun = "";
+                Vol_table = ' <div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> '
+                Vol_table += ' <div class="container">  <div class="table-responsive-md"> <table class="table table-hover">  <thead>'
+                Vol_table += '<tr> '
+                Vol_table += '<th style="width: 20%"> First Name</th>  <th style="width: 20%"> Last Name</th>   <th style="width: 15%">email</th>  <th style="width: 10%">City</th>  <th style="width: 35%">Days Available</th> </tr> </thead>  <tbody>'
+
                 for (var i = 0; i < body.length; i++) {
-                    volun += body[i].name + " " + body[i].last_n + " " + body[i].email + " " + body[i].city;
-                    for (var j = 0; j < body[i].days.length; j++) {
-                        volun += " " + body[i].days[j];
+                    days = "";
+                    Vol_table += '<tr>'
+                    Vol_table += '<td>' + body[i].name + '</td>' ;
+                    Vol_table += '<td>' + body[i].last_n+'</td>';
+                    Vol_table += '<td>' + body[i].email  +'</td>';
+                    Vol_table += '<td>' + body[i].city +'</td>';
+
+                    if( body[i].days.length > 1){
+                         for (var j = 0; j < body[i].days.length-1; j++) {
+                             days += body[i].days[j] + " , ";
+                         }
+                         days += body[i].days[body[i].days.length-1];
+
                     }
-                    volun += "<br>";
+                    else{
+                        days = body[i].days
+                    }
+                    Vol_table += '<td>' + days +'</td>';
+                    Vol_table += '</tr>' ;
+
                 }
-                document.getElementById("Vol_Data").innerHTML = volun;
+                Vol_table += '</tbody>  </table>  </div>  </div>  </div> </div> </div>';
+                document.getElementById("Vol_Data").innerHTML =Vol_table;
 
             });
 
@@ -55,11 +80,33 @@ window.onload = function () {
         fetch("http://127.0.0.1:8090/owners")
             .then(response => response.json())
             .then(function (body) {
-                var owners = "";
+                Owners_table = '<div class="d-flex justify-content-center"> <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> ';
+                Owners_table +='<div class="container">' ;
+                Owners_table +='  <div class="table-responsive-md">  ';
+                Owners_table +='    <table class="table table-hover">' ;
+                Owners_table +='      <thead>';
+                Owners_table +='        <tr>' ;                            
+                Owners_table +='          <th style="width: 25%"> First Name</th>';
+                Owners_table +='          <th style="width: 25%"> Last Name</th>';
+                Owners_table +='          <th style="width: 25%">email</th>';
+                Owners_table +='          <th style="width: 15%">City</th>';
+                Owners_table +='          <th style="width: 10%"> Dog</th>'; 
+                Owners_table +='        </tr>';
+                Owners_table +='      </thead>';
+                Owners_table +='      <tbody>' ;
                 for (var i = 0; i < body.length; i++) {
-                    owners += body[i].name + " " + body[i].last_n + " " + body[i].email + " " + body[i].city + " " + body[i].Dogs_Name + "<br>";
+                    Owners_table += '<tr>';
+                    Owners_table += '<td>' + body[i].name  +'</td>';
+                    Owners_table += '<td>' +  body[i].last_n  +'</td>';
+                    Owners_table += '<td>' + body[i].email +'</td>';
+                    Owners_table += '<td>' + body[i].city  +'</td>';
+                    Owners_table += '<td>' + body[i].Dogs_Name  +'</td>';
+                    Owners_table += '</tr>';
+
+                   
                 }
-                document.getElementById("Owners_Data").innerHTML = owners;
+                Owners_table += ' </tbody> </table>  </div> </div>  </div>  </div>  </div>' ;
+                document.getElementById("Owners_Data").innerHTML = Owners_table;
             });
 
     });
@@ -204,9 +251,63 @@ window.onload = function () {
         if (event.keyCode === 13) {
             var usename = document.getElementById("search").value;
             fetch('http://127.0.0.1:8090/search/' + usename)
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(function (body) {
-                    document.getElementById("search_data").innerHTML = body;
+                    search_table = '<div class="d-flex justify-content-center">'  ;
+                    search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ' ;
+                    search_table += '  <div class="card-body text-secondary">';
+                    search_table += '    <div class="container">';
+                    search_table += '      <div class="table-responsive-md">';
+                    search_table += '        <table class="table table-hover">';
+                    search_table += '          <thead>';
+                    search_table += '            <tr>';                 
+              
+
+                    if(typeof(body[0].Dname) != "undefined"){                        
+                        search_table += '  <th style="width: 20%"> First Name</th>';
+                        search_table += '  <th style="width: 20%"> Last Name</th> ';
+                        search_table += '  <th style="width: 15%">email</th>';                        
+                        search_table += '  <th style="width: 10%">Dog</th>';                       
+                        search_table += '  <th style="width: 5%">Gender</th>';
+                        search_table += '  <th style="width: 15%">Breed</th>';
+                        search_table += '  <th style="width: 15%">Days Available</th>';
+                        search_table += '    </tr>';
+                        search_table += '  </thead>';
+                        search_table += '  <tbody>';
+                        search_table += '<tr>' ;
+                        search_table += '<td>'+ body[0].Fname +'</td>' ;
+                        search_table += '<td>'+ body[0].Lname  + '</td>' ;
+                        search_table += '<td>'+ body[0].email + '</td>' ;
+                        search_table += '<td>'+ body[0].Dname + '</td>' ;
+                        search_table += '<td>'+ body[0].Gender + '</td>' ;
+                        search_table += '<td>'+ body[0].Breed + '</td>' ;
+                        search_table += '<td>'+ body[0].Days + '</td>' ;
+                        search_table += '</tr>' ;
+                       
+
+                    }
+
+                    else{   
+                        search_table += '<th style="width: 25%"> First Name</th>';
+                        search_table += '<th style="width: 25%"> Last Name</th> ';
+                        search_table += '<th style="width: 25%">email</th>';
+                        search_table += '<th style="width: 25%">Days Available</th>';
+                        search_table += '    </tr>';
+                        search_table += '  </thead>';
+                        search_table += '  <tbody>';
+                        search_table += ' <tr> ';
+                        search_table += ' <td> ' + body[0].Fname  + '</td>';
+                        search_table += ' <td> ' + body[0].Lname  + '</td>';
+                        search_table += ' <td> ' + body[0].email  + '</td>';
+                        search_table += ' <td> ' + body[0].Days + '</td>';                        
+                        search_table += ' </tr> ';                        
+                        
+                    }
+
+                  
+                    search_table += '</tbody>  </table>  </div>  </div>  </div>  </div>  </div>' ;
+
+                    document.getElementById("search_data").innerHTML = search_table;
 
                 });
 
@@ -221,12 +322,12 @@ var userID
         userID = document.getElementById("Login_In").value;
         console.log("user id: ", userID);
         var x = document.getElementById("LoginPopUp");
-        
 
         if (userID == "admin") {
             pas = prompt("Give password: ");
             if (pas == "pas") {
                 window.location.href = 'https://www.youtube.com/';
+                document.getElementById("Nav_Cal").style.display = "block";
             }
         }
 
@@ -235,11 +336,12 @@ var userID
             .then(function (response) {
                 console.log(response);
                 return response.text();
-
             })
-            .then(function (body) {
-              
+            .then(function (body) {   
+
                 if (body == 'user') {
+                    document.getElementById("Nav_Cal").style.display = "block";
+                    document.getElementById("PernsonalCal").style.display = "block"
                     loged_in = true
                     //window.location.href = "https://www.google.com";
                     var x = document.getElementById('logIn');
@@ -500,6 +602,23 @@ function C() {
 }
 
 setInterval(C, 3000);
+
+
+window.onload = function () {
+var x = document.getElementById("cal");
+console.log(x.style.display)
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } /*else {
+          x.style.display = "none";
+
+
+        }*/
+
+}
+
+
+
 }
 
 
