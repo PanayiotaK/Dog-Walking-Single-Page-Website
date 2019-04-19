@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head>    
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -12,15 +12,36 @@
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </script>  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
 
   <link rel="stylesheet/less" type="text/css" href="stylesheet.less" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  
   <link rel="shortcut icon" type="image/png" href="favicon1.png">
   <title>Dog Walking</title>
 
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDfXluXNUF9gJ2eIN6-HOLXJfrBmbkTIxA",
+      authDomain: "dog-walking-1555589243464.firebaseapp.com",
+      databaseURL: "https://dog-walking-1555589243464.firebaseio.com",
+      projectId: "dog-walking-1555589243464",
+      storageBucket: "dog-walking-1555589243464.appspot.com",
+      messagingSenderId: "225178546763"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  
 </head>
+
+
+
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -141,6 +162,8 @@
                                   <div class="card-header">
                                     <h3 id="title">Owner Info</h3>
                                   </div>
+                                  <div id="firebaseui-auth-container"></div>
+                                   
                                   <div class="card-body text-secondary">
                                     <iframe name="fromSending" hidden></iframe>
                                     <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1"
@@ -162,7 +185,7 @@
                                           <div class="valid-feedback">
                                             Valid Input!
                                           </div>
-
+                                          <button id="google">Goole</button>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustomUsername">Username</label>
@@ -197,6 +220,7 @@
                                       <br>
                                       <h3 id="title">Dog Info</h3>
                                       <div class="form-row">
+                                          
                                         <div class="col-md-4 mb-3">
                                           <label for="validationCustom01_">Name</label>
                                           <input type="text" name="Dogs_Name" class="form-control"
@@ -368,6 +392,11 @@
                     });
                   }, false);
                 })();
+
+                
+
+
+
               </script>
 
 
@@ -400,6 +429,7 @@
                                     <h3 id="title">Volunteer Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
+                                      
                                     <form id="f2" class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
@@ -757,23 +787,21 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <button id="Data_Dogs"> Get Dogs</button>
-                <script src="index.js"></script>
+                <button id="Data_Dogs"> Get Dogs</button>            
                 <div id="Dogs_Data"></div>
               </div>
               <div class="col-sm-10 mb-3">
-                <button id="Data_Vol"> Get Volunteers</button>
-                <script src="index.js"></script>
+                <button id="Data_Vol"> Get Volunteers</button>               
                 <div id="Vol_Data"></div>
               </div>
               <div class="col-sm-10 mb-3">
                 <button id="Data_owners"> Get Owners</button>
-                <script src="index.js"></script>
+             
                 <div id="Owners_Data"></div>
               </div>
               <div class="col-sm-10 mb-3">
                 <button id="MatchDogsVol"> Get the weekly timetable</button>
-                <script src="index.js"></script>
+ 
 
               </div>
 
@@ -791,7 +819,7 @@
             <div class="row">
               <div class="col-sm-10 mb-3">
                 <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
-                <script src="index.js"></script>
+                
                 <div id="search_data"></div>
               </div>
             </div>
@@ -1109,8 +1137,7 @@
   <br>
   <br>
   <br>
-
-
+  <script src="index.js"></script>
 </body>
 
 </html>

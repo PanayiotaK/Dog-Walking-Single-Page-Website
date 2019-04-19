@@ -1,8 +1,15 @@
+
+
 var express = require('express');
+var firebase = require("firebase/app");
+require("firebase/auth");
+var firebase = require('firebase');
 var app = express();
 var fs = require("fs");
 var obj1 = JSON.parse(fs.readFileSync("dogs.json"));
 var obj2 = JSON.parse(fs.readFileSync("volunteers.json"));
+
+
 
 app.use('/uploads', express.static('uploads'));
 
@@ -66,6 +73,31 @@ app.get('/volunteers', function (req, resp) {
     resp.send(obj2);
 
 });
+
+/*
+app.post('/tokensignin',function(req,resp){
+       
+const {OAuth2Client} = require('google-auth-library');
+CLIENT_ID = '225178546763-fq8geik8abqbld27ss38qk7unte878oe.apps.googleusercontent.com';
+const client = new OAuth2Client(CLIENT_ID);
+async function verify() {
+    token = req.body
+  const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+  });
+  console.log(idToken)
+  const payload = ticket.getPayload();
+  const userid = payload['sub'];
+  // If request specified a G Suite domain:
+  //const domain = payload['hd'];
+}
+verify().catch(console.error);
+//console.log(req.body);
+})*/
+
 
 app.get('/owners', function (req, resp) {
     resp.send(obj1);
@@ -206,8 +238,36 @@ app.get('/login/:userID', function (req, resp) {
 
 
 });
+var dataOwners = [];
+app.post('/addOwners1',  function (req, resp) {
+    
+    var h = JSON.stringify(req.body);
+    //console.dir("all"+ j )
+    console.log("h",h)
+    var p1 = JSON.parse(h);
+    //console.log(p)
+    var data_owners = p1.data2;
+    var par = JSON.parse(data_owners);
+    const nameO = par[0].nameO;
+    const idO = par[0].idO;
+    const emailO  = par[0].emailO;
+    dataOwners.push({
+        nameO : nameO,
+        idO :idO,
+        emailO: emailO
+
+    })
+
+resp.send('fine');
+
+});
+
+
+
 
 app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
+    console.log(dataOwners)
+
     //console.log("req.file", req.file)
     if (req.file) {
         console.log('Uploading file...');
@@ -223,35 +283,52 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
 
     }
     let daysA = [];
-    var j = req.body;
-    const name = j.name;
-    const Lname = j.last_n;
-    const uname = j.username;
-    const email = j.email;
-    const city = j.city;
-    const Dname = j.Dogs_Name;
-    const breed = j.breed;
-    const age = j.age;
-    const gen = j.gender;
+    var j = JSON.stringify(req.body);
+    //console.dir("all"+ j )
+    var p = JSON.parse(j);
+    //console.log(p)
+   
+    //console.log("data_owners", data_owners)
+    
+       const dogN = p.Dogs_Name;
+       const breed = p.breed;
+       const age = p.age;
+       const gendre = p.gender;
+       const days = p.days;
+       const desc = p. descr;
+       const image_path = "uploads/" + iName
+    //console.log(ownerD)
+   
+        
+        obj1.push({
+            name : dataOwners[0].nameO,
+            username : dataOwners[0].idO,
+            email: dataOwners[0].emailO,
+            Dogs_Name: dogN,
+            breed: breed,
+            age: age,
+            gender: gendre,
+            days: days,
+            descr: desc,
+            dogImage: image_path
+    
+    
+    })
+
+
+    /*
+    const name = nameO;   
+    const id = idO;
+    const email = emailO; 
+    const Dname = dogN;
+    const breed = breed;
+    const age = age;
+    const gen = gender;
     const days = j.days;
     const description = j.descr;
     const image_path = "uploads/" + iName
-
-    obj1.push({
-        name: name,
-        last_n: Lname,
-        username: uname,
-        email: email,
-        city: city,
-        Dogs_Name: Dname,
-        breed: breed,
-        age: age,
-        gender: gen,
-        days: days,
-        descr: description,
-        dogImage: image_path
-    })
-
+*/
+    
     fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
         if (err) {
             prompt("error submission not succesful");

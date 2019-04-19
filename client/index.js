@@ -1,4 +1,101 @@
+//import { app } from "firebase";
+
+//var firebase = require("firebase/app");
+//require("firebase/auth");
+//var firebase = require('firebase');
+//var firebaseui = require('firebaseui');
+
+var url = 'http://localhost:8090';
+var currentCategory = null;
+var currentCategory_data = null;
+var categories = [];
+var userSignedIn = false;
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+var uiConfig = {
+    callbacks: {
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+            // User successfully signed in.
+
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+        },
+        uiShown: function () {
+            // The widget is rendered.
+            // Hide the loader.
+            if (document.getElementById('loader') != null) {
+                document.getElementById('loader').style.display = 'none';
+            }
+        }
+    },
+    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+    signInFlow: 'popup',
+    signInSuccessUrl: 'http://localhost:8090',
+    signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        /*firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID*/
+    ],
+    // Terms of service url.
+    tosUrl: 'http://localhost:8090',
+    // Privacy policy url.
+    privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+
+ui.start('#firebaseui-auth-container', uiConfig);
+var name;
+var id;
+var email;
 window.onload = function () {
+    function login() {
+        function newLoginHappened(user) {
+            if (user) {
+                app(user);
+
+            } else {
+                var provider = new firebase.auth.GoogleAuthProvider();
+                firebase.auth().signInWithRedirect(provider);
+
+
+            }
+
+        }
+        firebase.auth().onAuthStateChanged(newLoginHappened)
+
+
+    }
+
+    function app(user) {
+        name = user.displayName;
+        id = user.uid;
+        email = user.email;
+        console.log(name)
+    }
+    window.onload = login();
+
+    document.getElementById('google').addEventListener('click', async function (event) {
+        data2 = [];
+        data2.push({
+            nameO: name,
+            idO: id,
+            emailO: email
+        })
+        data2 = JSON.stringify(data2)
+        console.log(data2)
+        let response = await fetch('http://localhost:8090/addOwners1', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "data2=" + data2
+        })
+    });
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
         fetch('http://127.0.0.1:8090/dogs')
             .then(function (response) {
@@ -34,6 +131,7 @@ window.onload = function () {
             })
 
     });
+
 
 
     document.getElementById("Data_Vol").addEventListener("click", function (_event2) {
@@ -74,6 +172,11 @@ window.onload = function () {
 
 
     });
+
+
+
+
+
     document.getElementById("Data_owners").addEventListener("click", function (event3) {
         fetch("http://127.0.0.1:8090/owners")
             .then(response => response.json())
@@ -341,8 +444,8 @@ window.onload = function () {
 
 
                     }
-                    code_text ='<div class="form-check form-check-inline" > '             
-                    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + userID + ' </p> </div>' ;                    
+                    code_text = '<div class="form-check form-check-inline" > '
+                    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + userID + ' </p> </div>';
                     code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
                     code_text += '</div>'
                     document.getElementById("Welcome").innerHTML = code_text;
@@ -482,7 +585,7 @@ window.onload = function () {
     document.getElementById("showMore").addEventListener('click', C());
 
     function C() {
-        fetch('http://127.0.0.1:8090/showDogs')
+        fetch('http://localhost:8090/showDogs')
             .then(response => response.json())
             .then(function (body) {
                 //console.log(body);
@@ -593,16 +696,6 @@ window.onload = function () {
     }
 
     setInterval(C, 3000);
-
-
-
-
-
-
-
-
-
-
 
 
 }
