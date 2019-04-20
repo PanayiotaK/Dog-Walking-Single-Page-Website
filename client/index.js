@@ -87,6 +87,8 @@ function app(user) {
     console.log(name)
     document.getElementById('hi').innerHTML = name;
     document.getElementById('become_mem').style.display = 'none';
+    document.getElementById('updateShowB').style.display = 'block';
+   
     document.getElementById('bec_mem').textContent = 'Add data';
     document.getElementById('update_data').style.display = 'block';
     id = 'MarEu';
@@ -120,14 +122,24 @@ function app(user) {
 
 window.onload = function () {
     document.getElementById('updateB').addEventListener('click', async function (event) {  
-
+if(Owner == true){
         if (document.getElementById('form1').style.display == 'block'){
             document.getElementById('form1').style.display = 'none';
         }
         else{
             document.getElementById('form1').style.display = 'block';  
         } 
+    }
+    // else{
+    //     if (document.getElementById('form2').style.display == 'block'){
+    //         document.getElementById('form2').style.display = 'none';
+    //     }
+    //     else{
+    //         document.getElementById('form2').style.display = 'block';  
+    //     } 
 
+
+    // }
         
         data2 = [];
         data2.push({

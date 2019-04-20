@@ -133,7 +133,9 @@
     <br>
     <br>
     <div id="update_data">
+      <div id = "updateShowB">
       <button id='updateB' type="button">Update Data</button>
+    </div>
       <div id='form1'>
         <div class="d-flex justify-content-center">
           <div class="card border-secondary mb-3" style="max-width: 60rem;">
@@ -189,7 +191,6 @@
                   </div>
                 </div>
                 <br>
-
                 <div class="form-row">
                   <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value='Male'
@@ -203,6 +204,10 @@
                   </div>
                 </div>
                 <br>
+                <script>
+
+
+                </script>
                 <script type="text/javascript">
                   $(document).ready(function () {
                     $('#pr').click(function () {
@@ -286,7 +291,8 @@
     (function () {
       'use strict';
       window.addEventListener('load', function () {
-
+        document.getElementById('updateShowB').style.display = 'none';
+        document.getElementById('form1').style.display = 'none';
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
