@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>    
+<head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -12,16 +12,16 @@
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   <link rel="stylesheet/less" type="text/css" href="stylesheet.less" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
-  
+
   <link rel="shortcut icon" type="image/png" href="favicon1.png">
   <title>Dog Walking</title>
 
-  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
   <script>
     // Initialize Firebase
@@ -37,7 +37,7 @@
   </script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  
+
 </head>
 
 
@@ -54,7 +54,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-          <a class="nav-link" href="#buttons">Become a member <span class="sr-only">(current)</span></a>
+          <a id="bec_mem" class="nav-link" href="#buttons">Become a member <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#DogsAv">Dogs</a>
@@ -80,8 +80,11 @@
 
       <div id="logIn">
         <form class="form-inline my-2 my-lg-0">
+
+          <!-- login data-->
+          <!--          
           <input id="Login_In" class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
-          <button id="Login" class="btn btn-outline-dark" type="button">Login</button>
+          <button id="Login" class="btn btn-outline-dark" type="button">Login</button> -->
         </form>
       </div>
       <div id="Welcome"></div>
@@ -114,6 +117,7 @@
               <div class="col-sm-10 mb-3">
                 <p>Welcome welcome welcame welcame welcame welcame welcame welcame welcame welcame welcame</p>
                 <p><b>Welcome</b> sjjs</p>
+                <div id='hi'></div>
 
               </div>
             </div>
@@ -121,13 +125,192 @@
         </div>
       </div>
     </div>
-  </div>
-
+  </div> 
+   
 
   <div id="buttons">
     <br>
     <br>
     <br>
+    <div id="update_data">
+      <button id='updateB' type="button">Update Data</button>
+      <div id='form1'>
+        <div class="d-flex justify-content-center">
+          <div class="card border-secondary mb-3" style="max-width: 60rem;">
+            <div class="card-header">
+              <h3 id="title">Update Info</h3>
+            </div>
+            <div class="card-body text-secondary">
+              <iframe name="fromSending" hidden></iframe>
+              <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1" class="needs-validation"
+                novalidate target="fromSending">            
+                
+                <br>
+                <h3 id="title">Dog Info</h3>
+                <div class="form-row">
+
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom01_">Name</label>
+                    <input type="text" name="Dogs_Name" class="form-control" id="validationCustom01_"
+                      placeholder="Dog's name" required>
+                    <div class="valid-feedback">
+                      Valid Input!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom02D">Breed</label>
+                    <input type="text" name="breed" class="form-control" id="validationCustom02D" placeholder="Breed"
+                      required>
+                    <div class="valid-feedback">
+                      Valid Input!
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <label for="exampleFormControlSelect1">Age</label>
+                    <select class="form-control" name="age" data-dropup-auto="false" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                      <option>16</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+
+                <div class="form-row">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value='Male'
+                      required>
+                    <label class="custom-control-label" for="customRadioInline1">Male</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input"
+                      value='Female' required>
+                    <label class="custom-control-label" for="customRadioInline2">Female</label>
+                  </div>
+                </div>
+                <br>
+                <script type="text/javascript">
+                  $(document).ready(function () {
+                    $('#pr').click(function () {
+                      checked = $("input[type=checkbox]:checked").length;
+
+                      if (!checked) {
+                        alert("You must check at least one checkbox.");
+                        return false;
+                      }
+
+                    });
+                  });
+                </script>
+
+
+                <h6 id="DogDays">Days that the Dog is availble</h6>
+                <br>
+                <br>
+                <div class="col-md 10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="M" name="days" value="Monday">
+                    <label class="form-check-label" for="M">Monday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="days" id="Tu" value="Tuesday">
+                    <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="W" name="days" value="Wednesday">
+                    <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="days" id="Th" value="Thursday">
+                    <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="F" name="days" value="Friday">
+                    <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Sa" name="days" value="Saturday">
+                    <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Su" name="days" value="Sunday">
+                    <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                  </div>
+
+                </div>
+                <br>
+                <div class="input-group">
+                  <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
+                    placeholder="Briefly describe your dog (not nessesary)"></textarea>
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Plz submit image</label>
+                  <input type="file" class="form-control-file" id="dogImage" name="dogImage" required>
+                  <small id="passwordHelpInline" class="text-muted">
+                    Must be jpeg or png.
+                  </small>
+                  <div class="invalid-feedback"> Plz submit an appropriate photo </div>
+                </div>
+                <br>
+                <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
+                <br>
+                <br>
+                <div id="message"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+
+            if (form.checkValidity() === false) {
+              console.log("prevent")
+              event.preventDefault();
+              event.stopPropagation();
+              document.getElementById("message").innerHTML = "Not successful ";
+            } else {
+              form.classList.add('was-validated');
+              document.getElementById("message").innerHTML = "Success!";
+            }
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+
+
+  <div id="become_mem">
     <div class="d-flex justify-content-center">
       <div class="card border-secondary mb-3" style="max-width: 50rem;">
         <div class="card-header">
@@ -147,8 +330,8 @@
                     <div class="container">
                       <!-- Trigger the modal with a button -->
                       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> -->
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#myModal">Start as Owner</button>
+                      <button id="ownerB" type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-toggle="modal" data-target="#myModal">Start as Owner</button>
                       <!-- Modal -->
                       <div class="modal fade" id="myModal" ole="dialog">
                         <div class="modal-dialog modal-lg">
@@ -160,200 +343,10 @@
                               <div class="d-flex justify-content-center">
                                 <div class="card border-secondary mb-3" style="max-width: 60rem;">
                                   <div class="card-header">
-                                    <h3 id="title">Owner Info</h3>
+                                    <h3 id="title">Login as Owner</h3>
                                   </div>
                                   <div id="firebaseui-auth-container"></div>
-                                   
-                                  <div class="card-body text-secondary">
-                                    <iframe name="fromSending" hidden></iframe>
-                                    <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1"
-                                      class="needs-validation" novalidate target="fromSending">
-                                      <div class="form-row">
-                                        <div class="col-md-4 mb-3">
-                                          <label for="validationCustom01">First name</label>
-                                          <input type="text" name="name" class="form-control" id="validationCustom01"
-                                            placeholder="First name" required>
-                                          <div class="valid-feedback">
-                                            Valid Input!
-                                          </div>
 
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                          <label for="validationCustom02">Last name</label>
-                                          <input type="text" name="last_n" class="form-control" id="validationCustom02"
-                                            placeholder="Last name" required>
-                                          <div class="valid-feedback">
-                                            Valid Input!
-                                          </div>
-                                          <button id="google">Goole</button>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                          <label for="validationCustomUsername">Username</label>
-                                          <div class="input-group">
-                                            <input type="text" name="username" class="form-control"
-                                              id="validationCustomUsername" placeholder="Username"
-                                              aria-describedby="inputGroupPrepend" required>
-                                            <div class="invalid-feedback">
-                                              Please choose a username.
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="col-md-8 mb-2">
-                                          <label for="exampleFormControlInput1">Email address</label>
-                                          <input type="email" name="email" class="form-control"
-                                            id="exampleFormControlInput1" placeholder="name@example.com" required>
-                                          <div class="invalid-feedback">
-                                            Please provide a valid email address.
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                          <label for="validationCustom03">City</label>
-                                          <input type="text" name="city" class="form-control" id="validationCustom03"
-                                            placeholder="City" required>
-                                          <div class="invalid-feedback">
-                                            Please provide a city.
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <br>
-                                      <h3 id="title">Dog Info</h3>
-                                      <div class="form-row">
-                                          
-                                        <div class="col-md-4 mb-3">
-                                          <label for="validationCustom01_">Name</label>
-                                          <input type="text" name="Dogs_Name" class="form-control"
-                                            id="validationCustom01_" placeholder="Dog's name" required>
-                                          <div class="valid-feedback">
-                                            Valid Input!
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                          <label for="validationCustom02D">Breed</label>
-                                          <input type="text" name="breed" class="form-control" id="validationCustom02D"
-                                            placeholder="Breed" required>
-                                          <div class="valid-feedback">
-                                            Valid Input!
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4 mb-3">
-                                          <label for="exampleFormControlSelect1">Age</label>
-                                          <select class="form-control" name="age" data-dropup-auto="false"
-                                            id="exampleFormControlSelect1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                            <option>15</option>
-                                            <option>16</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <br>
-
-                                      <div class="form-row">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadioInline1" name="gender"
-                                            class="custom-control-input" value='Male' required>
-                                          <label class="custom-control-label" for="customRadioInline1">Male</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadioInline2" name="gender"
-                                            class="custom-control-input" value='Female' required>
-                                          <label class="custom-control-label" for="customRadioInline2">Female</label>
-                                        </div>
-                                      </div>
-                                      <br>
-                                      <script type="text/javascript">
-                                        $(document).ready(function () {
-                                          $('#pr').click(function () {
-                                            checked = $("input[type=checkbox]:checked").length;
-
-                                            if (!checked) {
-                                              alert("You must check at least one checkbox.");
-                                              return false;
-                                            }
-
-                                          });
-                                        });
-                                      </script>
-
-                                      <h6 id="DogDays">Days that the Dog is availble</h6>
-                                      <br>
-                                      <br>
-                                      <div class="col-md 10">
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="M" name="days"
-                                            value="Monday">
-                                          <label class="form-check-label" for="M">Monday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" name="days" id="Tu"
-                                            value="Tuesday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="W" name="days"
-                                            value="Wednesday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" name="days" id="Th"
-                                            value="Thursday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="F" name="days"
-                                            value="Friday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Friday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Sa" name="days"
-                                            value="Saturday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="checkbox" id="Su" name="days"
-                                            value="Sunday">
-                                          <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
-                                        </div>
-
-                                      </div>
-                                      <br>
-                                      <div class="input-group">
-                                        <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
-                                          placeholder="Briefly describe your dog (not nessesary)"></textarea>
-                                      </div>
-                                      <br>
-
-                                      <div class="form-group">
-                                        <label for="exampleFormControlFile1">Plz submit image</label>
-                                        <input type="file" class="form-control-file" id="dogImage" name="dogImage"
-                                          required>
-                                        <small id="passwordHelpInline" class="text-muted">
-                                          Must be jpeg or png.
-                                        </small>
-                                        <div class="invalid-feedback"> Plz submit an appropriate photo </div>
-                                      </div>
-                                      <br>
-                                      <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
-                                      <br>
-                                      <br>
-                                      <div id="message"></div>
-                                    </form>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -367,38 +360,6 @@
                   </div>
                 </div>
               </div>
-              <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                  'use strict';
-                  window.addEventListener('load', function () {
-
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function (form) {
-                      form.addEventListener('submit', function (event) {
-                      
-                        if (form.checkValidity() === false) {
-                          console.log("prevent")
-                          event.preventDefault();
-                          event.stopPropagation();
-                          document.getElementById("message").innerHTML = "Not successful ";
-                        } else {
-                          form.classList.add('was-validated');
-                          document.getElementById("message").innerHTML = "Success!";
-                        }
-                      }, false);
-                    });
-                  }, false);
-                })();
-
-                
-
-
-
-              </script>
-
 
               <div class="col">
                 <div class="card" style="width: 20rem;">
@@ -429,7 +390,7 @@
                                     <h3 id="title">Volunteer Info</h3>
                                   </div>
                                   <div class="card-body text-secondary">
-                                      
+
                                     <form id="f2" class="needs-validation" novalidate>
                                       <div class="form-row">
                                         <div class="col-md-4 mb-3">
@@ -517,7 +478,8 @@
                                           <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
                                         </div>
                                       </div>
-                                      <button id="SubmitVol" class="btn btn-primary" type="submit">Submit form</button>
+                                      <button id="SubmitVol" class="btn btn-primary" type="submit">Submit
+                                        form</button>
                                     </form>
                                   </div>
                                 </div>
@@ -560,574 +522,575 @@
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div id="DogsAv">
-      <!--Show more button-->
-      <br>
-      <br>
-      <br>
-      <div class="d-flex justify-content-center">
-        <div class="card border-secondary mb-3" style="max-width: 45rem;">
-          <div class="card-header">
-            <h3>Available Dogs</h3>
-          </div>
-          <div class="card-body text-secondary">
-            <!-- <h5 class="card-title">Secondary card title</h5> -->
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                      <h5 class="card-title">Max</h5>
-                    </div>
-                    <img class="card-img-top" src="dog1.jpg" alt="Dog image" width=200 height=350>
-                    <div class="card-body">
-                      <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Corgi</li>
-                      <li class="list-group-item">3 years old</li>
-                      <li class="list-group-item">Male</li>
-                    </ul>
+  <div id="DogsAv">
+    <!--Show more button-->
+    <br>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+        <div class="card-header">
+          <h3>Available Dogs</h3>
+        </div>
+        <div class="card-body text-secondary">
+          <!-- <h5 class="card-title">Secondary card title</h5> -->
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h5 class="card-title">Max</h5>
                   </div>
-                </div>
-                <br>
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                      <h5 class="card-title">Amy</h5>
-                    </div>
-                    <img class="card-img-top" src="dog3.jpg" alt="Dog image" width=350 height=350>
-                    <div class="card-body">
-                      <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Husky</li>
-                      <li class="list-group-item">7 months old</li>
-                      <li class="list-group-item">Female</li>
-                    </ul>
-
+                  <img class="card-img-top" src="dog1.jpg" alt="Dog image" width=200 height=350>
+                  <div class="card-body">
+                    <p class="card-text">Dog description .</p>
                   </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Corgi</li>
+                    <li class="list-group-item">3 years old</li>
+                    <li class="list-group-item">Male</li>
+                  </ul>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
-                  <br>
-                  <button id="showMore" onclick="F();">Show More Cute DOGGSS! </button>
+              <br>
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h5 class="card-title">Amy</h5>
+                  </div>
+                  <img class="card-img-top" src="dog3.jpg" alt="Dog image" width=350 height=350>
+                  <div class="card-body">
+                    <p class="card-text">Dog description .</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Husky</li>
+                    <li class="list-group-item">7 months old</li>
+                    <li class="list-group-item">Female</li>
+                  </ul>
+
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <br>
+                <button id="showMore" onclick="F();">Show More Cute DOGGSS! </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <br>
     </div>
+    <br>
+  </div>
 
-    <script type="text/javascript">
-      function F() {
-        var x = document.getElementById('DogsAv2');
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
+  <script type="text/javascript">
+    function F() {
+      var x = document.getElementById('DogsAv2');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
 
-
-        }
 
       }
-    </script>
+
+    }
+  </script>
 
 
-    <div id="DogsAv2">
-      <div class="d-flex justify-content-center">
-        <div class="card border-secondary mb-3" style="max-width: 45rem;">
-          <div class="card-body text-secondary">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                      <h5 class="card-title">Emily</h5>
-                    </div>
-                    <img class="card-img-top" src="labrador.jpg" alt="Dog image" width=200 height=350>
-                    <div class="card-body">
-                      <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Labrador</li>
-                      <li class="list-group-item">9 months old</li>
-                      <li class="list-group-item">Female</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                      <h5 class="card-title">Rex</h5>
-                    </div>
-                    <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width=350 height=350>
-                    <div class="card-body">
-                      <p class="card-text">Dog description .</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Rottweiler</li>
-                      <li class="list-group-item">4 years old</li>
-                      <li class="list-group-item">Male</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br>
-      <div id="moreDogs">
-      </div>
-    </div>
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-          document.getElementById("DogsAv2").style.display = "none";
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div id="Gallery">
-      <br>
-      <br>
-      <br>
-      <div class="d-flex justify-content-center">
-        <div class="card border-secondary mb-3" style="max-width:   55rem;">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="card-body text-secondary">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="6.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="2.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="1.jpg" class="d-block w-100" alt="...">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="ContactUs">
-      <br>
-      <br>
-      <br>
-      <div class="d-flex justify-content-center">
-        <div class="card border-secondary mb-3" style="max-width: 45rem;">
-          <div class="card-header">
-            <h2>Contact Us</h2>
-          </div>
-          <div class="card-body text-secondary">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-10 mb-3">
-                  <p>Contact us jbjbbjsbfkjssjkfjbsgjksbjkfdgbskbfgskhdbfkjsbfjkbsdjkgfbjksdjksfdbjkgbfjkdsb</p>
-                  <p>sdfhhsibuifdsbfsj</p>
-                  <p>abhbdabdisbjkbsajbjskbfgkjsjkfbsjasf bsdnkbvkjsdbjkfb</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!--Admin side-->
+  <div id="DogsAv2">
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary xlg-3" style="max-width: 105rem;">
+      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+        <div class="card-body text-secondary">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h5 class="card-title">Emily</h5>
+                  </div>
+                  <img class="card-img-top" src="labrador.jpg" alt="Dog image" width=200 height=350>
+                  <div class="card-body">
+                    <p class="card-text">Dog description .</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Labrador</li>
+                    <li class="list-group-item">9 months old</li>
+                    <li class="list-group-item">Female</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h5 class="card-title">Rex</h5>
+                  </div>
+                  <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width=350 height=350>
+                  <div class="card-body">
+                    <p class="card-text">Dog description .</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Rottweiler</li>
+                    <li class="list-group-item">4 years old</li>
+                    <li class="list-group-item">Male</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div id="moreDogs">
+    </div>
+  </div>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        document.getElementById("DogsAv2").style.display = "none";
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id="Gallery">
+    <br>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary mb-3" style="max-width:   55rem;">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="card-body text-secondary">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="6.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="2.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="1.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ContactUs">
+    <br>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+        <div class="card-header">
+          <h2>Contact Us</h2>
+        </div>
         <div class="card-body text-secondary">
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <button id="Data_Dogs"> Get Dogs</button>            
-                <div id="Dogs_Data"></div>
-              </div>
-              <div class="col-sm-10 mb-3">
-                <button id="Data_Vol"> Get Volunteers</button>               
-                <div id="Vol_Data"></div>
-              </div>
-              <div class="col-sm-10 mb-3">
-                <button id="Data_owners"> Get Owners</button>
-             
-                <div id="Owners_Data"></div>
-              </div>
-              <div class="col-sm-10 mb-3">
-                <button id="MatchDogsVol"> Get the weekly timetable</button>
- 
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="MatchData"></div>
-    <!-- Search form -->
-    <div class="d-flex justify-content-center">
-      <div class="card border-secondary lg-3" style="max-width: 95rem;">
-        <div class="card-body text-secondary">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-10 mb-3">
-                <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
-                
-                <div id="search_data"></div>
+                <p>Contact us jbjbbjsbfkjssjkfjbsgjksbjkfdgbskbfgskhdbfkjsbfjkbsdjkgfbjksdjksfdbjkgbfjkdsb</p>
+                <p>sdfhhsibuifdsbfsj</p>
+                <p>abhbdabdisbjkbsajbjskbfgkjsjkfbsjasf bsdnkbvkjsdbjkfb</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!--Admin side-->
+  <div class="d-flex justify-content-center">
+    <div class="card border-secondary xlg-3" style="max-width: 105rem;">
+      <div class="card-body text-secondary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10 mb-3">
+              <button id="Data_Dogs"> Get Dogs</button>
+              <div id="Dogs_Data"></div>
+            </div>
+            <div class="col-sm-10 mb-3">
+              <button id="Data_Vol"> Get Volunteers</button>
+              <div id="Vol_Data"></div>
+            </div>
+            <div class="col-sm-10 mb-3">
+              <button id="Data_owners"> Get Owners</button>
 
-    <div class="d-flex justify-content-center">
-      <div class="card border-secondary ml-3" style="max-width: 85rem;">
-        <div class="card-body text-secondary">
-          <div class="container">
-            <div class="table-responsive-md">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th style="width: 10%"> Name</th>
-                    <th style="width: 5%">Age</th>
-                    <th style="width: 5%">Gender</th>
-                    <th style="width: 15%">Breed</th>
-                    <th style="width: 20%"> First Name</th>
-                    <th style="width: 20%"> Last Name</th>
-                    <th style="width: 15%">email</th>
-                    <th style="width: 10%">City</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Val 1</td>
-                    <td>Val 2</td>
-                    <td>Val 3</td>
-                    <td>Val 4</td>
-                    <td>Val 5</td>
-                    <td>Val 6</td>
-                    <td>Val 7</td>
-                    <td>Val 8</td>
-                  </tr>
-                </tbody>
+              <div id="Owners_Data"></div>
+            </div>
+            <div class="col-sm-10 mb-3">
+              <button id="MatchDogsVol"> Get the weekly timetable</button>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="MatchData"></div>
+  <!-- Search form -->
+  <div class="d-flex justify-content-center">
+    <div class="card border-secondary lg-3" style="max-width: 95rem;">
+      <div class="card-body text-secondary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10 mb-3">
+              <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
+
+              <div id="search_data"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="card border-secondary ml-3" style="max-width: 85rem;">
+      <div class="card-body text-secondary">
+        <div class="container">
+          <div class="table-responsive-md">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 10%"> Name</th>
+                  <th style="width: 5%">Age</th>
+                  <th style="width: 5%">Gender</th>
+                  <th style="width: 15%">Breed</th>
+                  <th style="width: 20%"> First Name</th>
+                  <th style="width: 20%"> Last Name</th>
+                  <th style="width: 15%">email</th>
+                  <th style="width: 10%">City</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Val 1</td>
+                  <td>Val 2</td>
+                  <td>Val 3</td>
+                  <td>Val 4</td>
+                  <td>Val 5</td>
+                  <td>Val 6</td>
+                  <td>Val 7</td>
+                  <td>Val 8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <div id="PernsonalCal">
+    <button id="percal" type="button">Show personalised calendar</button>
+    <br>
+    <div id="cal">
+      <div class="d-flex justify-content-center">
+        <div class="card border-secondary ml-3" style="max-width: 85rem;">
+          <div class="card-body text-secondary">
+            <div class="container">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <div class="table-responsive">
+                <table id="Calendar">
+                  <thead id="CalendarHead">
+                    <tr>
+
+                      <th>
+
+                        <span class="long">Monday</span>
+                        <span class="short">Mon</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Tuesday</span>
+                        <span class="short">Tue</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Wendsday</span>
+                        <span class="short">We</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Thursday</span>
+                        <span class="short">Thur</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Friday</span>
+                        <span class="short">Fri</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Saturday</span>
+                        <span class="short">Sat</span>
+                      </th>
+                      <th>
+
+                        <span class="long">Sunday</span>
+                        <span class="short">Sun</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="CalendarBody">
+                    <tr>
+                      <td>
+                        <div id="Mon1"></div>
+                      </td>
+                      <td>
+                        <div id="Tue1"></div>
+                      </td>
+                      <td>
+                        <div id="Wed1"></div>
+                      </td>
+                      <td>
+                        <div id="Thu1"></div>
+                      </td>
+                      <td>
+                        <div id="F1"></div>
+                      </td>
+                      <td>
+                        <div id="Sat1"></div>
+                      </td>
+                      <td>
+                        <div id="Sun1"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div id="Mon2"></div>
+                      </td>
+                      <td>
+                        <div id="Tue2"></div>
+                      </td>
+                      <td>
+                        <div id="Wed2"></div>
+                      </td>
+                      <td>
+                        <div id="Thu2"></div>
+                      </td>
+                      <td>
+                        <div id="Fu2"></div>
+                      </td>
+                      <td>
+                        <div id="Sat2"></div>
+                      </td>
+                      <td>
+                        <div id="Sun2"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div id="Mon3"></div>
+                      </td>
+                      <td>
+                        <div id="Tue3"></div>
+                      </td>
+                      <td>
+                        <div id="Wed3"></div>
+                      </td>
+                      <td>
+                        <div id="Thu3"></div>
+                      </td>
+                      <td>
+                        <div id="F3"></div>
+                      </td>
+                      <td>
+                        <div id="Sat3"></div>
+                      </td>
+                      <td>
+                        <div id="Sun3"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div id="Mon4"></div>
+                      </td>
+                      <td>
+                        <div id="Tue4"></div>
+                      </td>
+                      <td>
+                        <div id="Wed4"></div>
+                      </td>
+                      <td>
+                        <div id="Thu4"></div>
+                      </td>
+                      <td>
+                        <div id="F4"></div>
+                      </td>
+                      <td>
+                        <div id="Sat4"></div>
+                      </td>
+                      <td>
+                        <div id="Sun4"></div>
+                      </td>
+                    </tr>
+              </div>
+              <tr>
+
+                <td>
+                  <div id="Mon5"></div>
+                </td>
+                <td>
+                  <div id="Tue5"></div>
+                </td>
+                <td>
+                  <div id="Wed5"></div>
+                </td>
+                <td>
+                  <div id="Thu5"></div>
+                </td>
+                <td>
+                  <div id="F5"></div>
+                </td>
+                <td>
+                  <div id="Sat5"></div>
+                </td>
+                <td>
+                  <div id="Sun5"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="Mon6"></div>
+                </td>
+                <td>
+                  <div id="Tue6"></div>
+                </td>
+                <td>
+                  <div id="Wed6"></div>
+                </td>
+                <td>
+                  <div id="Thu6"></div>
+                </td>
+                <td>
+                  <div id="F6"></div>
+                </td>
+                <td>
+                  <div id="Sat6"></div>
+                </td>
+                <td>
+                  <div id="Sun6"></div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-    <br>
-    <div id="PernsonalCal">
-      <button id="percal" type="button">Show personalised calendar</button>
-      <br>
-      <div id="cal">
-        <div class="d-flex justify-content-center">
-          <div class="card border-secondary ml-3" style="max-width: 85rem;">
-            <div class="card-body text-secondary">
-              <div class="container">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <div class="table-responsive">
-                  <table id="Calendar">
-                    <thead id="CalendarHead">
-                      <tr>
+  </div>
 
-                        <th>
-
-                          <span class="long">Monday</span>
-                          <span class="short">Mon</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Tuesday</span>
-                          <span class="short">Tue</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Wendsday</span>
-                          <span class="short">We</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Thursday</span>
-                          <span class="short">Thur</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Friday</span>
-                          <span class="short">Fri</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Saturday</span>
-                          <span class="short">Sat</span>
-                        </th>
-                        <th>
-
-                          <span class="long">Sunday</span>
-                          <span class="short">Sun</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody id="CalendarBody">
-                      <tr>
-                        <td>
-                          <div id="Mon1"></div>
-                        </td>
-                        <td>
-                          <div id="Tue1"></div>
-                        </td>
-                        <td>
-                          <div id="Wed1"></div>
-                        </td>
-                        <td>
-                          <div id="Thu1"></div>
-                        </td>
-                        <td>
-                          <div id="F1"></div>
-                        </td>
-                        <td>
-                          <div id="Sat1"></div>
-                        </td>
-                        <td>
-                          <div id="Sun1"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div id="Mon2"></div>
-                        </td>
-                        <td>
-                          <div id="Tue2"></div>
-                        </td>
-                        <td>
-                          <div id="Wed2"></div>
-                        </td>
-                        <td>
-                          <div id="Thu2"></div>
-                        </td>
-                        <td>
-                          <div id="Fu2"></div>
-                        </td>
-                        <td>
-                          <div id="Sat2"></div>
-                        </td>
-                        <td>
-                          <div id="Sun2"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div id="Mon3"></div>
-                        </td>
-                        <td>
-                          <div id="Tue3"></div>
-                        </td>
-                        <td>
-                          <div id="Wed3"></div>
-                        </td>
-                        <td>
-                          <div id="Thu3"></div>
-                        </td>
-                        <td>
-                          <div id="F3"></div>
-                        </td>
-                        <td>
-                          <div id="Sat3"></div>
-                        </td>
-                        <td>
-                          <div id="Sun3"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div id="Mon4"></div>
-                        </td>
-                        <td>
-                          <div id="Tue4"></div>
-                        </td>
-                        <td>
-                          <div id="Wed4"></div>
-                        </td>
-                        <td>
-                          <div id="Thu4"></div>
-                        </td>
-                        <td>
-                          <div id="F4"></div>
-                        </td>
-                        <td>
-                          <div id="Sat4"></div>
-                        </td>
-                        <td>
-                          <div id="Sun4"></div>
-                        </td>
-                      </tr>
-                </div>
-                <tr>
-
-                  <td>
-                    <div id="Mon5"></div>
-                  </td>
-                  <td>
-                    <div id="Tue5"></div>
-                  </td>
-                  <td>
-                    <div id="Wed5"></div>
-                  </td>
-                  <td>
-                    <div id="Thu5"></div>
-                  </td>
-                  <td>
-                    <div id="F5"></div>
-                  </td>
-                  <td>
-                    <div id="Sat5"></div>
-                  </td>
-                  <td>
-                    <div id="Sun5"></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="Mon6"></div>
-                  </td>
-                  <td>
-                    <div id="Tue6"></div>
-                  </td>
-                  <td>
-                    <div id="Wed6"></div>
-                  </td>
-                  <td>
-                    <div id="Thu6"></div>
-                  </td>
-                  <td>
-                    <div id="F6"></div>
-                  </td>
-                  <td>
-                    <div id="Sat6"></div>
-                  </td>
-                  <td>
-                    <div id="Sun6"></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-                </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      window.addEventListener('load', function () {
-        document.getElementById("PernsonalCal").style.display = "none";
-      })
-    </script>
+  <script>
+    window.addEventListener('load', function () {
+      document.getElementById("PernsonalCal").style.display = "none";
+    })
+  </script>
   </div>
   <br>
   <br>

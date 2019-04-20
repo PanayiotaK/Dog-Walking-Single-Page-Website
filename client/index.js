@@ -1,18 +1,4 @@
-//import { app } from "firebase";
-
-//var firebase = require("firebase/app");
-//require("firebase/auth");
-//var firebase = require('firebase');
-//var firebaseui = require('firebaseui');
-
-var url = 'http://localhost:8090';
-var currentCategory = null;
-var currentCategory_data = null;
-var categories = [];
-var userSignedIn = false;
-
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
@@ -28,6 +14,8 @@ var uiConfig = {
             if (document.getElementById('loader') != null) {
                 document.getElementById('loader').style.display = 'none';
             }
+
+
         }
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -48,38 +36,99 @@ var uiConfig = {
     privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
-ui.start('#firebaseui-auth-container', uiConfig);
+
+var url = 'http://localhost:8090';
+var currentCategory = null;
+var currentCategory_data = null;
+var categories = [];
+var userSignedIn = false;
+
+
 var name;
 var id;
 var email;
-window.onload = function () {
-    function login() {
-        function newLoginHappened(user) {
-            if (user) {
-                app(user);
+var Owner = false;
+var Volunteer = false;
 
-            } else {
-                var provider = new firebase.auth.GoogleAuthProvider();
-                firebase.auth().signInWithRedirect(provider);
 
+document.getElementById('ownerB').addEventListener('click',  login())
+
+   
+
+
+
+ui.start('#firebaseui-auth-container', uiConfig);
+
+function login() {
+    function newLoginHappened(user) {
+        if (user) {
+            app(user);
+
+        } else {
+            //var provider = new firebase.auth.GoogleAuthProvider();
+            //firebase.auth().signInWithRedirect(provider);                
+        }
+
+    }
+    firebase.auth().onAuthStateChanged(newLoginHappened)
+
+
+}
+
+function app(user) {
+    //ui.start('#firebaseui-auth-container', uiConfig);   
+    Owner = true;
+    name = user.displayName;
+    id = user.uid;
+    email = user.email;
+    var s_name = name.split(" ");
+    var Fname = s_name[0];
+    var Lname = s_name[1];
+    console.log(name)
+    document.getElementById('hi').innerHTML = name;
+    document.getElementById('become_mem').style.display = 'none';
+    document.getElementById('bec_mem').textContent = 'Add data';
+    document.getElementById('update_data').style.display = 'block';
+    id = 'MarEu';
+    fetch('http://localhost:8090/login/' + id)
+        .then(function (response) {
+            console.log(response);
+            return response.text();
+        })
+        .then(function (body) {
+            if (body == 'user') {
+                document.getElementById("Nav_Cal").style.display = "block";
+                document.getElementById("PernsonalCal").style.display = "block";
+                loged_in = true;
 
             }
+            code_text = '<div class="form-check form-check-inline" > '
+            code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + Fname + ' </p> </div>';
+            code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
+            code_text += '</div>'
 
+            document.getElementById("Welcome").innerHTML = code_text;
+        });
+
+    var user = firebase.auth().currentUser;
+    console.log(user)
+  
+
+
+
+}
+
+window.onload = function () {
+    document.getElementById('updateB').addEventListener('click', async function (event) {  
+
+        if (document.getElementById('form1').style.display == 'block'){
+            document.getElementById('form1').style.display = 'none';
         }
-        firebase.auth().onAuthStateChanged(newLoginHappened)
+        else{
+            document.getElementById('form1').style.display = 'block';  
+        } 
 
-
-    }
-
-    function app(user) {
-        name = user.displayName;
-        id = user.uid;
-        email = user.email;
-        console.log(name)
-    }
-    window.onload = login();
-
-    document.getElementById('google').addEventListener('click', async function (event) {
+        
         data2 = [];
         data2.push({
             nameO: name,
@@ -96,8 +145,9 @@ window.onload = function () {
             body: "data2=" + data2
         })
     });
+
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
-        fetch('http://127.0.0.1:8090/dogs')
+        fetch('http://localhost:8090/dogs')
             .then(function (response) {
                 return response.json();
             })
@@ -136,7 +186,7 @@ window.onload = function () {
 
     document.getElementById("Data_Vol").addEventListener("click", function (_event2) {
         let days
-        fetch('http://127.0.0.1:8090/volunteers')
+        fetch('http://localhost:8090/volunteers')
             .then(response => response.json())
             .then(function (body) {
                 Vol_table = ' <div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> '
@@ -178,7 +228,7 @@ window.onload = function () {
 
 
     document.getElementById("Data_owners").addEventListener("click", function (event3) {
-        fetch("http://127.0.0.1:8090/owners")
+        fetch("http://localhost:8090/owners")
             .then(response => response.json())
             .then(function (body) {
                 Owners_table = '<div class="d-flex justify-content-center"> <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> ';
@@ -213,7 +263,7 @@ window.onload = function () {
     });
 
     document.getElementById("MatchDogsVol").addEventListener("click", function (event7) {
-        fetch("http://127.0.0.1:8090/matchDogs")
+        fetch("http://localhost:8090/matchDogs")
             .then(function (response) {
                 return response.json()
 
@@ -344,7 +394,7 @@ window.onload = function () {
     document.getElementById("search").addEventListener("keyup", function (event4) {
         if (event.keyCode === 13) {
             var usename = document.getElementById("search").value;
-            fetch('http://127.0.0.1:8090/search/' + usename)
+            fetch('http://localhost:8090/search/' + usename)
                 .then(response => response.json())
                 .then(function (body) {
                     search_table = '<div class="d-flex justify-content-center">';
@@ -409,50 +459,50 @@ window.onload = function () {
 
     var userID
 
-    document.getElementById("Login").addEventListener("click", function (event5) {
-        var loged_in = false;
-        userID = document.getElementById("Login_In").value;
-        console.log("user id: ", userID);
-        var x = document.getElementById("LoginPopUp");
+    /*  document.getElementById("Login").addEventListener("click", function (event5) {
+          var loged_in = false;
+          userID = document.getElementById("Login_In").value;
+          console.log("user id: ", userID);
+          var x = document.getElementById("LoginPopUp");
 
-        if (userID == "admin") {
-            pas = prompt("Give password: ");
-            if (pas == "pas") {
-                window.location.href = 'https://www.youtube.com/';
-                document.getElementById("Nav_Cal").style.display = "block";
-            }
-        }
-
-
-        fetch('http://127.0.0.1:8090/login/' + userID)
-            .then(function (response) {
-                console.log(response);
-                return response.text();
-            })
-            .then(function (body) {
-
-                if (body == 'user') {
-                    document.getElementById("Nav_Cal").style.display = "block";
-                    document.getElementById("PernsonalCal").style.display = "block"
-                    loged_in = true
-                    //window.location.href = "https://www.google.com";
-                    var x = document.getElementById('logIn');
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
+          if (userID == "admin") {
+              pas = prompt("Give password: ");
+              if (pas == "pas") {
+                  window.location.href = 'https://www.youtube.com/';
+                  document.getElementById("Nav_Cal").style.display = "block";
+              }
+          }
 
 
-                    }
-                    code_text = '<div class="form-check form-check-inline" > '
-                    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + userID + ' </p> </div>';
-                    code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
-                    code_text += '</div>'
-                    document.getElementById("Welcome").innerHTML = code_text;
-                }
+          fetch('http://localhost:8090/login/' + userID)
+              .then(function (response) {
+                  console.log(response);
+                  return response.text();
+              })
+              .then(function (body) {
 
-            });
-    });
+                  if (body == 'user') {
+                      document.getElementById("Nav_Cal").style.display = "block";
+                      document.getElementById("PernsonalCal").style.display = "block";
+                      loged_in = true
+                      //window.location.href = "https://www.google.com";
+                      var x = document.getElementById('logIn');
+                      if (x.style.display === "none") {
+                          x.style.display = "block";
+                      } else {
+                          x.style.display = "none";
+
+
+                      }
+                      code_text = '<div class="form-check form-check-inline" > '
+                      code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + userID + ' </p> </div>';
+                      code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
+                      code_text += '</div>'
+                      document.getElementById("Welcome").innerHTML = code_text;
+                  }
+
+              });
+      });*/
 
 
 
@@ -508,7 +558,7 @@ window.onload = function () {
                 days: daysV
             }
             dedV = JSON.stringify(dataV);
-            let response = await fetch('http://127.0.0.1:8090/addVol', {
+            let response = await fetch('http://localhost:8090/addVol', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -528,9 +578,10 @@ window.onload = function () {
 
 
     document.getElementById("percal").addEventListener('click', function (event) {
-        //var userid = document.getElementById("Login_In").value;
-        console.log("USER", userID)
-        fetch('http://127.0.0.1:8090/loginCal/' + userID)
+
+        userID = 'MarEu';
+        console.log("USER", userID);
+        fetch('http://localhost:8090/loginCal/' + userID)
             .then(function (response) {
                 a = response.json()
                 console.log(a);
@@ -538,11 +589,10 @@ window.onload = function () {
 
             })
 
-
             .then(function (body) {
 
                 for (var i = 0; i < body.length; i++) {
-                    let a = body[i].dog
+                    let a = body[i].dog + ' - ' + body[i].vol;
                     if (body[i].day == 'Monday') {
 
                         console.log(a)

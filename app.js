@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var firebase = require("firebase/app");
 require("firebase/auth");
@@ -8,8 +6,6 @@ var app = express();
 var fs = require("fs");
 var obj1 = JSON.parse(fs.readFileSync("dogs.json"));
 var obj2 = JSON.parse(fs.readFileSync("volunteers.json"));
-
-
 
 app.use('/uploads', express.static('uploads'));
 
@@ -32,9 +28,9 @@ const storage = multer.diskStorage({
 
 });
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {        
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true);
-    } else {      
+    } else {
         return cb(new Error('Only jpeg/jpg/png images allowed'))
         //cb(null, false);
     }
@@ -239,26 +235,26 @@ app.get('/login/:userID', function (req, resp) {
 
 });
 var dataOwners = [];
-app.post('/addOwners1',  function (req, resp) {
-    
+app.post('/addOwners1', function (req, resp) {
+
     var h = JSON.stringify(req.body);
     //console.dir("all"+ j )
-    console.log("h",h)
+    console.log("h", h)
     var p1 = JSON.parse(h);
     //console.log(p)
     var data_owners = p1.data2;
     var par = JSON.parse(data_owners);
     const nameO = par[0].nameO;
     const idO = par[0].idO;
-    const emailO  = par[0].emailO;
+    const emailO = par[0].emailO;
     dataOwners.push({
-        nameO : nameO,
-        idO :idO,
+        nameO: nameO,
+        idO: idO,
         emailO: emailO
 
     })
 
-resp.send('fine');
+    resp.send('fine');
 
 });
 
@@ -278,7 +274,7 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     } else {
         console.log('No File Uploaded');
         //resp.send("uns");
-        var filename = 'FILE NOT UPLOADED';      
+        var filename = 'FILE NOT UPLOADED';
         var uploadStatus = 'File Upload Failed';
 
     }
@@ -287,32 +283,32 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     //console.dir("all"+ j )
     var p = JSON.parse(j);
     //console.log(p)
-   
+
     //console.log("data_owners", data_owners)
-    
-       const dogN = p.Dogs_Name;
-       const breed = p.breed;
-       const age = p.age;
-       const gendre = p.gender;
-       const days = p.days;
-       const desc = p. descr;
-       const image_path = "uploads/" + iName
+
+    const dogN = p.Dogs_Name;
+    const breed = p.breed;
+    const age = p.age;
+    const gendre = p.gender;
+    const days = p.days;
+    const desc = p.descr;
+    const image_path = "uploads/" + iName
     //console.log(ownerD)
-   
-        
-        obj1.push({
-            name : dataOwners[0].nameO,
-            username : dataOwners[0].idO,
-            email: dataOwners[0].emailO,
-            Dogs_Name: dogN,
-            breed: breed,
-            age: age,
-            gender: gendre,
-            days: days,
-            descr: desc,
-            dogImage: image_path
-    
-    
+
+
+    obj1.push({
+        name: dataOwners[0].nameO,
+        username: dataOwners[0].idO,
+        email: dataOwners[0].emailO,
+        Dogs_Name: dogN,
+        breed: breed,
+        age: age,
+        gender: gendre,
+        days: days,
+        descr: desc,
+        dogImage: image_path
+
+
     })
 
 
@@ -328,7 +324,7 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     const description = j.descr;
     const image_path = "uploads/" + iName
 */
-    
+
     fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
         if (err) {
             prompt("error submission not succesful");
@@ -343,10 +339,11 @@ app.get('/loginCal/:userID', function (req, resp) {
     console.log("o user einai : ", userid)
     var walk_days = []
     for (var i = 0; i < obj3.length; i++) {
-        if (userid == obj3[i].vol.username) {
+        if (userid == obj3[i].vol.username || userid == obj3[i].dog.username) {
             walk_days.push({
                 day: obj3[i].day,
-                dog: obj3[i].dog.Dogs_Name
+                dog: obj3[i].dog.Dogs_Name,
+                vol: obj3[i].vol.name
 
             });
 
