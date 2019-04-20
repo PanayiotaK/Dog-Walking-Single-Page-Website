@@ -294,8 +294,30 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     const desc = p.descr;
     const image_path = "uploads/" + iName
     //console.log(ownerD)
+    var found = false;
+    var position ;
+    for (var i = 0 ; i< obj1.length ; i++){
+        if (dataOwners[0].nameO === obj1[i].name){
+            found = true;
+            position = i;
 
+        }
+    }
 
+    if(found === true){
+        console.log('true');
+        obj1[position].Dogs_Name = dogN;
+        obj1[position].breed = breed ;
+        obj1[position].age = age;
+        obj1[position].gender = gendre;
+        obj1[position].days = days;
+        obj1[position].descr = desc;
+        obj1[position].dogImage = image_path;
+        
+
+    }
+
+else{
     obj1.push({
         name: dataOwners[0].nameO,
         username: dataOwners[0].idO,
@@ -311,7 +333,9 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
 
     })
 
+    
 
+}
     /*
     const name = nameO;   
     const id = idO;
@@ -324,12 +348,12 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     const description = j.descr;
     const image_path = "uploads/" + iName
 */
-
-    fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
-        if (err) {
-            prompt("error submission not succesful");
-        }
-    });
+fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
+    if (err) {
+        prompt("error submission not succesful");
+    }
+});
+ 
     resp.send("Fine that worked")
 
 });
