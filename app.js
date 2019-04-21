@@ -47,10 +47,8 @@ app.get('/dogs', function (req, resp) {
     for (var i = 0; i < obj1.length; i++) {
         list.push({
             Dname: obj1[i].Dogs_Name,
-            Oname: obj1[i].name,
-            Lname: obj1[i].last_n,
-            email: obj1[i].email,
-            city: obj1[i].city,
+            Oname: obj1[i].name,           
+            email: obj1[i].email,           
             Dage: obj1[i].age,
             Dgen: obj1[i].gender,
             breed: obj1[i].breed
@@ -109,8 +107,7 @@ app.get('/matchDogs', function (req, resp) {
     for (var i = 0; i < dogs.length; i++) {
         for (var j = 0; j < volunt.length; j++) {
             l = 0;
-            //console.log("dog: "+ dogs[i].Dogs_Name+ "  days: "+ dogs[i].days)
-            //console.log("vol: " + volunt[j].name + " days: "+ volunt[j].days)
+
             if (typeof (dogs[i].days) == 'object') {
                 for (var k = 0; k < dogs[i].days.length; k++) {
                     volunt[j].days.forEach(function (Vday) {
@@ -162,11 +159,10 @@ app.get('/search/:username', function (req, resp) {
     var data12 = [];
 
     for (var i = 0; i < obj1.length; i++) {
-        if (search_item == obj1[i].username) {
+        if (search_item == obj1[i].name) {
             foundO == true;
             data12.push({
-                Fname: obj1[i].name,
-                Lname: obj1[i].last_n,
+                name: obj1[i].name,                
                 email: obj1[i].email,
                 Dname: obj1[i].Dogs_Name,
                 Gender: obj1[i].gender,
@@ -180,11 +176,10 @@ app.get('/search/:username', function (req, resp) {
     }
 
     for (var j = 0; j < obj2.length; j++) {
-        if (search_item == obj2[j].username) {
+        if (search_item == obj2[j].name) {
             foundV = true;
             data12.push({
-                Fname: obj2[j].name,
-                Lname: obj2[j].last_n,
+                name: obj2[j].name,                
                 email: obj2[j].email,
                 Days: obj2[j].days
             });
@@ -229,14 +224,15 @@ app.get('/login/:userID', function (req, resp) {
 
 
     if (foundO === false && foundV === false) {
-        resp.status(404).send("sahbkhab");
+        resp.status(404).send("not found");
     }
 
 
 });
-var dataOwners = [];
-app.post('/addOwners1', function (req, resp) {
 
+var dataOwners;
+app.post('/addOwners1', function (req, resp) {  
+    dataOwners = [];
     var h = JSON.stringify(req.body);
     //console.dir("all"+ j )
     console.log("h", h)
@@ -336,18 +332,7 @@ else{
     
 
 }
-    /*
-    const name = nameO;   
-    const id = idO;
-    const email = emailO; 
-    const Dname = dogN;
-    const breed = breed;
-    const age = age;
-    const gen = gender;
-    const days = j.days;
-    const description = j.descr;
-    const image_path = "uploads/" + iName
-*/
+
 fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
     if (err) {
         prompt("error submission not succesful");
@@ -364,10 +349,11 @@ app.get('/loginCal/:userID', function (req, resp) {
     var walk_days = []
     for (var i = 0; i < obj3.length; i++) {
         if (userid == obj3[i].vol.username || userid == obj3[i].dog.username) {
+            Fname = obj3[i].vol.name.split(" ");
             walk_days.push({
                 day: obj3[i].day,
                 dog: obj3[i].dog.Dogs_Name,
-                vol: obj3[i].vol.name
+                vol: Fname[0]
 
             });
 
@@ -383,27 +369,37 @@ app.get('/loginCal/:userID', function (req, resp) {
 });
 
 app.post('/addVol', function (req, resp) {
+    var posV;
+    var foundVol = false;
+    var nameV = dataOwners[0].nameO;
+    var idV = dataOwners[0] .idO;
+    var emailV = dataOwners[0].emailO;    
+    var days = req.body.dedV;   
+    var days_arr = days.split(',');
+    
+   
+   for(var i = 0 ;i<obj2.length ; i++){
+       if(nameV == obj2[i].name){
+           posV = i;
+           foundVol = true;
+           break;
 
-    var jV = req.body.dedV
-    var j_parsedV = JSON.parse(jV);
-    //console.log(j_parsedV);
-    const name = j_parsedV.name;
-    const Lname = j_parsedV.last_n;
-    const uname = j_parsedV.username;
-    const email = j_parsedV.email;
-    const city = j_parsedV.city;
-    const days = j_parsedV.days;
+       }
+    
+   }
 
+   if(foundVol === true){
+       obj2[posV].days = days_arr;
+   }
+   else{
     obj2.push({
-        name: name,
-        last_n: Lname,
-        username: uname,
-        email: email,
-        city: city,
-        days: days,
+        name: nameV,        
+        username: idV,
+        email: emailV,       
+        days: days_arr
 
     });
-
+   }
     fs.writeFile("volunteers.json", JSON.stringify(obj2), function (err, result) {
         if (err) {
             return err;

@@ -1,4 +1,10 @@
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+var name;
+var id;
+var email;
+var Owner = 'owner';
+var Volunteer = "vol";
+var ui1 = new firebaseui.auth.AuthUI(firebase.auth());
+
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
@@ -36,6 +42,7 @@ var uiConfig = {
     privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
+ui1.start('#firebaseui-auth-container1', uiConfig);
 
 var url = 'http://localhost:8090';
 var currentCategory = null;
@@ -44,54 +51,86 @@ var categories = [];
 var userSignedIn = false;
 
 
-var name;
-var id;
-var email;
-var Owner = false;
-var Volunteer = false;
 
+window.onload = loginV();
 
-document.getElementById('ownerB').addEventListener('click',  login())
+function loginV() {
+    function newLoginHappenedV(userV) {
+        console.log('type: ', localStorage.getItem("owner_save"));
+        if (userV && localStorage.getItem("owner_save") == Owner) {
+            console.log('user = owner')
+            app(userV);
 
-   
+        } else if (userV && localStorage.getItem("owner_save") == Volunteer) {
+            console.log('volunteer ')
+            appV(userV)
 
-
-
-ui.start('#firebaseui-auth-container', uiConfig);
-
-function login() {
-    function newLoginHappened(user) {
-        if (user) {
-            app(user);
-
-        } else {
             //var provider = new firebase.auth.GoogleAuthProvider();
             //firebase.auth().signInWithRedirect(provider);                
         }
 
     }
-    firebase.auth().onAuthStateChanged(newLoginHappened)
+
+    firebase.auth().onAuthStateChanged(newLoginHappenedV);
+
+}
+
+function appV(userV) {
+
+    name = userV.displayName;
+    id = userV.uid;
+    console.log('app tou volunteer')
+    email = userV.email;
+    var s_nameV = name.split(" ");
+    var FnameV = s_nameV[0];
+    var LnameV = s_nameV[1];
+    console.log(name)
+    document.getElementById('hi').innerHTML = name;
+    document.getElementById('become_mem').style.display = 'none';
+    document.getElementById('updateShowB').style.display = 'block';
+    document.getElementById('bec_mem').textContent = 'Add data';
+    document.getElementById('Welcome_card').textContent = 'Welcome ' + FnameV;
+    document.getElementById('update_data').style.display = 'block';
+    document.getElementById("Nav_Cal").style.display = "block";
+    document.getElementById("PernsonalCal").style.display = "block";
+    code_text = '<div class="form-check form-check-inline" > '
+    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + FnameV + ' </p> </div>';
+    code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>';
+    code_text += '</div>';
+    document.getElementById("Welcome").innerHTML = code_text;
+    document.getElementById("Welcome").style.display = 'block';
+
+    document.getElementById('Logout').addEventListener('click', function (event) {
+        firebase.auth().signOut().then(function () {
+            // Sign-out successful.
+        }).catch(function (error) {
+            // An error happened.
+        });
+
+    });
+
 
 
 }
 
+
+
 function app(user) {
-    //ui.start('#firebaseui-auth-container', uiConfig);   
-    Owner = true;
+
     name = user.displayName;
     id = user.uid;
     email = user.email;
     var s_name = name.split(" ");
     var Fname = s_name[0];
     var Lname = s_name[1];
-    console.log(name)
+    console.log("app tou owner");
     document.getElementById('hi').innerHTML = name;
     document.getElementById('become_mem').style.display = 'none';
     document.getElementById('updateShowB').style.display = 'block';
-   
     document.getElementById('bec_mem').textContent = 'Add data';
+    document.getElementById('Welcome_card').textContent = 'Welcome ' + Fname;
     document.getElementById('update_data').style.display = 'block';
-    id = 'MarEu';
+    //id = 'MarEu';
     fetch('http://localhost:8090/login/' + id)
         .then(function (response) {
             console.log(response);
@@ -108,39 +147,57 @@ function app(user) {
             code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + Fname + ' </p> </div>';
             code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
             code_text += '</div>'
-
             document.getElementById("Welcome").innerHTML = code_text;
         });
 
     var user = firebase.auth().currentUser;
     console.log(user)
-  
 
+    document.getElementById('Logout').addEventListener('click', function (event) {
+        firebase.auth().signOut().then(function () {
+            console.log('signed out ');
+        }).catch(function (error) {
+            // An error happened.
+        });
 
+    });
 
 }
 
+
+document.getElementById('ownerB').addEventListener('click', function (event) {
+
+    localStorage.setItem("owner_save", Owner);
+    //console.log('owner_save:', owner_save) ;
+
+
+});
+document.getElementById('VolunteerB').addEventListener('click', function (event) {
+    localStorage.setItem("owner_save", Volunteer);
+    //console.log('owner_save:',owner_save)
+
+});
+
+
+
+
 window.onload = function () {
-    document.getElementById('updateB').addEventListener('click', async function (event) {  
-if(Owner == true){
-        if (document.getElementById('form1').style.display == 'block'){
-            document.getElementById('form1').style.display = 'none';
+    document.getElementById('updateB').addEventListener('click', async function (event) {
+        if (localStorage.getItem("owner_save") === Owner) {
+            if (document.getElementById('form1').style.display == 'block') {
+                document.getElementById('form1').style.display = 'none';
+            } else {
+                document.getElementById('form1').style.display = 'block';
+            }
+        } else {
+            if (document.getElementById('form2').style.display == 'block') {
+                document.getElementById('form2').style.display = 'none';
+            } else {
+                document.getElementById('form2').style.display = 'block';
+            }
+
+
         }
-        else{
-            document.getElementById('form1').style.display = 'block';  
-        } 
-    }
-    // else{
-    //     if (document.getElementById('form2').style.display == 'block'){
-    //         document.getElementById('form2').style.display = 'none';
-    //     }
-    //     else{
-    //         document.getElementById('form2').style.display = 'block';  
-    //     } 
-
-
-    // }
-        
         data2 = [];
         data2.push({
             nameO: name,
@@ -158,6 +215,8 @@ if(Owner == true){
         })
     });
 
+
+
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
         fetch('http://localhost:8090/dogs')
             .then(function (response) {
@@ -169,10 +228,8 @@ if(Owner == true){
                 table_code += ' <th style="width: 5%">Age</th>'
                 table_code += ' <th style="width: 5%">Gender</th>'
                 table_code += ' <th style="width: 15%">Breed</th>'
-                table_code += ' <th style="width: 20%"> First Name</th>'
-                table_code += ' <th style="width: 20%"> Last Name</th>'
-                table_code += ' <th style="width: 15%">email</th>'
-                table_code += ' <th style="width: 10%">City</th>'
+                table_code += ' <th style="width: 40%"> Full Name</th>'                
+                table_code += ' <th style="width: 25%">email</th>'                
                 table_code += '</tr>  </thead> <tbody>'
 
                 for (var i = 0; i < body.length; i++) {
@@ -181,10 +238,8 @@ if(Owner == true){
                     table_code += ' <td>' + body[i].Dage + '</td>';
                     table_code += '<td>' + body[i].Dgen + '</td>';
                     table_code += '<td>' + body[i].breed + '</td>';
-                    table_code += '<td>' + body[i].Oname + '</td>';
-                    table_code += '<td>' + body[i].Lname + '</td>';
-                    table_code += '<td>' + body[i].email + '</td>';
-                    table_code += '<td>' + body[i].city + '</td>';
+                    table_code += '<td>' + body[i].Oname + '</td>';                   
+                    table_code += '<td>' + body[i].email + '</td>';                    
                     table_code += '</tr>'
                 }
 
@@ -204,16 +259,14 @@ if(Owner == true){
                 Vol_table = ' <div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> '
                 Vol_table += ' <div class="container">  <div class="table-responsive-md"> <table class="table table-hover">  <thead>'
                 Vol_table += '<tr> '
-                Vol_table += '<th style="width: 20%"> First Name</th>  <th style="width: 20%"> Last Name</th>   <th style="width: 15%">email</th>  <th style="width: 10%">City</th>  <th style="width: 35%">Days Available</th> </tr> </thead>  <tbody>'
+                Vol_table += '<th style="width: 40%"> Full Name</th>  <th style="width: 25%">email</th>   <th style="width: 35%">Days Available</th> </tr> </thead>  <tbody>'
 
                 for (var i = 0; i < body.length; i++) {
                     days = "";
                     Vol_table += '<tr>'
-                    Vol_table += '<td>' + body[i].name + '</td>';
-                    Vol_table += '<td>' + body[i].last_n + '</td>';
+                    Vol_table += '<td>' + body[i].name + '</td>';                   
                     Vol_table += '<td>' + body[i].email + '</td>';
-                    Vol_table += '<td>' + body[i].city + '</td>';
-
+                   
                     if (body[i].days.length > 1) {
                         for (var j = 0; j < body[i].days.length - 1; j++) {
                             days += body[i].days[j] + " , ";
@@ -249,20 +302,16 @@ if(Owner == true){
                 Owners_table += '    <table class="table table-hover">';
                 Owners_table += '      <thead>';
                 Owners_table += '        <tr>';
-                Owners_table += '          <th style="width: 25%"> First Name</th>';
-                Owners_table += '          <th style="width: 25%"> Last Name</th>';
-                Owners_table += '          <th style="width: 25%">email</th>';
-                Owners_table += '          <th style="width: 15%">City</th>';
-                Owners_table += '          <th style="width: 10%"> Dog</th>';
+                Owners_table += '          <th style="width: 50%">Full Name</th>';               
+                Owners_table += '          <th style="width: 30%">email</th>';              
+                Owners_table += '          <th style="width: 20%"> Dog</th>';
                 Owners_table += '        </tr>';
                 Owners_table += '      </thead>';
                 Owners_table += '      <tbody>';
                 for (var i = 0; i < body.length; i++) {
                     Owners_table += '<tr>';
-                    Owners_table += '<td>' + body[i].name + '</td>';
-                    Owners_table += '<td>' + body[i].last_n + '</td>';
-                    Owners_table += '<td>' + body[i].email + '</td>';
-                    Owners_table += '<td>' + body[i].city + '</td>';
+                    Owners_table += '<td>' + body[i].name + '</td>';                   
+                    Owners_table += '<td>' + body[i].email + '</td>';                   
                     Owners_table += '<td>' + body[i].Dogs_Name + '</td>';
                     Owners_table += '</tr>';
 
@@ -304,6 +353,7 @@ if(Owner == true){
                 let foundF = false;
                 let foundSat = false;
                 let foundSun = false;
+                let user_name ;
                 let count = 0;
                 for (var i = 0; i < body.length; i++) {
                     foundM = false;
@@ -313,6 +363,7 @@ if(Owner == true){
                     foundF = false;
                     foundSat = false;
                     foundSun = false;
+                    user_name = body[i].vol.name.split(" ");
                     code += '<tr>'
                     count += 1
                     if (body[i].day == 'Monday') {
@@ -348,43 +399,43 @@ if(Owner == true){
 
 
                     if (foundM === true) {
-                        code += '<td><div >' + '<b>Dog</b>: ' + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name + ' </div></td>'
+                        code += '<td><div >' + '<b>Dog</b>: ' + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + user_name[0] + ' </div></td>'
 
                     } else if (foundM === false) {
                         code += ' <td></td>'
 
                     }
                     if (foundTue === true) {
-                        code += '<td>  <b>Dog</b>: ' + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name + '</td>';
+                        code += '<td>  <b>Dog</b>: ' + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + user_name[0] + '</td>';
 
                     } else if (foundTue === false) {
                         code += '<td></td>'
                     }
                     if (foundW === true) {
-                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + body[i].vol.name + "</td>";
+                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b>Volunteer</b>: " + user_name[0] + "</td>";
                     } else if (foundW === false) {
                         code += '<td></td>'
                     }
                     if (foundTh === true) {
-                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>';
+                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + user_name[0] + '</td>';
                     } else if (foundTh === false) {
                         code += '<td></td>'
                     }
                     if (foundF === true) {
-                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>'
+                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + user_name[0] + '</td>'
 
 
                     } else if (foundF === false) {
                         code += '<td></td>'
                     }
                     if (foundSat === true) {
-                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + body[i].vol.name + '</td>'
+                        code += "<td>  <b>Dog</b>: " + body[i].dog.Dogs_Name + "    <b>Volunteer</b>: " + user_name[0] + '</td>'
 
                     } else if (foundSat === false) {
                         code += '<td></td>'
                     }
                     if (foundSun === true) {
-                        code += "<td> <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b> Volunteer</b>: " + body[i].vol.name + '</td>'
+                        code += "<td> <b>Dog</b>: " + body[i].dog.Dogs_Name + "   <b> Volunteer</b>: " + user_name[0] + '</td>'
 
                     } else if (foundSun === false) {
                         code += '<td></td>'
@@ -405,7 +456,7 @@ if(Owner == true){
 
     document.getElementById("search").addEventListener("keyup", function (event4) {
         if (event.keyCode === 13) {
-            var usename = document.getElementById("search").value;
+            var usename = name;
             fetch('http://localhost:8090/search/' + usename)
                 .then(response => response.json())
                 .then(function (body) {
@@ -420,8 +471,7 @@ if(Owner == true){
 
 
                     if (typeof (body[0].Dname) != "undefined") {
-                        search_table += '  <th style="width: 20%"> First Name</th>';
-                        search_table += '  <th style="width: 20%"> Last Name</th> ';
+                        search_table += '  <th style="width: 40%"> First Name</th>';                        
                         search_table += '  <th style="width: 15%">email</th>';
                         search_table += '  <th style="width: 10%">Dog</th>';
                         search_table += '  <th style="width: 5%">Gender</th>';
@@ -431,8 +481,7 @@ if(Owner == true){
                         search_table += '  </thead>';
                         search_table += '  <tbody>';
                         search_table += '<tr>';
-                        search_table += '<td>' + body[0].Fname + '</td>';
-                        search_table += '<td>' + body[0].Lname + '</td>';
+                        search_table += '<td>' + body[0].name + '</td>';                        
                         search_table += '<td>' + body[0].email + '</td>';
                         search_table += '<td>' + body[0].Dname + '</td>';
                         search_table += '<td>' + body[0].Gender + '</td>';
@@ -442,16 +491,14 @@ if(Owner == true){
 
 
                     } else {
-                        search_table += '<th style="width: 25%"> First Name</th>';
-                        search_table += '<th style="width: 25%"> Last Name</th> ';
+                        search_table += '<th style="width: 50%"> Name</th>';                       
                         search_table += '<th style="width: 25%">email</th>';
                         search_table += '<th style="width: 25%">Days Available</th>';
                         search_table += '    </tr>';
                         search_table += '  </thead>';
                         search_table += '  <tbody>';
                         search_table += ' <tr> ';
-                        search_table += ' <td> ' + body[0].Fname + '</td>';
-                        search_table += ' <td> ' + body[0].Lname + '</td>';
+                        search_table += ' <td> ' + body[0].name + '</td>';                        
                         search_table += ' <td> ' + body[0].email + '</td>';
                         search_table += ' <td> ' + body[0].Days + '</td>';
                         search_table += ' </tr> ';
@@ -521,15 +568,10 @@ if(Owner == true){
     document.getElementById('f2').addEventListener('submit', async function (event) {
         event.preventDefault();
         try {
-            let nameV = document.getElementById('validationCustom01V').value;
-            let LnameV = document.getElementById('validationCustom02V').value;
-            let unameV = document.getElementById('validationCustomUsernameV').value
-            let emailV = document.getElementById('exampleFormControlInput1V').value
-            let cityV = document.getElementById('validationCustom03V').value
+
             daysV = []
             if (document.getElementById("M2").checked == true) {
                 var x2 = document.getElementById("M2").value;
-
                 daysV.push(x2)
             }
 
@@ -561,21 +603,12 @@ if(Owner == true){
                 daysV.push(x2)
             }
 
-            var dataV = {
-                name: nameV,
-                last_n: LnameV,
-                username: unameV,
-                email: emailV,
-                city: cityV,
-                days: daysV
-            }
-            dedV = JSON.stringify(dataV);
             let response = await fetch('http://localhost:8090/addVol', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: "dedV=" + dedV
+                body: "dedV=" + daysV
             })
 
             if (!response.ok) {
@@ -590,9 +623,7 @@ if(Owner == true){
 
 
     document.getElementById("percal").addEventListener('click', function (event) {
-
-        userID = 'MarEu';
-        console.log("USER", userID);
+        userID = id;   
         fetch('http://localhost:8090/loginCal/' + userID)
             .then(function (response) {
                 a = response.json()
