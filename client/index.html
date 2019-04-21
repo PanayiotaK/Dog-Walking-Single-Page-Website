@@ -109,7 +109,7 @@
     <div class="d-flex justify-content-center">
       <div class="card border-secondary mb-3" style="max-width: 45rem;">
         <div class="card-header">
-          <h2 id = "Welcome_card">Welcome</h2>
+          <h2 id="Welcome_card">Welcome</h2>
         </div>
         <div class="card-body text-secondary">
           <div class="container">
@@ -125,17 +125,17 @@
         </div>
       </div>
     </div>
-  </div> 
-   
-  
+  </div>
+
+
   <div id="buttons">
     <br>
     <br>
     <br>
     <div id="update_data">
-      <div id = "updateShowB">
-      <button id='updateB' type="button">Update Data</button>
-    </div>
+      <div id="updateShowB">
+        <button id='updateB' type="button">Update Data</button>
+      </div>
       <div id='form1'>
         <div class="d-flex justify-content-center">
           <div class="card border-secondary mb-3" style="max-width: 60rem;">
@@ -145,8 +145,8 @@
             <div class="card-body text-secondary">
               <iframe name="fromSending" hidden></iframe>
               <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1" class="needs-validation"
-                novalidate target="fromSending">            
-                
+                novalidate target="fromSending">
+
                 <br>
                 <h3 id="title">Dog Info</h3>
                 <div class="form-row">
@@ -282,93 +282,83 @@
           </div>
         </div>
       </div>
-      <div id = 'form2'>
-          <div class="d-flex justify-content-center">
-              <div class="card border-secondary mb-3" style="max-width: 60rem;">
-                <div class="card-header">
-                  <h3 id="title">Volunteer Info</h3>
-                </div>
-                <div class="card-body text-secondary">          
-                  <form id="f2" class="needs-validation" novalidate>                                      
-                    <h6 id="DogDaysV">Days that you want to volunteer</h6>
-                    <br>                 
-                    <div class="col-md 8">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="M2" value="Monday">
-                        <label class="form-check-label" for="M">Monday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Tu2" value="Tuesday">
-                        <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="W2" value="Wednesday">
-                        <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Th2" value="Thursday">
-                        <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="F2" value="Friday">
-                        <label class="form-check-label" for="inlineCheckbox2">Friday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Sa2" value="Saturday">
-                        <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="Su2" value="Sunday">
-                        <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
-                      </div>
-                    </div>
-                    <br>
-                    <button id="SubmitVol" class="btn btn-primary" type="submit">Submit
-                      form</button>
-                  </form>
-                </div>
-              </div>
-          
-              <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                  'use strict';
-                  window.addEventListener('load', function () {
-                    document.getElementById('form2').style.display = 'none';
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function (form) {
-                      form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                          event.preventDefault();
-                          event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                      }, false);
-                    });
-                  }, false);
-                })();
-              </script>
-          
+      <div id='form2'>
+        <div class="d-flex justify-content-center">
+          <div class="card border-secondary mb-3" style="max-width: 60rem;">
+            <div class="card-header">
+              <h3 id="title">Volunteer Info</h3>
             </div>
+            <div class="card-body text-secondary">
+              <form id="f2" class="needs-validation" novalidate>
+                <h6 id="DogDaysV">Days that you want to volunteer</h6>
+                <br>
+                <div class="col-md 8">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="M2" value="Monday">
+                    <label class="form-check-label" for="M">Monday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Tu2" value="Tuesday">
+                    <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="W2" value="Wednesday">
+                    <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Th2" value="Thursday">
+                    <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="F2" value="Friday">
+                    <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Sa2" value="Saturday">
+                    <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Su2" value="Sunday">
+                    <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                  </div>
+                </div>
+                <br>
+                <button id="SubmitVol" class="btn btn-primary" type="submit">Submit
+                  form</button>
+              </form>
+            </div>
+          </div>
 
+          <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+              'use strict';
+              window.addEventListener('load', function () {
+                document.getElementById('form2').style.display = 'none';
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+          </script>
 
-
-
-
-
-
+        </div>
       </div>
-
-
-
 
 
     </div>
   </div>
 
- 
+
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
@@ -434,7 +424,7 @@
                                   <div class="card-header">
                                     <h3 id="title">Login as Owner</h3>
                                   </div>
-                                  <div id = 'firebaseui-auth-container1'></div>
+                                  <div id='firebaseui-auth-container1'></div>
                                 </div>
                               </div>
                             </div>
@@ -458,11 +448,12 @@
                       any time of the week
                       you are available.
                     </p>
-                  
-                     <div class="container">                    
-                      <button id = "VolunteerB"type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#myModal">Start as Volunteer</button>
-                  </div>          
+
+                    <div class="container">
+                      <button id="VolunteerB" type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-toggle="modal" data-target="#myModal">Start as Volunteer</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -471,8 +462,7 @@
       </div>
     </div>
   </div>
-  </div>
- 
+
 
   <div id="DogsAv">
     <!--Show more button-->
@@ -692,91 +682,8 @@
   <br>
   <br>
   <br>
-  <!--Admin side-->
-  <div class="d-flex justify-content-center">
-    <div class="card border-secondary xlg-3" style="max-width: 105rem;">
-      <div class="card-body text-secondary">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-10 mb-3">
-              <button id="Data_Dogs"> Get Dogs</button>
-              <div id="Dogs_Data"></div>
-            </div>
-            <div class="col-sm-10 mb-3">
-              <button id="Data_Vol"> Get Volunteers</button>
-              <div id="Vol_Data"></div>
-            </div>
-            <div class="col-sm-10 mb-3">
-              <button id="Data_owners"> Get Owners</button>
-
-              <div id="Owners_Data"></div>
-            </div>
-            <div class="col-sm-10 mb-3">
-              <button id="MatchDogsVol"> Get the weekly timetable</button>
-
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="MatchData"></div>
-  <!-- Search form -->
-  <div class="d-flex justify-content-center">
-    <div class="card border-secondary lg-3" style="max-width: 95rem;">
-      <div class="card-body text-secondary">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-10 mb-3">
-              <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
-
-              <div id="search_data"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <div class="card border-secondary ml-3" style="max-width: 85rem;">
-      <div class="card-body text-secondary">
-        <div class="container">
-          <div class="table-responsive-md">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th style="width: 10%"> Name</th>
-                  <th style="width: 5%">Age</th>
-                  <th style="width: 5%">Gender</th>
-                  <th style="width: 15%">Breed</th>
-                  <th style="width: 20%"> First Name</th>
-                  <th style="width: 20%"> Last Name</th>
-                  <th style="width: 15%">email</th>
-                  <th style="width: 10%">City</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Val 1</td>
-                  <td>Val 2</td>
-                  <td>Val 3</td>
-                  <td>Val 4</td>
-                  <td>Val 5</td>
-                  <td>Val 6</td>
-                  <td>Val 7</td>
-                  <td>Val 8</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  
+  
   <br>
   <div id="PernsonalCal">
     <button id="percal" type="button">Show personalised calendar</button>
@@ -1043,12 +950,7 @@
   </div>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <br>  
   <script src="index.js"></script>
 </body>
 
