@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="admin_style.css">
+ 
+    
+
+    <link rel="shortcut icon" type="image/png" href="favicon1.png">
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(133, 77, 37);">
+        <a class="navbar-brand" href="#">DogWalking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a id="bec_mem" class="nav-link" href="#">Become a member <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dogs</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+                <div id="Nav_Cal">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Calendar</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <div class="d-flex justify-content-center">
+        <div class="card border-secondary xlg-3" style="max-width: 105rem;">
+            <div class="card-body text-secondary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 mb-3">
+                            <button id="Data_Dogs"> Get Dogs</button>
+                            <div id="Dogs_Data"></div>
+                        </div>
+                        <div class="col-sm-10 mb-3">
+                            <button id="Data_Vol"> Get Volunteers</button>
+                            <div id="Vol_Data"></div>
+                        </div>
+                        <div class="col-sm-10 mb-3">
+                            <button id="Data_owners"> Get Owners</button>
+
+                            <div id="Owners_Data"></div>
+                        </div>
+                        <div class="col-sm-10 mb-3">
+                            <button id="MatchDogsVol"> Get the weekly timetable</button>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MatchData"></div>
+    <!-- Search form -->
+    <div class="d-flex justify-content-center">
+        <div class="card border-secondary lg-3" style="max-width: 95rem;">
+            <div class="card-body text-secondary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 mb-3">
+                            <input class="form-control" id="search" type="text" placeholder="Search"
+                                aria-label="Search">
+
+                            <div id="search_data"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+            document.getElementById("search").addEventListener("keyup", function (event4) {
+                
+                if (event.keyCode === 13) {
+                    var usename = name;
+                    fetch('http://localhost:8090/search/' + usename)
+                        .then(response => response.json())
+                        .then(function (body) {
+                            search_table = '<div class="d-flex justify-content-center">';
+                            search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
+                            search_table += '  <div class="card-body text-secondary">';
+                            search_table += '    <div class="container">';
+                            search_table += '      <div class="table-responsive-md">';
+                            search_table += '        <table class="table table-hover">';
+                            search_table += '          <thead>';
+                            search_table += '            <tr>';
+        
+        
+                            if (typeof (body[0].Dname) != "undefined") {
+                                search_table += '  <th style="width: 40%"> First Name</th>';                        
+                                search_table += '  <th style="width: 15%">email</th>';
+                                search_table += '  <th style="width: 10%">Dog</th>';
+                                search_table += '  <th style="width: 5%">Gender</th>';
+                                search_table += '  <th style="width: 15%">Breed</th>';
+                                search_table += '  <th style="width: 15%">Days Available</th>';
+                                search_table += '    </tr>';
+                                search_table += '  </thead>';
+                                search_table += '  <tbody>';
+                                search_table += '<tr>';
+                                search_table += '<td>' + body[0].name + '</td>';                        
+                                search_table += '<td>' + body[0].email + '</td>';
+                                search_table += '<td>' + body[0].Dname + '</td>';
+                                search_table += '<td>' + body[0].Gender + '</td>';
+                                search_table += '<td>' + body[0].Breed + '</td>';
+                                search_table += '<td>' + body[0].Days + '</td>';
+                                search_table += '</tr>';
+        
+        
+                            } else {
+                                search_table += '<th style="width: 50%"> Name</th>';                       
+                                search_table += '<th style="width: 25%">email</th>';
+                                search_table += '<th style="width: 25%">Days Available</th>';
+                                search_table += '    </tr>';
+                                search_table += '  </thead>';
+                                search_table += '  <tbody>';
+                                search_table += ' <tr> ';
+                                search_table += ' <td> ' + body[0].name + '</td>';                        
+                                search_table += ' <td> ' + body[0].email + '</td>';
+                                search_table += ' <td> ' + body[0].Days + '</td>';
+                                search_table += ' </tr> ';
+        
+                            }       
+        
+                            search_table += '</tbody>  </table>  </div>  </div>  </div>  </div>  </div>';
+        
+                            document.getElementById("search_data").innerHTML = search_table;
+        
+                        });
+        
+                }
+        
+            });
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
