@@ -137,7 +137,7 @@ window.onload = function () {
                 var Sa = "";
                 var Su = "";
                 var timetable = "";
-                code = '"<div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary">    <div class="container"> '
+                code = '<div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary">    <div class="container"> '
                 code += ' <meta name="viewport" content="width=device-width, initial-scale=1.0">  <div class="table-responsive">   <table id = "Calendar">     <thead id = "CalendarHead">    <tr>'
                 code += ' <th> <span class="long">Monday</span>  <span class="short">Mon</span>  </th>  <th>  <span class="long">Tuesday</span>  <span class="short">Tue</span>  </th>'
                 code += '<th> <span class="long">Wendsday</span> <span class="short">We</span>  </th>  <th>  <span class="long">Thursday</span>  <span class="short">Thur</span>  </th>'
@@ -245,7 +245,7 @@ window.onload = function () {
                     code += '<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>'
                     count += 1
                 }
-                code += '  </tbody>  </table>   </div> </div>  </div>  </div>  </div>   </div>'
+                code += '  </tbody>  </table>   </div> </div>  </div>  </div>  </div>   </div> '
                 document.getElementById("MatchData").innerHTML = code;
             })
 

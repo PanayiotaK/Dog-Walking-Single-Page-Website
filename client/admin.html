@@ -21,8 +21,23 @@
 
   <link rel="shortcut icon" type="image/png" href="favicon1.png">
   <title>Dog Walking</title>
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDfXluXNUF9gJ2eIN6-HOLXJfrBmbkTIxA",
+      authDomain: "dog-walking-1555589243464.firebaseapp.com",
+      databaseURL: "https://dog-walking-1555589243464.firebaseio.com",
+      projectId: "dog-walking-1555589243464",
+      storageBucket: "dog-walking-1555589243464.appspot.com",
+      messagingSenderId: "225178546763"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-	
 </head>
 
 
@@ -39,20 +54,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-          <a id="bec_mem" class="nav-link" href="#buttons">Get Dogs <span class="sr-only">(current)</span></a>
+          <a  class="nav-link" > <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#DogsAv">Get Volunteers</a>
+          <a class="nav-link" ></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#Gallery">Get Owners</a>
+          <a class="nav-link" ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#ContactUs">Contact us</a>
+          <a class="nav-link" ></a>
         </li>
         <div id="Nav_Cal">
           <li class="nav-item">
-            <a class="nav-link" href="#PernsonalCal">Calendar</a>
+            <a class="nav-link"></a>
           </li>
         </div>
       </ul>
@@ -72,25 +87,46 @@
 
         </form>
       </div>
-      <div id="Welcome"></div>
+      <div class="form-check form-check-inline" > 
+          <div><button id="Logout" class="btn btn-outline-dark " type="button" onclick = "logoutfunct()">Log out</button> </div>
+         </div>
+        
     </div>
   </nav>
   <br>
   <br>
   <br>
   <br>
+<script>
+          
+      function logoutfunct(){
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            document.location.replace('http://localhost:8090');
+          }, function(error) {
+            // An error happened.
+          });
+    }
+        
+  
+  
 
 
-  <div id="dropdown"> 
+
+
+</script>
+
+  <div id="dropdown">
     <div class="card" style="max-width: 55rem;">
       <div class="card-header">
-        <h2>Select Option</h2> 
+        <h2>Select Option</h2>
       </div>
       <div class="card-body">
-       
+
         <p class="card-text">Click for option</p>
         <div class="dropdown show">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Click for Options
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -109,125 +145,126 @@
   <br>
 
   <script>
-
-      function showDogs(){
-        console.log("here");
-        document.getElementById('GetDogs').style.display = "block";
-       document.getElementById('GetVols').style.display = "none";
-       document.getElementById('GetOwners').style.display = "none";
-       document.getElementById('GetCal').style.display = "none";
-       document.getElementById("PernsonalCal").style.display = "none";
-       document.getElementById("searchUser").style.display = "none";
+    function showDogs() {
+      console.log("here");
+      document.getElementById('GetDogs').style.display = "block";
+      document.getElementById('GetVols').style.display = "none";
+      document.getElementById('GetOwners').style.display = "none";
+      document.getElementById('GetCal').style.display = "none";
+      document.getElementById("PernsonalCal").style.display = "none";
+      document.getElementById("searchUser").style.display = "none";
     }
 
-    function showVols(){
+    function showVols() {
       console.log("here");
       document.getElementById('GetDogs').style.display = "none";
-     document.getElementById('GetVols').style.display = "block";
-     document.getElementById('GetOwners').style.display = "none";
-     document.getElementById('GetCal').style.display = "none";
-     document.getElementById("PernsonalCal").style.display = "none";
-     document.getElementById("searchUser").style.display = "none";
-  }
-  function showOwners(){
-    console.log("here");
-    document.getElementById('GetDogs').style.display = "none";
-   document.getElementById('GetVols').style.display = "none";
-   document.getElementById('GetOwners').style.display = "block";
-   document.getElementById('GetCal').style.display = "none";
-   document.getElementById("PernsonalCal").style.display = "none";
-   document.getElementById("searchUser").style.display = "none";
-}
-function showCal(){
-  console.log("here");
-  document.getElementById('GetDogs').style.display = "none";
- document.getElementById('GetVols').style.display = "none";
- document.getElementById('GetOwners').style.display = "none";
- document.getElementById('GetCal').style.display = "block";
- document.getElementById("searchUser").style.display = "none";
-}
-function showSearch(){
-  console.log("here");
-  document.getElementById('GetDogs').style.display = "none";
- document.getElementById('GetVols').style.display = "none";
- document.getElementById('GetOwners').style.display = "none";
- document.getElementById('GetCal').style.display = "none";
- document.getElementById("searchUser").style.display = "block";
-}
+      document.getElementById('GetVols').style.display = "block";
+      document.getElementById('GetOwners').style.display = "none";
+      document.getElementById('GetCal').style.display = "none";
+      document.getElementById("PernsonalCal").style.display = "none";
+      document.getElementById("searchUser").style.display = "none";
+    }
+
+    function showOwners() {
+      console.log("here");
+      document.getElementById('GetDogs').style.display = "none";
+      document.getElementById('GetVols').style.display = "none";
+      document.getElementById('GetOwners').style.display = "block";
+      document.getElementById('GetCal').style.display = "none";
+      document.getElementById("PernsonalCal").style.display = "none";
+      document.getElementById("searchUser").style.display = "none";
+    }
+
+    function showCal() {
+      console.log("here");
+      document.getElementById('GetDogs').style.display = "none";
+      document.getElementById('GetVols').style.display = "none";
+      document.getElementById('GetOwners').style.display = "none";
+      document.getElementById('GetCal').style.display = "block";
+      document.getElementById("searchUser").style.display = "none";
+    }
+
+    function showSearch() {
+      console.log("here");
+      document.getElementById('GetDogs').style.display = "none";
+      document.getElementById('GetVols').style.display = "none";
+      document.getElementById('GetOwners').style.display = "none";
+      document.getElementById('GetCal').style.display = "none";
+      document.getElementById("searchUser").style.display = "block";
+    }
   </script>
 
 
-  <div id="GetDogs"> 
-  <div class="card" style="max-width: 55rem;">
-    <div class="card-header">
-      <h2>Get Dogs</h2> 
-    </div>
-    <div class="card-body">
-     
-      <p class="card-text">Click for dogs</p>
-      <button id="Data_Dogs"> Get Dogs</button>
-          <div id="Dogs_Data"></div>
-    </div>
-  </div>
-</div>
-
-
-
-<div id="GetVols"> 
-  <div class="card" style="max-width: 55rem;">
-    <div class="card-header">
-      <h2>Get Volunteers</h2> 
-    </div>
-    <div class="card-body">
-     
-      <p class="card-text">Click for Volunteers</p>
-      <button id="Data_Vol"> Get Volunteers</button>
-      <div id="Vol_Data"></div>
-    </div>
-  </div>
-</div>
-
-
-
-<div id="GetOwners"> 
-  <div class="card " style="max-width: 55rem;">
-    <div class="card-header">
-      <h2>Get Owners</h2> 
-    </div>
-    <div class="card-body">
-     
-      <p class="card-text">Click for Owners</p>
-      <button id="Data_owners"> Get Owners</button>
-       <div id="Owners_Data"></div>
-    </div>
-  </div>
-</div>
-
-<div id="searchUser"> 
-    <div class="card " style="max-width: 85rem;">
+  <div id="GetDogs">
+    <div class="card" style="max-width: 55rem;">
       <div class="card-header">
-        <h2>Search User</h2> 
+        <h2>Get Dogs</h2>
       </div>
       <div class="card-body">
-       
+
+        <p class="card-text">Click for dogs</p>
+        <button id="Data_Dogs"> Get Dogs</button>
+        <div id="Dogs_Data"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="GetVols">
+    <div class="card" style="max-width: 55rem;">
+      <div class="card-header">
+        <h2>Get Volunteers</h2>
+      </div>
+      <div class="card-body">
+
+        <p class="card-text">Click for Volunteers</p>
+        <button id="Data_Vol"> Get Volunteers</button>
+        <div id="Vol_Data"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="GetOwners">
+    <div class="card " style="max-width: 55rem;">
+      <div class="card-header">
+        <h2>Get Owners</h2>
+      </div>
+      <div class="card-body">
+
+        <p class="card-text">Click for Owners</p>
+        <button id="Data_owners"> Get Owners</button>
+        <div id="Owners_Data"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="searchUser">
+    <div class="card " style="max-width: 85rem;">
+      <div class="card-header">
+        <h2>Search User</h2>
+      </div>
+      <div class="card-body">
+
         <p class="card-text">Write name and press Enter</p>
 
         <div class="container">
-            <div class="row">
-                <div class="col-sm-10 mb-3">
-                    <input class="form-control" id="search" type="text" placeholder="Search"
-                        aria-label="Search">
+          <div class="row">
+            <div class="col-sm-10 mb-3">
+              <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
 
-                    <div id="search_data"></div>
-                </div>
+              <div id="search_data"></div>
             </div>
+          </div>
         </div>
-         
+
       </div>
     </div>
   </div>
 
-<!-- Search form
+  <!-- Search form
 <div class="d-flex justify-content-center">
     <div class="card border-secondary lg-3" style="max-width: 95rem;">
         <div class="card-body text-secondary">
@@ -246,290 +283,289 @@ function showSearch(){
 </div> -->
 
 
-<div id="GetCal"> 
+  <div id="GetCal">
+
     <div class="card" style="max-width: 55rem;">
       <div class="card-header">
-        <h2>Get Timetable</h2> 
+        <h2>Get Timetable</h2>
       </div>
       <div class="card-body">
         <p class="card-text">Click for Timetable</p>
-        <button id="MatchDogsVol"> Get the weekly timetable</button>
-        <div id="PernsonalCal">
+        <button id="MatchDogsVol"> Get the weekly timetable</button>        
+          <div id="PernsonalCal">
             <div id="cal">
-              <div class="d-flex justify-content-center">                
-                <div class="card border-secondary ml-3" style="max-width: 85rem;">
-                  <div class="card-body text-secondary">
-                    <div class="container">
-                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                      <div class="table-responsive">
-                        <table id="Calendar">
-                          <thead id="CalendarHead">
-                            <tr>
-        
-                              <th>
-        
-                                <span class="long">Monday</span>
-                                <span class="short">Mon</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Tuesday</span>
-                                <span class="short">Tue</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Wendsday</span>
-                                <span class="short">We</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Thursday</span>
-                                <span class="short">Thur</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Friday</span>
-                                <span class="short">Fri</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Saturday</span>
-                                <span class="short">Sat</span>
-                              </th>
-                              <th>
-        
-                                <span class="long">Sunday</span>
-                                <span class="short">Sun</span>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="CalendarBody">
-                            <tr>
-                              <td>
-                                <div id="Mon1"></div>
-                              </td>
-                              <td>
-                                <div id="Tue1"></div>
-                              </td>
-                              <td>
-                                <div id="Wed1"></div>
-                              </td>
-                              <td>
-                                <div id="Thu1"></div>
-                              </td>
-                              <td>
-                                <div id="F1"></div>
-                              </td>
-                              <td>
-                                <div id="Sat1"></div>
-                              </td>
-                              <td>
-                                <div id="Sun1"></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div id="Mon2"></div>
-                              </td>
-                              <td>
-                                <div id="Tue2"></div>
-                              </td>
-                              <td>
-                                <div id="Wed2"></div>
-                              </td>
-                              <td>
-                                <div id="Thu2"></div>
-                              </td>
-                              <td>
-                                <div id="Fu2"></div>
-                              </td>
-                              <td>
-                                <div id="Sat2"></div>
-                              </td>
-                              <td>
-                                <div id="Sun2"></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div id="Mon3"></div>
-                              </td>
-                              <td>
-                                <div id="Tue3"></div>
-                              </td>
-                              <td>
-                                <div id="Wed3"></div>
-                              </td>
-                              <td>
-                                <div id="Thu3"></div>
-                              </td>
-                              <td>
-                                <div id="F3"></div>
-                              </td>
-                              <td>
-                                <div id="Sat3"></div>
-                              </td>
-                              <td>
-                                <div id="Sun3"></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div id="Mon4"></div>
-                              </td>
-                              <td>
-                                <div id="Tue4"></div>
-                              </td>
-                              <td>
-                                <div id="Wed4"></div>
-                              </td>
-                              <td>
-                                <div id="Thu4"></div>
-                              </td>
-                              <td>
-                                <div id="F4"></div>
-                              </td>
-                              <td>
-                                <div id="Sat4"></div>
-                              </td>
-                              <td>
-                                <div id="Sun4"></div>
-                              </td>
-                            </tr>
-                      </div>
-                      <tr>
-        
-                        <td>
-                          <div id="Mon5"></div>
-                        </td>
-                        <td>
-                          <div id="Tue5"></div>
-                        </td>
-                        <td>
-                          <div id="Wed5"></div>
-                        </td>
-                        <td>
-                          <div id="Thu5"></div>
-                        </td>
-                        <td>
-                          <div id="F5"></div>
-                        </td>
-                        <td>
-                          <div id="Sat5"></div>
-                        </td>
-                        <td>
-                          <div id="Sun5"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div id="Mon6"></div>
-                        </td>
-                        <td>
-                          <div id="Tue6"></div>
-                        </td>
-                        <td>
-                          <div id="Wed6"></div>
-                        </td>
-                        <td>
-                          <div id="Thu6"></div>
-                        </td>
-                        <td>
-                          <div id="F6"></div>
-                        </td>
-                        <td>
-                          <div id="Sat6"></div>
-                        </td>
-                        <td>
-                          <div id="Sun6"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-        
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-        
-                      </tbody>
-                      </table>
+              <div class="d-flex justify-content-center">
+              <div class="card border-secondary ml" style="max-width: 85rem;">
+                <div class="card-body text-secondary">
+                  <div class="container">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <div class="table-responsive">
+                      <table id="Calendar">
+                        <thead id="CalendarHead">
+                          <tr>
+                            <th>
+                              <span class="long">Monday</span>
+                              <span class="short">Mon</span>
+                            </th>
+                            <th>
+                              <span class="long">Tuesday</span>
+                              <span class="short">Tue</span>
+                            </th>
+                            <th>
+
+                              <span class="long">Wendsday</span>
+                              <span class="short">We</span>
+                            </th>
+                            <th>
+
+                              <span class="long">Thursday</span>
+                              <span class="short">Thur</span>
+                            </th>
+                            <th>
+
+                              <span class="long">Friday</span>
+                              <span class="short">Fri</span>
+                            </th>
+                            <th>
+
+                              <span class="long">Saturday</span>
+                              <span class="short">Sat</span>
+                            </th>
+                            <th>
+
+                              <span class="long">Sunday</span>
+                              <span class="short">Sun</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody id="CalendarBody">
+                          <tr>
+                            <td>
+                              <div id="Mon1"></div>
+                            </td>
+                            <td>
+                              <div id="Tue1"></div>
+                            </td>
+                            <td>
+                              <div id="Wed1"></div>
+                            </td>
+                            <td>
+                              <div id="Thu1"></div>
+                            </td>
+                            <td>
+                              <div id="F1"></div>
+                            </td>
+                            <td>
+                              <div id="Sat1"></div>
+                            </td>
+                            <td>
+                              <div id="Sun1"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div id="Mon2"></div>
+                            </td>
+                            <td>
+                              <div id="Tue2"></div>
+                            </td>
+                            <td>
+                              <div id="Wed2"></div>
+                            </td>
+                            <td>
+                              <div id="Thu2"></div>
+                            </td>
+                            <td>
+                              <div id="Fu2"></div>
+                            </td>
+                            <td>
+                              <div id="Sat2"></div>
+                            </td>
+                            <td>
+                              <div id="Sun2"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div id="Mon3"></div>
+                            </td>
+                            <td>
+                              <div id="Tue3"></div>
+                            </td>
+                            <td>
+                              <div id="Wed3"></div>
+                            </td>
+                            <td>
+                              <div id="Thu3"></div>
+                            </td>
+                            <td>
+                              <div id="F3"></div>
+                            </td>
+                            <td>
+                              <div id="Sat3"></div>
+                            </td>
+                            <td>
+                              <div id="Sun3"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div id="Mon4"></div>
+                            </td>
+                            <td>
+                              <div id="Tue4"></div>
+                            </td>
+                            <td>
+                              <div id="Wed4"></div>
+                            </td>
+                            <td>
+                              <div id="Thu4"></div>
+                            </td>
+                            <td>
+                              <div id="F4"></div>
+                            </td>
+                            <td>
+                              <div id="Sat4"></div>
+                            </td>
+                            <td>
+                              <div id="Sun4"></div>
+                            </td>
+                          </tr>
                     </div>
+                    <tr>
+
+                      <td>
+                        <div id="Mon5"></div>
+                      </td>
+                      <td>
+                        <div id="Tue5"></div>
+                      </td>
+                      <td>
+                        <div id="Wed5"></div>
+                      </td>
+                      <td>
+                        <div id="Thu5"></div>
+                      </td>
+                      <td>
+                        <div id="F5"></div>
+                      </td>
+                      <td>
+                        <div id="Sat5"></div>
+                      </td>
+                      <td>
+                        <div id="Sun5"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div id="Mon6"></div>
+                      </td>
+                      <td>
+                        <div id="Tue6"></div>
+                      </td>
+                      <td>
+                        <div id="Wed6"></div>
+                      </td>
+                      <td>
+                        <div id="Thu6"></div>
+                      </td>
+                      <td>
+                        <div id="F6"></div>
+                      </td>
+                      <td>
+                        <div id="Sat6"></div>
+                      </td>
+                      <td>
+                        <div id="Sun6"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        
+        </div>
+
 
       </div>
     </div>
   </div>
+  <div class="d-flex justify-content-center">
   <div id="MatchData"></div>
-</div>
-
-  
-
- 
-
-  
+  </div>
+  </div>
 
 
- 
 
-  
-  
 
-   
-	  <br>
+
+
+
+
+
+
+
+
+
+
   <br>
   <br>
   <br>
@@ -539,8 +575,9 @@ function showSearch(){
   <br>
   <br>
   <br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
 
 
 
