@@ -92,12 +92,12 @@ function appV(userV) {
     var FnameV = s_nameV[0];
     var LnameV = s_nameV[1];
     console.log(name)
-    document.getElementById('hi').innerHTML = name;
+    document.getElementById("Update").style.display = "block";
     document.getElementById('become_mem').style.display = 'none';
     document.getElementById('updateShowB').style.display = 'block';
     document.getElementById('bec_mem').textContent = 'Add data';
     document.getElementById('Welcome_card').textContent = 'Welcome ' + FnameV;
-    document.getElementById('update_data').style.display = 'block';
+    //document.getElementById('update_data').style.display = 'block';
     document.getElementById("Nav_Cal").style.display = "block";
     document.getElementById("PernsonalCal").style.display = "block";
     code_text = '<div class="form-check form-check-inline" > '
@@ -139,12 +139,12 @@ function app(user) {
     var Fname = s_name[0];
     var Lname = s_name[1];
     console.log("app tou owner");
-    document.getElementById('hi').innerHTML = name;
+    document.getElementById("Update").style.display = "block";
     document.getElementById('become_mem').style.display = 'none';
     document.getElementById('updateShowB').style.display = 'block';
     document.getElementById('bec_mem').textContent = 'Add data';
     document.getElementById('Welcome_card').textContent = 'Welcome ' + Fname;
-    document.getElementById('update_data').style.display = 'block';
+    //document.getElementById('update_data').style.display = 'block';
     document.getElementById("Nav_Cal").style.display = "block";
     document.getElementById("PernsonalCal").style.display = "block";
     //id = 'MarEu';    
@@ -323,7 +323,8 @@ window.onload = function () {
 
 
     document.getElementById("percal").addEventListener('click', function (event) {
-        userID = id;   
+        userID = id;        
+        document.getElementById('cal').style.display = 'block';
         fetch('http://localhost:8090/loginCal/' + userID)
             .then(function (response) {
                 a = response.json()
@@ -415,6 +416,10 @@ window.onload = function () {
                             k += 1;
                         }
                         code1 += '</div>';
+                        if (i == length/2 -1 ){
+                            code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
+                            code1 += '</div> </div>'
+                        }
                         code1 += '</div>';
                         code1 += '</div>';
                         code1 += '</div>';
@@ -449,7 +454,7 @@ window.onload = function () {
                             code1 += '</div>';
                             k += 1;
                         }
-                        code1 += '</div>';
+                        code1 += '</div>';                        
                         code1 += '</div>';
                         code1 += '</div>';
                         code1 += '</div>';
@@ -462,7 +467,6 @@ window.onload = function () {
                     code1 += '<div class="card-body text-secondary">';
                     code1 += '  <div class="container">';
                     code1 += ' <div class="row">';
-
                     code1 += '<div class="col">';
                     code1 += '<div class="card" style="width: 18rem;">';
                     code1 += '<div class="card-header">';
@@ -478,7 +482,13 @@ window.onload = function () {
                     code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
                     code1 += '</ul>';
                     code1 += '</div>';
+                    code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
+                    code1 += '</div> </div>'
                     code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+                    code1 += '</div>';
+
                     document.getElementById("moreDogs").innerHTML = code1;
 
 

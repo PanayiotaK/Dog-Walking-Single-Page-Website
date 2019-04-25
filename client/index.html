@@ -96,7 +96,7 @@
         <label for="exampleDropdownFormPassword2">Password</label>
         <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-outline-dark">Sign in</button>
     </form>
   </div>
 
@@ -106,7 +106,7 @@
     <br>
     <br>
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+      <div class="card border-secondary mb-3" style="max-width: 55rem;">
         <div class="card-header">
           <h2 id="Welcome_card">Welcome</h2>
         </div>
@@ -114,10 +114,17 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <p>Welcome welcome welcame welcame welcame welcame welcame welcame welcame welcame welcame</p>
-                <p><b>Welcome</b> sjjs</p>
-                <div id='hi'></div>
-
+                <p>Welcome to<b> Dog Walking Durham!</b> The best way for people with a dog obsesion to enjoy some
+                  valuable time with
+                  a cute furry animal and the most friendly and loving way for busy dog owners to walk their dogs.<br>
+                  <br> Our company
+                  will macth your dog with a lovely person, with a small dog addiction, so your dog will not only get
+                  their regular
+                  exercise but lots of love and cuddles, as your pet deserves. <br><br>
+                  If you are interested as a volunteer you will have the ability to take animals for walks whenever you
+                  are availbale, without
+                  that affecting your plans. Simply login in and complete a form that under 1min.
+                </p>
               </div>
             </div>
           </div>
@@ -125,236 +132,273 @@
       </div>
     </div>
   </div>
+  <div id="buttons">
+    <br>
+    <div id="Update">
+      <br>
+      <br>
+      <div class="d-flex justify-content-center">
+        <div class="card border-secondary mb-3" style="max-width: 55rem;">
+          <div class="card-header">
+            <h2 id="Welcome_card">Update your Data</h2>
+          </div>
+          <div class="card-body text-secondary">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-10 mb-3">
+                  <p>Update your data or if is your first time loging in add your data.
+                    All you have to do is complete a simple form.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div id="update_data">
+                  <div id="updateShowB">
+                    <button id='updateB' type="button" class="btn btn-outline-dark">Update Data</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('load', function () {
+        document.getElementById("Update").style.display = "none";
+
+      })
+    </script>
 
 
+
+
+
+  </div>
   <div id="buttons">
     <br>
     <br>
     <br>
-    <div id="update_data">
-      <div id="updateShowB">
-        <button id='updateB' type="button">Update Data</button>
-      </div>
-      <div id='form1'>
-        <div class="d-flex justify-content-center">
-          <div class="card border-secondary mb-3" style="max-width: 60rem;">
-            <div class="card-header">
-              <h3 id="title">Update Info</h3>
-            </div>
-            <div class="card-body text-secondary">
-              <iframe name="fromSending" hidden></iframe>
-              <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1" class="needs-validation"
-                novalidate target="fromSending">
+    <div id='form1'>
+      <div class="d-flex justify-content-center">
+        <div class="card border-secondary mb-3" style="max-width: 60rem;">
 
-                <br>
-                <h3 id="title">Dog Info</h3>
-                <div class="form-row">
-
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom01_">Name</label>
-                    <input type="text" name="Dogs_Name" class="form-control" id="validationCustom01_"
-                      placeholder="Dog's name" required>
-                    <div class="valid-feedback">
-                      Valid Input!
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom02D">Breed</label>
-                    <input type="text" name="breed" class="form-control" id="validationCustom02D" placeholder="Breed"
-                      required>
-                    <div class="valid-feedback">
-                      Valid Input!
-                    </div>
-                  </div>
-
-                  <div class="col-md-4 mb-3">
-                    <label for="exampleFormControlSelect1">Age</label>
-                    <select class="form-control" name="age" data-dropup-auto="false" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                      <option>13</option>
-                      <option>14</option>
-                      <option>15</option>
-                      <option>16</option>
-                    </select>
-                  </div>
-                </div>
-                <br>
-                <div class="form-row">
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value='Male'
-                      required>
-                    <label class="custom-control-label" for="customRadioInline1">Male</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input"
-                      value='Female' required>
-                    <label class="custom-control-label" for="customRadioInline2">Female</label>
-                  </div>
-                </div>
-                <br>
-                <script>
-
-
-                </script>
-                <script type="text/javascript">
-                  $(document).ready(function () {
-                    $('#pr').click(function () {
-                      checked = $("input[type=checkbox]:checked").length;
-
-                      if (!checked) {
-                        alert("You must check at least one checkbox.");
-                        return false;
-                      }
-
-                    });
-                  });
-                </script>
-
-
-                <h6 id="DogDays">Days that the Dog is availble</h6>
-                <br>
-                <br>
-                <div class="col-md 10">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="M" name="days" value="Monday">
-                    <label class="form-check-label" for="M">Monday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="days" id="Tu" value="Tuesday">
-                    <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="W" name="days" value="Wednesday">
-                    <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="days" id="Th" value="Thursday">
-                    <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="F" name="days" value="Friday">
-                    <label class="form-check-label" for="inlineCheckbox2">Friday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Sa" name="days" value="Saturday">
-                    <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Su" name="days" value="Sunday">
-                    <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
-                  </div>
-
-                </div>
-                <br>
-                <div class="input-group">
-                  <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
-                    placeholder="Briefly describe your dog (not nessesary)"></textarea>
-                </div>
-                <br>
-
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Plz submit image</label>
-                  <input type="file" class="form-control-file" id="dogImage" name="dogImage" required>
-                  <small id="passwordHelpInline" class="text-muted">
-                    Must be jpeg or png.
-                  </small>
-                  <div class="invalid-feedback"> Plz submit an appropriate photo </div>
-                </div>
-                <br>
-                <button id="pr" class="btn btn-primary" type="submit">Submit form</button>
-                <br>
-                <br>
-                <div id="message"></div>
-              </form>
-            </div>
+          <div class="card-header">
+            <h3 id="title">Update Info</h3>
           </div>
-        </div>
-      </div>
-      <div id='form2'>
-        <div class="d-flex justify-content-center">
-          <div class="card border-secondary mb-3" style="max-width: 60rem;">
-            <div class="card-header">
-              <h3 id="title">Volunteer Info</h3>
-            </div>
-            <div class="card-body text-secondary">
-              <form id="f2" class="needs-validation" novalidate>
-                <h6 id="DogDaysV">Days that you want to volunteer</h6>
-                <br>
-                <div class="col-md 8">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="M2" value="Monday">
-                    <label class="form-check-label" for="M">Monday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Tu2" value="Tuesday">
-                    <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="W2" value="Wednesday">
-                    <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Th2" value="Thursday">
-                    <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="F2" value="Friday">
-                    <label class="form-check-label" for="inlineCheckbox2">Friday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Sa2" value="Saturday">
-                    <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Su2" value="Sunday">
-                    <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+          <div class="card-body text-secondary">
+            <iframe name="fromSending" hidden></iframe>
+            <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1" class="needs-validation"
+              novalidate target="fromSending">
+
+              <h3 id="title">Dog Info</h3>
+              <div class="form-row">
+
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01_">Name</label>
+                  <input type="text" name="Dogs_Name" class="form-control" id="validationCustom01_"
+                    placeholder="Dog's name" required>
+                  <div class="valid-feedback">
+                    Valid Input!
                   </div>
                 </div>
-                <br>
-                <button id="SubmitVol" class="btn btn-primary" type="submit">Submit
-                  form</button>
-              </form>
-            </div>
-          </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02D">Breed</label>
+                  <input type="text" name="breed" class="form-control" id="validationCustom02D" placeholder="Breed"
+                    required>
+                  <div class="valid-feedback">
+                    Valid Input!
+                  </div>
+                </div>
 
-          <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function () {
-              'use strict';
-              window.addEventListener('load', function () {
-                document.getElementById('form2').style.display = 'none';
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                  form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                      event.preventDefault();
-                      event.stopPropagation();
+                <div class="col-md-4 mb-3">
+                  <label for="exampleFormControlSelect1">Age</label>
+                  <select class="form-control" name="age" data-dropup-auto="false" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value='Male'
+                    required>
+                  <label class="custom-control-label" for="customRadioInline1">Male</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input" value='Female'
+                    required>
+                  <label class="custom-control-label" for="customRadioInline2">Female</label>
+                </div>
+              </div>
+              <br>
+              <script>
+
+
+              </script>
+              <script type="text/javascript">
+                $(document).ready(function () {
+                  $('#pr').click(function () {
+                    checked = $("input[type=checkbox]:checked").length;
+
+                    if (!checked) {
+                      alert("You must check at least one checkbox.");
+                      return false;
                     }
-                    form.classList.add('was-validated');
-                  }, false);
-                });
-              }, false);
-            })();
-          </script>
 
+                  });
+                });
+              </script>
+
+              <h5 id="DogDays">Days that the Dog is availble</h5>
+              <br>
+              <br>
+              <div class="col-md 10">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="M" name="days" value="Monday">
+                  <label class="form-check-label" for="M">Monday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="days" id="Tu" value="Tuesday">
+                  <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="W" name="days" value="Wednesday">
+                  <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="days" id="Th" value="Thursday">
+                  <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="F" name="days" value="Friday">
+                  <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Sa" name="days" value="Saturday">
+                  <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Su" name="days" value="Sunday">
+                  <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                </div>
+
+              </div>
+              <br>
+              <div class="input-group">
+                <textarea class="form-control" aria-label="With textarea" name="descr" id="des"
+                  placeholder="Briefly describe your dog (not nessesary)"></textarea>
+              </div>
+              <br>
+
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Plz submit image</label>
+                <input type="file" class="form-control-file" id="dogImage" name="dogImage" required>
+                <small id="passwordHelpInline" class="text-muted">
+                  Must be jpeg or png.
+                </small>
+                <div class="invalid-feedback"> Plz submit an appropriate photo </div>
+              </div>
+              <br>
+              <button id="pr" class="btn btn-outline-dark" type="submit">Submit form</button>
+              <br>
+              <br>
+              <div id="message"></div>
+            </form>
+          </div>
         </div>
       </div>
-
-
     </div>
+
+    <div id='form2'>
+      <div class="d-flex justify-content-center">
+        <div class="card border-secondary mb-3" style="max-width: 60rem;">
+          <div class="card-header">
+            <h3 id="title">Volunteer Info</h3>
+          </div>
+          <div class="card-body text-secondary">
+            <form id="f2" class="needs-validation" novalidate>
+              <h6 id="DogDaysV">Days that you want to volunteer</h6>
+              <br>
+              <div class="col-md 8">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="M2" value="Monday">
+                  <label class="form-check-label" for="M">Monday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Tu2" value="Tuesday">
+                  <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="W2" value="Wednesday">
+                  <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Th2" value="Thursday">
+                  <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="F2" value="Friday">
+                  <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Sa2" value="Saturday">
+                  <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Su2" value="Sunday">
+                  <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                </div>
+              </div>
+              <br>
+              <button id="SubmitVol" class="btn btn-outline-dark" type="submit">Submit
+                form</button>
+            </form>
+          </div>
+        </div>
+
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+              document.getElementById('form2').style.display = 'none';
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+        </script>
+
+      </div>
+    </div>
+
+
+  </div>
   </div>
 
 
@@ -421,9 +465,14 @@
                               <div class="d-flex justify-content-center">
                                 <div class="card border-secondary mb-3" style="max-width: 60rem;">
                                   <div class="card-header">
-                                    <h3 id="title">Login as Owner</h3>
+                                    <h3 id="title">Login </h3>
                                   </div>
-                                  <div id='firebaseui-auth-container1'></div>
+                                  <div class="modal-body">
+                                    <p>Our website is using google to help you login. All you have to do is enter your
+                                      gmail and you are <br>
+                                      ready to go. <br> No need to remember <b>any</b> passwords or usernames!</p>
+                                    <div id='firebaseui-auth-container1'></div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -469,7 +518,7 @@
     <br>
     <br>
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+      <div class="card border-secondary mb-3" style="max-width: 50rem;">
         <div class="card-header">
           <h3>Available Dogs</h3>
         </div>
@@ -515,7 +564,7 @@
             <div class="row">
               <div class="col">
                 <br>
-                <button id="showMore" onclick="F();">Show More Cute DOGGSS! </button>
+                <button id="showMore" class="btn btn-outline-dark" onclick="F();">Show More Dogs! </button>
               </div>
             </div>
           </div>
@@ -533,7 +582,6 @@
       } else {
         x.style.display = "none";
 
-
       }
 
     }
@@ -542,7 +590,7 @@
 
   <div id="DogsAv2">
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary mb-3" style="max-width: 45rem;">
+      <div class="card border-secondary mb-3" style="max-width: 50rem;">
         <div class="card-body text-secondary">
           <div class="container">
             <div class="row">
@@ -586,10 +634,21 @@
     </div>
 
     <br>
-    <div id="moreDogs">
-    </div>
+    <div id="moreDogs"></div>
+
   </div>
   <script>
+    function hide() {
+      var x = document.getElementById('DogsAv2');
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      }
+
+    }
+
+
+
+
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
       'use strict';
@@ -611,9 +670,7 @@
     })();
   </script>
   <br>
-  <br>
-  <br>
-  <br>
+
   <div id="Gallery">
     <br>
     <br>
@@ -626,17 +683,29 @@
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+
             </ol>
             <div class="carousel-inner">
+
+              <div class="carousel-item ">
+                <img src="adorable-animal.jpg" class="d-block w-100" alt="...">
+              </div>
               <div class="carousel-item active">
+                <img src="smilingdogwalker.jpg" class="d-block w-100" alt="...">
+              </div>
+
+              <div class="carousel-item">
+                <img src="blurred-dog.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="adorable-animal-animal-photography.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item ">
                 <img src="6.jpg" class="d-block w-100" alt="...">
               </div>
-              <div class="carousel-item">
-                <img src="2.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="1.jpg" class="d-block w-100" alt="...">
-              </div>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -646,6 +715,7 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
+
           </div>
         </div>
       </div>
@@ -653,6 +723,7 @@
   </div>
 
   <div id="ContactUs">
+    <br>
     <br>
     <br>
     <br>
@@ -665,9 +736,12 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <p>Contact us jbjbbjsbfkjssjkfjbsgjksbjkfdgbskbfgskhdbfkjsbfjkbsdjkgfbjksdjksfdbjkgbfjkdsb</p>
-                <p>sdfhhsibuifdsbfsj</p>
-                <p>abhbdabdisbjkbsajbjskbfgkjsjkfbsjasf bsdnkbvkjsdbjkfb</p>
+                <p>For more information or if you experience any problems with your account do not hesitate to Contact
+                  Us</p>
+                <p>
+                  <h5>Email: dogwalkingpage123@gmail.com</h5>
+                </p>
+                <p></p>
               </div>
             </div>
           </div>
@@ -678,28 +752,26 @@
   <br>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-  
-  
+  <br>  
   <br>
   <div id="PernsonalCal">
-    <button id="percal" type="button">Show personalised calendar</button>
-    <br>
-    <div id="cal">
-      <div class="d-flex justify-content-center">
-        <div class="card border-secondary ml-3" style="max-width: 85rem;">
-          <div class="card-body text-secondary">
+    <div class="d-flex justify-content-center">
+      <div class="card border-secondary ml-3" style="max-width: 85rem;">
+        <div class="card-header">
+          <h2>Pesonal Calendar</h2>
+        </div>
+        <div class="card-body text-secondary">
+          <button id="percal" type="button" class="btn btn-outline-dark">Show personalised calendar</button>
+          <br>
+          <br>
+          <div id="cal">
             <div class="container">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <div class="table-responsive">
                 <table id="Calendar">
                   <thead id="CalendarHead">
                     <tr>
-
                       <th>
-
                         <span class="long">Monday</span>
                         <span class="short">Mon</span>
                       </th>
@@ -709,7 +781,6 @@
                         <span class="short">Tue</span>
                       </th>
                       <th>
-
                         <span class="long">Wendsday</span>
                         <span class="short">We</span>
                       </th>
@@ -944,12 +1015,14 @@
   <script>
     window.addEventListener('load', function () {
       document.getElementById("PernsonalCal").style.display = "none";
+      document.getElementById("cal").style.display = "none";
+
     })
   </script>
   </div>
   <br>
   <br>
-  <br>  
+  <br>
   <script src="index.js"></script>
 </body>
 
