@@ -264,7 +264,7 @@ window.onload = function () {
             })
                 .then(function (body) {
                     search_table = '<div class="d-flex justify-content-center">';
-                    search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
+                   //search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
                     search_table += '  <div class="card-body text-secondary">';
                     search_table += '    <div class="container">';
                     search_table += '      <div class="table-responsive-md">';
