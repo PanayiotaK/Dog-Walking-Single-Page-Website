@@ -68,34 +68,13 @@ app.get('/volunteers', function (req, resp) {
 
 });
 
-/*
-app.post('/tokensignin',function(req,resp){
-       
-const {OAuth2Client} = require('google-auth-library');
-CLIENT_ID = '225178546763-fq8geik8abqbld27ss38qk7unte878oe.apps.googleusercontent.com';
-const client = new OAuth2Client(CLIENT_ID);
-async function verify() {
-    token = req.body
-  const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
-      // Or, if multiple clients access the backend:
-      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-  });
-  console.log(idToken)
-  const payload = ticket.getPayload();
-  const userid = payload['sub'];
-  // If request specified a G Suite domain:
-  //const domain = payload['hd'];
-}
-verify().catch(console.error);
-//console.log(req.body);
-})*/
 
 
-app.get('/owners', function (req, resp) {
+
+/*app.get('/owners', function (req, resp) {
     resp.send(obj1);
-});
+});*/
+
 var obj3
 app.get('/matchDogs', function (req, resp) {
 
@@ -160,7 +139,7 @@ app.get('/search/:username', function (req, resp) {
 
     for (var i = 0; i < obj1.length; i++) {
         if (search_item == obj1[i].name) {
-            foundO == true;
+            foundO = true;
             data12.push({
                 name: obj1[i].name,                
                 email: obj1[i].email,
@@ -189,14 +168,16 @@ app.get('/search/:username', function (req, resp) {
         }
     }
 
-    resp.send(data12);
-
+    
     if (foundO === false && foundV === false) {
         resp.send(404);
+    }else{
+        resp.send(data12);
+
     }
 });
 
-app.get('/login/:userID', function (req, resp) {
+/*app.get('/login/:userID', function (req, resp) {
     var search_item = req.params.userID;
     var foundO = false;
     var foundV = false;
@@ -228,7 +209,7 @@ app.get('/login/:userID', function (req, resp) {
     }
 
 
-});
+});*/
 
 var dataOwners;
 app.post('/addOwners1', function (req, resp) {  
@@ -289,6 +270,7 @@ app.post('/addOwners', upload.single('dogImage'), function (req, resp) {
     const days = p.days;
     const desc = p.descr;
     const image_path = "uploads/" + iName
+
     //console.log(ownerD)
     var found = false;
     var position ;
@@ -347,6 +329,9 @@ app.get('/loginCal/:userID', function (req, resp) {
     userid = req.params.userID;
     console.log("o user einai : ", userid)
     var walk_days = []
+    if(obj3 == []){
+        resp.send(404);
+    }
     for (var i = 0; i < obj3.length; i++) {
         if (userid == obj3[i].vol.username || userid == obj3[i].dog.username) {
             Fname = obj3[i].vol.name.split(" ");

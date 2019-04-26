@@ -371,6 +371,10 @@ window.onload = function () {
             })
 
 
+            if (!response.ok) {
+                alert('The admin havent created the weekly timetable yet')
+                throw new Error("problem adding data" + response.code);
+            }
 
 
     });

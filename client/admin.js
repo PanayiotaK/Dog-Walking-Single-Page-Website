@@ -91,7 +91,7 @@ window.onload = function () {
 
 
     document.getElementById("Data_owners").addEventListener("click", function (event3) {
-        fetch("http://localhost:8090/owners")
+        fetch("http://localhost:8090/showDogs")
             .then(response => response.json())
             .then(function (body) {
                 Owners_table = '<div class="d-flex justify-content-center"> <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> ';
