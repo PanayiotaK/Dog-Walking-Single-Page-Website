@@ -43,10 +43,10 @@
 
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="4">
 
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(133, 77, 37);">
-    <a class="navbar-brand" href="#">DogWalking</a>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(202, 128, 74);">
+    <a  class="navbar-brand" href="#">DogWalking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,17 +57,17 @@
           <a id="bec_mem" class="nav-link" href="#buttons">Become a member <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#DogsAv">Dogs</a>
+          <a  class="nav-link" href="#DogsAv">Dogs</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#Gallery">Gallery</a>
+          <a  class="nav-link" href="#Gallery">Gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#ContactUs">Contact us</a>
+          <a  class="nav-link" href="#ContactUs">Contact us</a>
         </li>
         <div id="Nav_Cal">
           <li class="nav-item">
-            <a class="nav-link" href="#PernsonalCal">Calendar</a>
+            <a  class="nav-link" href="#PernsonalCal">Calendar</a>
           </li>
         </div>
       </ul>
@@ -423,11 +423,19 @@
             } else {
               form.classList.add('was-validated');
               document.getElementById("message").innerHTML = "Success!";
+              setTimeout(hide_form, 2000);
+
             }
           }, false);
         });
       }, false);
     })();
+
+function hide_form(){
+  document.getElementById('form1').style.display = 'none';
+}
+
+
   </script>
 
 
@@ -752,7 +760,7 @@
   <br>
   <br>
   <br>
-  <br>  
+  <br>
   <br>
   <div id="PernsonalCal">
     <div class="d-flex justify-content-center">
@@ -761,8 +769,11 @@
           <h2>Pesonal Calendar</h2>
         </div>
         <div class="card-body text-secondary">
+          <h6>If it is your first time logging in please make sure that you updated all your data</h6>
+          <p>This section allows you to see your personalised timetable if you have updated all your data in the section above.<br>
+          If you still don't see any data to the timetable that means that the admin haven't matched you yet with a volunteer/dog.</p>
           <button id="percal" type="button" class="btn btn-outline-dark">Show personalised calendar</button>
-          <br>
+          <br>         
           <br>
           <div id="cal">
             <div class="container">

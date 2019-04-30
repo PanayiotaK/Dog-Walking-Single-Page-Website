@@ -69,8 +69,6 @@ app.get('/volunteers', function (req, resp) {
 });
 
 
-
-
 /*app.get('/owners', function (req, resp) {
     resp.send(obj1);
 });*/
@@ -327,13 +325,21 @@ fs.writeFile("dogs.json", JSON.stringify(obj1), function (err, result) {
 
 app.get('/loginCal/:userID', function (req, resp) {
     userid = req.params.userID;
+    var found = false;
+    for (var i = 0 ; i<obj1.length ; i++){
+        if(userid == obj1[i].username){
+            found = true;
+        }
+    }  
     console.log("o user einai : ", userid)
     var walk_days = []
-    if(obj3 == []){
+    var found2 = false;
+    if(obj3 == [] || found === false){
         resp.send(404);
     }
     for (var i = 0; i < obj3.length; i++) {
         if (userid == obj3[i].vol.username || userid == obj3[i].dog.username) {
+            found2 = true
             Fname = obj3[i].vol.name.split(" ");
             walk_days.push({
                 day: obj3[i].day,
@@ -345,10 +351,16 @@ app.get('/loginCal/:userID', function (req, resp) {
         }
 
     }
+    if(found2 === false){
+        resp.send(404);
+    }
     console.log("USER: ", userid)
     console.log(walk_days)
+    if(found === false){
+        resp.send(found)
+    }else{
     resp.send(walk_days)
-
+    }
 
 
 });

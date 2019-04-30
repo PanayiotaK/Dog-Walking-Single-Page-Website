@@ -327,14 +327,19 @@ window.onload = function () {
         document.getElementById('cal').style.display = 'block';
         fetch('http://localhost:8090/loginCal/' + userID)
             .then(function (response) {
-                a = response.json()
-                console.log(a);
-                return a;
-
+                console.log(response)                 
+                if (response.ok) {
+                    a = response.json()
+                    console.log(a);
+                    return a;                    
+                }
+                else{
+                    //alert("The admin haven't match you with a dog/volunteer yet")
+                    throw new Error("The admin haven't match you with a dog/volunteer yet");               
+                }
             })
 
             .then(function (body) {
-
                 for (var i = 0; i < body.length; i++) {
                     let a = body[i].dog + ' - ' + body[i].vol;
                     if (body[i].day == 'Monday') {
@@ -369,12 +374,10 @@ window.onload = function () {
                     }
                 }
             })
+            .catch(error => alert(error))
 
 
-            if (!response.ok) {
-                alert('The admin havent created the weekly timetable yet')
-                throw new Error("problem adding data" + response.code);
-            }
+          
 
 
     });

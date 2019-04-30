@@ -45,7 +45,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(133, 77, 37);">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(202, 128, 74);">
     <a class="navbar-brand" href="#">DogWalking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,7 +126,7 @@
             <button class="dropdown-item" onclick="showDogs()">Get Dogs</button>
             <button class="dropdown-item" onclick="showVols()">Get Volunteers</button>
             <button class="dropdown-item" onclick="showOwners()">Get Owners</button>
-            <button class="dropdown-item" onclick="showCal()">Weekly Timetable</button>
+            <button class="dropdown-item" onclick="showCal()">Match Dogs/Volunteers</button>
             <button class="dropdown-item" onclick="showSearch()">Search User</button>
           </div>
         </div>
@@ -289,8 +289,10 @@
         <h2>Get Timetable</h2>
       </div>
       <div class="card-body">
-        <p class="card-text">Click for Timetable</p>
-        <button id="MatchDogsVol" class="btn btn-outline-dark"> Get the weekly timetable</button>
+        <p class="card-text">By clicking the button you match the dogs with the volunteers.<br>
+           Each volunteer can take for a wal one dog per day. The days the volunteer is available are 
+           always the same as the dogs </p>
+        <button id="MatchDogsVol" class="btn btn-outline-dark"> Match dogs/volunteers</button>
         <br>
         <div id="PernsonalCal">
           <div id="cal">
