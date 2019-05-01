@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+ <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -46,7 +47,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="4">
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(202, 128, 74);">
-    <a  class="navbar-brand" href="#">DogWalking</a>
+    <a class="navbar-brand" href="#">DogWalking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,19 +58,17 @@
           <a id="bec_mem" class="nav-link" href="#buttons">Become a member <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link" href="#DogsAv">Dogs</a>
+          <a class="nav-link" href="#DogsAv">Dogs</a>
         </li>
         <li class="nav-item ">
-          <a  class="nav-link" href="#Gallery">Gallery</a>
+          <a class="nav-link" href="#Gallery">Gallery</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link" href="#ContactUs">Contact us</a>
+          <a class="nav-link" href="#ContactUs">Contact us</a>
         </li>
-        <div id="Nav_Cal">
-          <li class="nav-item">
-            <a  class="nav-link" href="#PernsonalCal">Calendar</a>
-          </li>
-        </div>
+        <li id="Nav_Cal">
+          <a class="nav-link" href="#PernsonalCal">Calendar</a>
+        </li>
       </ul>
 
       <script>
@@ -132,7 +131,7 @@
       </div>
     </div>
   </div>
-  <div id="buttons">
+  <div id="buttons_1">
     <br>
     <div id="Update">
       <br>
@@ -140,7 +139,7 @@
       <div class="d-flex justify-content-center">
         <div class="card border-secondary mb-3" style="max-width: 55rem;">
           <div class="card-header">
-            <h2 id="Welcome_card">Update your Data</h2>
+            <h2 id="Update_card">Update your Data</h2>
           </div>
           <div class="card-body text-secondary">
             <div class="container">
@@ -183,14 +182,14 @@
         <div class="card border-secondary mb-3" style="max-width: 60rem;">
 
           <div class="card-header">
-            <h3 id="title">Update Info</h3>
+            <h3 id="update_info_title">Update Info</h3>
           </div>
           <div class="card-body text-secondary">
             <iframe name="fromSending" hidden></iframe>
             <form action='./addOwners' enctype="multipart/form-data" method='post' id="f1" class="needs-validation"
               novalidate target="fromSending">
 
-              <h3 id="title">Dog Info</h3>
+              <h3 id="dog_title">Dog Info</h3>
               <div class="form-row">
 
                 <div class="col-md-4 mb-3">
@@ -251,7 +250,7 @@
 
 
               </script>
-              <script type="text/javascript">
+              <script>
                 $(document).ready(function () {
                   $('#pr').click(function () {
                     checked = $("input[type=checkbox]:checked").length;
@@ -275,27 +274,27 @@
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" name="days" id="Tu" value="Tuesday">
-                  <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                  <label class="form-check-label" for="Tu">Tuesday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="W" name="days" value="Wednesday">
-                  <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                  <label class="form-check-label" for="W">Wednesday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" name="days" id="Th" value="Thursday">
-                  <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                  <label class="form-check-label" for="Th">Thursday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="F" name="days" value="Friday">
-                  <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                  <label class="form-check-label" for="F">Friday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Sa" name="days" value="Saturday">
-                  <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                  <label class="form-check-label" for="Sa">Saturday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Su" name="days" value="Sunday">
-                  <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                  <label class="form-check-label" for="Su">Sunday</label>
                 </div>
 
               </div>
@@ -307,7 +306,7 @@
               <br>
 
               <div class="form-group">
-                <label for="exampleFormControlFile1">Plz submit image</label>
+                <label for="dogImage">Plz submit image</label>
                 <input type="file" class="form-control-file" id="dogImage" name="dogImage" accept=".jpg,.png" required>
                 <small id="passwordHelpInline" class="text-muted">
                   Must be jpeg or png.
@@ -329,7 +328,7 @@
       <div class="d-flex justify-content-center">
         <div class="card border-secondary mb-3" style="max-width: 60rem;">
           <div class="card-header">
-            <h3 id="title">Volunteer Info</h3>
+            <h3 id="vol_title">Volunteer Info</h3>
           </div>
           <div class="card-body text-secondary">
             <form id="f2" class="needs-validation" novalidate>
@@ -338,31 +337,31 @@
               <div class="col-md 8">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="M2" value="Monday">
-                  <label class="form-check-label" for="M">Monday</label>
+                  <label class="form-check-label" for="M2">Monday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Tu2" value="Tuesday">
-                  <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                  <label class="form-check-label" for="Tu2">Tuesday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="W2" value="Wednesday">
-                  <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+                  <label class="form-check-label" for="W2">Wednesday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Th2" value="Thursday">
-                  <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+                  <label class="form-check-label" for="Th2">Thursday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="F2" value="Friday">
-                  <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+                  <label class="form-check-label" for="F2">Friday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Sa2" value="Saturday">
-                  <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+                  <label class="form-check-label" for="Sa2">Saturday</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="Su2" value="Sunday">
-                  <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+                  <label class="form-check-label" for="Su2">Sunday</label>
                 </div>
               </div>
               <br>
@@ -399,7 +398,6 @@
 
 
   </div>
-  </div>
 
 
   <script>
@@ -431,11 +429,9 @@
       }, false);
     })();
 
-function hide_form(){
-  document.getElementById('form1').style.display = 'none';
-}
-
-
+    function hide_form() {
+      document.getElementById('form1').style.display = 'none';
+    }
   </script>
 
 
@@ -463,7 +459,7 @@ function hide_form(){
                       <button id="ownerB" type="button" class="btn btn-secondary" data-dismiss="modal"
                         data-toggle="modal" data-target="#myModal">Start as Owner</button>
                       <!-- Modal -->
-                      <div class="modal fade" id="myModal" ole="dialog">
+                      <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -473,7 +469,7 @@ function hide_form(){
                               <div class="d-flex justify-content-center">
                                 <div class="card border-secondary mb-3" style="max-width: 60rem;">
                                   <div class="card-header">
-                                    <h3 id="title">Login </h3>
+                                    <h3 id="login_title">Login </h3>
                                   </div>
                                   <div class="modal-body">
                                     <p>Our website is using google to help you login. All you have to do is enter your
@@ -582,7 +578,7 @@ function hide_form(){
     <br>
   </div>
 
-  <script type="text/javascript">
+  <script>
     function F() {
       var x = document.getElementById('DogsAv2');
       if (x.style.display === "none") {
@@ -746,10 +742,7 @@ function hide_form(){
               <div class="col-sm-10 mb-3">
                 <p>For more information or if you experience any problems with your account do not hesitate to Contact
                   Us</p>
-                <p>
-                  <h5>Email: dogwalkingpage123@gmail.com</h5>
-                </p>
-                <p></p>
+                 <h5>Email: dogwalkingpage123@gmail.com</h5>
               </div>
             </div>
           </div>
@@ -770,14 +763,16 @@ function hide_form(){
         </div>
         <div class="card-body text-secondary">
           <h6>If it is your first time logging in please make sure that you updated all your data</h6>
-          <p>This section allows you to see your personalised timetable if you have updated all your data in the section above.<br>
-          If you still don't see any data to the timetable that means that the admin haven't matched you yet with a volunteer/dog.</p>
+          <p>This section allows you to see your personalised timetable,the day(s) of the week that a dog walking session is planned based <br>on the days 
+            you were available. <br>Both the name of the volunteer and the dog's should appear on the timetable.<br>
+            If you still don't see <b>any</b> data to the timetable that means that the admin hasn't matched you yet with a
+            volunteer/dog.</p>
           <button id="percal" type="button" class="btn btn-outline-dark">Show personalised calendar</button>
-          <br>         
+          <br>
           <br>
           <div id="cal">
             <div class="container">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
               <div class="table-responsive">
                 <table id="Calendar">
                   <thead id="CalendarHead">
@@ -910,7 +905,6 @@ function hide_form(){
                         <div id="Sun4"></div>
                       </td>
                     </tr>
-              </div>
               <tr>
 
                 <td>

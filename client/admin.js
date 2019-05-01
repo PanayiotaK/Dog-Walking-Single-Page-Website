@@ -1,7 +1,3 @@
-
-
-
-
 window.onload = function () {
     document.getElementById('GetDogs').style.display = "none";
     document.getElementById('GetVols').style.display = "none";
@@ -12,7 +8,7 @@ window.onload = function () {
 
 
 
-  
+
 
 
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
@@ -26,8 +22,8 @@ window.onload = function () {
                 table_code += ' <th style="width: 5%">Age</th>'
                 table_code += ' <th style="width: 5%">Gender</th>'
                 table_code += ' <th style="width: 15%">Breed</th>'
-                table_code += ' <th style="width: 40%"> Full Name</th>'                
-                table_code += ' <th style="width: 25%">email</th>'                
+                table_code += ' <th style="width: 40%"> Full Name</th>'
+                table_code += ' <th style="width: 25%">email</th>'
                 table_code += '</tr>  </thead> <tbody>'
 
                 for (var i = 0; i < body.length; i++) {
@@ -36,8 +32,8 @@ window.onload = function () {
                     table_code += ' <td>' + body[i].Dage + '</td>';
                     table_code += '<td>' + body[i].Dgen + '</td>';
                     table_code += '<td>' + body[i].breed + '</td>';
-                    table_code += '<td>' + body[i].Oname + '</td>';                   
-                    table_code += '<td>' + body[i].email + '</td>';                    
+                    table_code += '<td>' + body[i].Oname + '</td>';
+                    table_code += '<td>' + body[i].email + '</td>';
                     table_code += '</tr>'
                 }
 
@@ -62,9 +58,9 @@ window.onload = function () {
                 for (var i = 0; i < body.length; i++) {
                     days = "";
                     Vol_table += '<tr>'
-                    Vol_table += '<td>' + body[i].name + '</td>';                   
+                    Vol_table += '<td>' + body[i].name + '</td>';
                     Vol_table += '<td>' + body[i].email + '</td>';
-                   
+
                     if (body[i].days.length > 1) {
                         for (var j = 0; j < body[i].days.length - 1; j++) {
                             days += body[i].days[j] + " , ";
@@ -100,16 +96,16 @@ window.onload = function () {
                 Owners_table += '    <table class="table table-hover">';
                 Owners_table += '      <thead>';
                 Owners_table += '        <tr>';
-                Owners_table += '          <th style="width: 50%">Full Name</th>';               
-                Owners_table += '          <th style="width: 30%">email</th>';              
+                Owners_table += '          <th style="width: 50%">Full Name</th>';
+                Owners_table += '          <th style="width: 30%">email</th>';
                 Owners_table += '          <th style="width: 20%"> Dog</th>';
                 Owners_table += '        </tr>';
                 Owners_table += '      </thead>';
                 Owners_table += '      <tbody>';
                 for (var i = 0; i < body.length; i++) {
                     Owners_table += '<tr>';
-                    Owners_table += '<td>' + body[i].name + '</td>';                   
-                    Owners_table += '<td>' + body[i].email + '</td>';                   
+                    Owners_table += '<td>' + body[i].name + '</td>';
+                    Owners_table += '<td>' + body[i].email + '</td>';
                     Owners_table += '<td>' + body[i].Dogs_Name + '</td>';
                     Owners_table += '</tr>';
 
@@ -151,7 +147,7 @@ window.onload = function () {
                 let foundF = false;
                 let foundSat = false;
                 let foundSun = false;
-                let user_name ;
+                let user_name;
                 let count = 0;
                 for (var i = 0; i < body.length; i++) {
                     foundM = false;
@@ -255,16 +251,16 @@ window.onload = function () {
     document.getElementById("search").addEventListener("keyup", function (event4) {
         if (event.keyCode === 13) {
             var usename = document.getElementById('search').value;
-			console.log("USername: ", usename);
+            console.log("USername: ", usename);
             fetch('http://localhost:8090/search/' + usename)
-					
-               .then(function (response) {
-                return response.json()
 
-            })
+                .then(function (response) {
+                    return response.json()
+
+                })
                 .then(function (body) {
                     search_table = '<div class="d-flex justify-content-center">';
-                   //search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
+                    //search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
                     search_table += '  <div class="card-body text-secondary">';
                     search_table += '    <div class="container">';
                     search_table += '      <div class="table-responsive-md">';
@@ -274,7 +270,7 @@ window.onload = function () {
 
 
                     if (typeof (body[0].Dname) != "undefined") {
-                        search_table += '  <th style="width: 40%"> First Name</th>';                        
+                        search_table += '  <th style="width: 40%"> First Name</th>';
                         search_table += '  <th style="width: 15%">email</th>';
                         search_table += '  <th style="width: 10%">Dog</th>';
                         search_table += '  <th style="width: 5%">Gender</th>';
@@ -284,7 +280,7 @@ window.onload = function () {
                         search_table += '  </thead>';
                         search_table += '  <tbody>';
                         search_table += '<tr>';
-                        search_table += '<td>' + body[0].name + '</td>';                        
+                        search_table += '<td>' + body[0].name + '</td>';
                         search_table += '<td>' + body[0].email + '</td>';
                         search_table += '<td>' + body[0].Dname + '</td>';
                         search_table += '<td>' + body[0].Gender + '</td>';
@@ -294,14 +290,14 @@ window.onload = function () {
 
 
                     } else {
-                        search_table += '<th style="width: 50%"> Name</th>';                       
+                        search_table += '<th style="width: 50%"> Name</th>';
                         search_table += '<th style="width: 25%">email</th>';
                         search_table += '<th style="width: 25%">Days Available</th>';
                         search_table += '    </tr>';
                         search_table += '  </thead>';
                         search_table += '  <tbody>';
                         search_table += ' <tr> ';
-                        search_table += ' <td> ' + body[0].name + '</td>';                        
+                        search_table += ' <td> ' + body[0].name + '</td>';
                         search_table += ' <td> ' + body[0].email + '</td>';
                         search_table += ' <td> ' + body[0].Days + '</td>';
                         search_table += ' </tr> ';

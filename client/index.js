@@ -81,45 +81,44 @@ function appV(userV) {
     id = userV.uid;
     console.log('app tou volunteer')
     email = userV.email;
-    
-    if(email =='DogWalkingPage123@gmail.com' || email == 'dogwalkingpage123@gmail.com'){
-        document.location.replace('http://localhost:8090/admin.html');
-        console.log('admin')   
-     
-    }
-    else{
-    var s_nameV = name.split(" ");
-    var FnameV = s_nameV[0];
-    var LnameV = s_nameV[1];
-    console.log(name)
-    document.getElementById("Update").style.display = "block";
-    document.getElementById('become_mem').style.display = 'none';
-    document.getElementById('updateShowB').style.display = 'block';
-    document.getElementById('bec_mem').textContent = 'Add data';
-    document.getElementById('Welcome_card').textContent = 'Welcome ' + FnameV;
-    //document.getElementById('update_data').style.display = 'block';
-    document.getElementById("Nav_Cal").style.display = "block";
-    document.getElementById("PernsonalCal").style.display = "block";
-    code_text = '<div class="form-check form-check-inline" > '
-    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + FnameV + ' </p> </div>';
-    code_text += '<div><button id="Logout" class="btn btn-outline-dark " type="button" onclick = "logoutfunct()">Log out</button> </div>';
-    code_text += '</div>';
-    document.getElementById("Welcome").innerHTML = code_text;
-    document.getElementById("Welcome").style.display = 'block';
 
- 
+    if (email == 'DogWalkingPage123@gmail.com' || email == 'dogwalkingpage123@gmail.com') {
+        document.location.replace('http://localhost:8090/admin.html');
+        console.log('admin')
+
+    } else {
+        var s_nameV = name.split(" ");
+        var FnameV = s_nameV[0];
+        var LnameV = s_nameV[1];
+        console.log(name)
+        document.getElementById("Update").style.display = "block";
+        document.getElementById('become_mem').style.display = 'none';
+        document.getElementById('updateShowB').style.display = 'block';
+        document.getElementById('bec_mem').textContent = 'Add data';
+        document.getElementById('Welcome_card').textContent = 'Welcome ' + FnameV;
+        //document.getElementById('update_data').style.display = 'block';
+        document.getElementById("Nav_Cal").style.display = "block";
+        document.getElementById("PernsonalCal").style.display = "block";
+        code_text = '<div class="form-check form-check-inline" > '
+        code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + FnameV + ' </p> </div>';
+        code_text += '<div><button id="Logout" class="btn btn-outline-dark " type="button" onclick = "logoutfunct()">Log out</button> </div>';
+        code_text += '</div>';
+        document.getElementById("Welcome").innerHTML = code_text;
+        document.getElementById("Welcome").style.display = 'block';
+
+
 
     }
 
 }
 
-function logoutfunct(){
-    firebase.auth().signOut().then(function() {
+function logoutfunct() {
+    firebase.auth().signOut().then(function () {
         // Sign-out successful.
         location.reload();
-      }, function(error) {
+    }, function (error) {
         // An error happened.
-      });
+    });
 }
 
 
@@ -129,34 +128,33 @@ function app(user) {
     name = user.displayName;
     id = user.uid;
     email = user.email;
-    if(email =='DogWalkingPage123@gmail.com' || email == 'dogwalkingpage123@gmail.com'){
-        document.location.replace('http://localhost:8090/admin.html');  
+    if (email == 'DogWalkingPage123@gmail.com' || email == 'dogwalkingpage123@gmail.com') {
+        document.location.replace('http://localhost:8090/admin.html');
         console.log('admin')
-      
-      }
-    else{
-    var s_name = name.split(" ");
-    var Fname = s_name[0];
-    var Lname = s_name[1];
-    console.log("app tou owner");
-    document.getElementById("Update").style.display = "block";
-    document.getElementById('become_mem').style.display = 'none';
-    document.getElementById('updateShowB').style.display = 'block';
-    document.getElementById('bec_mem').textContent = 'Add data';
-    document.getElementById('Welcome_card').textContent = 'Welcome ' + Fname;
-    //document.getElementById('update_data').style.display = 'block';
-    document.getElementById("Nav_Cal").style.display = "block";
-    document.getElementById("PernsonalCal").style.display = "block";
-    //id = 'MarEu';    
-    code_text = '<div class="form-check form-check-inline" > '
-    code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + Fname + ' </p> </div>';
-    code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button" onclick="logoutfunct()">Log out</button> </div>'
-    code_text += '</div>'
-    document.getElementById("Welcome").innerHTML = code_text;
-      
 
-    var user = firebase.auth().currentUser;
-    console.log(user)
+    } else {
+        var s_name = name.split(" ");
+        var Fname = s_name[0];
+        var Lname = s_name[1];
+        console.log("app tou owner");
+        document.getElementById("Update").style.display = "block";
+        document.getElementById('become_mem').style.display = 'none';
+        document.getElementById('updateShowB').style.display = 'block';
+        document.getElementById('bec_mem').textContent = 'Add data';
+        document.getElementById('Welcome_card').textContent = 'Welcome ' + Fname;
+        //document.getElementById('update_data').style.display = 'block';
+        document.getElementById("Nav_Cal").style.display = "block";
+        document.getElementById("PernsonalCal").style.display = "block";
+        //id = 'MarEu';    
+        code_text = '<div class="form-check form-check-inline" > '
+        code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + Fname + ' </p> </div>';
+        code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button" onclick="logoutfunct()">Log out</button> </div>'
+        code_text += '</div>'
+        document.getElementById("Welcome").innerHTML = code_text;
+
+
+        var user = firebase.auth().currentUser;
+        console.log(user)
     }
 
 
@@ -268,7 +266,6 @@ window.onload = function () {
     document.getElementById('f2').addEventListener('submit', async function (event) {
         event.preventDefault();
         try {
-
             daysV = []
             if (document.getElementById("M2").checked == true) {
                 var x2 = document.getElementById("M2").value;
@@ -323,22 +320,22 @@ window.onload = function () {
 
 
     document.getElementById("percal").addEventListener('click', function (event) {
-        userID = id;        
+        userID = id;
         document.getElementById('cal').style.display = 'block';
         fetch('http://localhost:8090/loginCal/' + userID)
             .then(function (response) {
-                console.log(response)                 
+                console.log(response)
                 if (response.ok) {
                     a = response.json()
                     console.log(a);
-                    return a;                    
-                }
-                else{
+                    return a;
+                } else {
                     //alert("The admin haven't match you with a dog/volunteer yet")
-                    throw new Error("The admin haven't match you with a dog/volunteer yet");               
+        
+                    throw new Error("The admin haven't match you with a dog/volunteer yet");
+
                 }
             })
-
             .then(function (body) {
                 for (var i = 0; i < body.length; i++) {
                     let a = body[i].dog + ' - ' + body[i].vol;
@@ -377,7 +374,7 @@ window.onload = function () {
             .catch(error => alert(error))
 
 
-          
+
 
 
     });
@@ -423,7 +420,7 @@ window.onload = function () {
                             k += 1;
                         }
                         code1 += '</div>';
-                        if (i == length/2 -1 ){
+                        if (i == length / 2 - 1) {
                             code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
                             code1 += '</div> </div>'
                         }
@@ -461,7 +458,7 @@ window.onload = function () {
                             code1 += '</div>';
                             k += 1;
                         }
-                        code1 += '</div>';                        
+                        code1 += '</div>';
                         code1 += '</div>';
                         code1 += '</div>';
                         code1 += '</div>';
