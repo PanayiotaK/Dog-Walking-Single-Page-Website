@@ -7,13 +7,9 @@ window.onload = function () {
     document.getElementById("searchUser").style.display = "none";
 
 
-
-
-
-
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
         fetch('http://localhost:8090/dogs')
-            .then(function (response) {
+            .then(function (response) {                
                 return response.json();
             })
             .then(body => {
@@ -255,7 +251,12 @@ window.onload = function () {
             fetch('http://localhost:8090/search/' + usename)
 
                 .then(function (response) {
-                    return response.json()
+                    if (!response.ok) {
+                        throw new Error(document.getElementById('search_data').innerHTML = "<span style='color:#FF0000'> No such user exists! </span> ");
+                    }
+                    else{
+                    return response.json()}
+
 
                 })
                 .then(function (body) {

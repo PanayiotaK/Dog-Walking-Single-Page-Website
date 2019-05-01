@@ -162,7 +162,6 @@ function app(user) {
 
 
 document.getElementById('ownerB').addEventListener('click', function (event) {
-
     localStorage.setItem("owner_save", Owner);
     //console.log('owner_save:', owner_save) ;
 
@@ -211,61 +210,13 @@ window.onload = function () {
         })
     });
 
-
-
-
     var userID
-
-    /*  document.getElementById("Login").addEventListener("click", function (event5) {
-          var loged_in = false;
-          userID = document.getElementById("Login_In").value;
-          console.log("user id: ", userID);
-          var x = document.getElementById("LoginPopUp");
-
-          if (userID == "admin") {
-              pas = prompt("Give password: ");
-              if (pas == "pas") {
-                  window.location.href = 'https://www.youtube.com/';
-                  document.getElementById("Nav_Cal").style.display = "block";
-              }
-          }
-
-
-          fetch('http://localhost:8090/login/' + userID)
-              .then(function (response) {
-                  console.log(response);
-                  return response.text();
-              })
-              .then(function (body) {
-
-                  if (body == 'user') {
-                      document.getElementById("Nav_Cal").style.display = "block";
-                      document.getElementById("PernsonalCal").style.display = "block";
-                      loged_in = true
-                      //window.location.href = "https://www.google.com";
-                      var x = document.getElementById('logIn');
-                      if (x.style.display === "none") {
-                          x.style.display = "block";
-                      } else {
-                          x.style.display = "none";
-
-
-                      }
-                      code_text = '<div class="form-check form-check-inline" > '
-                      code_text += '<div id="logout" style="width: 170px;"> <p id = "logout"><b>Welcome</b>  ' + userID + ' </p> </div>';
-                      code_text += '<div><button id="Logout" class="btn btn-outline-dark" type="button">Log out</button> </div>'
-                      code_text += '</div>'
-                      document.getElementById("Welcome").innerHTML = code_text;
-                  }
-
-              });
-      });*/
-
-
 
     document.getElementById('f2').addEventListener('submit', async function (event) {
         event.preventDefault();
+        var error 
         try {
+            error = false;
             daysV = []
             if (document.getElementById("M2").checked == true) {
                 var x2 = document.getElementById("M2").value;
@@ -309,6 +260,7 @@ window.onload = function () {
             })
 
             if (!response.ok) {
+                error = true
                 throw new Error("problem adding data" + response.code);
             }
         } catch (error) {
@@ -319,7 +271,7 @@ window.onload = function () {
     });
 
 
-    document.getElementById("percal").addEventListener('click', function (event) {
+    document.getElementById("percal").addEventListener('click',  function (event) {
         userID = id;
         document.getElementById('cal').style.display = 'block';
         fetch('http://localhost:8090/loginCal/' + userID)
@@ -331,7 +283,7 @@ window.onload = function () {
                     return a;
                 } else {
                     //alert("The admin haven't match you with a dog/volunteer yet")
-        
+
                     throw new Error("The admin haven't match you with a dog/volunteer yet");
 
                 }
@@ -373,10 +325,6 @@ window.onload = function () {
             })
             .catch(error => alert(error))
 
-
-
-
-
     });
 
 
@@ -388,9 +336,7 @@ window.onload = function () {
             .then(function (body) {
                 //console.log(body);
                 let length = body.length;
-
                 let rlength = Math.floor(length / 2);
-
                 let k = 0
                 let code1 = "";
                 if (length % 2 == 0) {

@@ -254,7 +254,6 @@
                 $(document).ready(function () {
                   $('#pr').click(function () {
                     checked = $("input[type=checkbox]:checked").length;
-
                     if (!checked) {
                       alert("You must check at least one checkbox.");
                       return false;
@@ -367,10 +366,23 @@
               <br>
               <button id="SubmitVol" class="btn btn-outline-dark" type="submit">Submit
                 form</button>
+                <div id= "AddWrong"></div>
             </form>
           </div>
         </div>
+         <script>
+          $(document).ready(function () {
+            $('#SubmitVol').click(function () {
+              checked = $("input[type=checkbox]:checked").length;
+              if (!checked) {
+                //document.getElementById('AddWrong').innerHTML = "<span style='color:#FF0000'> Unsuccessful </span>"
+                alert("You must check at least one checkbox.");               
+                return false;
+              }
 
+            });
+          });
+        </script>
         <script>
           // Example starter JavaScript for disabling form submissions if there are invalid fields
           (function () {
@@ -385,18 +397,24 @@
                   if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
+                  }else {
+                    form.classList.add('was-validated');
+                    document.getElementById("AddWrong").innerHTML = "Success!";
+                    setTimeout(hide_form2, 1500);
+      
                   }
-                  form.classList.add('was-validated');
+                  
                 }, false);
               });
             }, false);
           })();
-        </script>
 
+          function hide_form2() {
+            document.getElementById('form2').style.display = 'none';
+          }
+        </script>
       </div>
     </div>
-
-
   </div>
 
 
