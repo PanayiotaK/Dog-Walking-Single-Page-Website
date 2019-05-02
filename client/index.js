@@ -282,9 +282,9 @@ window.onload = function () {
                     console.log(a);
                     return a;
                 } else {
-                    //alert("The admin haven't match you with a dog/volunteer yet")
+                    //alert("The admin hasn't match you with a dog/volunteer yet")
 
-                    throw new Error("The admin haven't match you with a dog/volunteer yet");
+                    throw new Error("The admin hasn't match you with a dog/volunteer yet");
 
                 }
             })
@@ -336,7 +336,9 @@ window.onload = function () {
             .then(function (body) {
                 //console.log(body);
                 let length = body.length;
+
                 let rlength = Math.floor(length / 2);
+
                 let k = 0
                 let code1 = "";
                 if (length % 2 == 0) {
@@ -354,12 +356,12 @@ window.onload = function () {
                             code1 += '</div>';
                             code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
                             code1 += '<div class="card-body">';
-                            code1 += ' <p class="card-text">' + body[k].descr + '</p>';
+                            code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
                             code1 += '</div>';
                             code1 += ' <ul class="list-group list-group-flush">';
-                            code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
-                            code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
-                            code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
+                            code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                            code1 += ' <li class="list-group-item"><b>Age: </b> ' + body[k].age + '</li>';
+                            code1 += '<li class="list-group-item"><b>Gender: </b> ' + body[k].gender + '</li>';
                             code1 += '</ul>';
                             code1 += '</div>';
                             code1 += '</div>';
@@ -393,12 +395,12 @@ window.onload = function () {
                             code1 += '</div>';
                             code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
                             code1 += '<div class="card-body">';
-                            code1 += ' <p class="card-text">' + body[k].descr + '</p>';
+                            code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
                             code1 += '</div>';
                             code1 += ' <ul class="list-group list-group-flush">';
-                            code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
-                            code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
-                            code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
+                            code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                            code1 += ' <li class="list-group-item"><b>Age: </b>:' + body[k].age + '</li>';
+                            code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
                             code1 += '</ul>';
                             code1 += '</div>';
                             code1 += '</div>';
@@ -424,12 +426,12 @@ window.onload = function () {
                     code1 += '</div>';
                     code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
                     code1 += '<div class="card-body">';
-                    code1 += ' <p class="card-text">' + body[k].descr + '</p>';
+                    code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
                     code1 += '</div>';
                     code1 += ' <ul class="list-group list-group-flush">';
-                    code1 += ' <li class="list-group-item">' + body[k].breed + '</li>';
-                    code1 += ' <li class="list-group-item">' + body[k].age + '</li>';
-                    code1 += '<li class="list-group-item">' + body[k].gender + '</li>';
+                    code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                    code1 += ' <li class="list-group-item"><b>Age: </b>' + body[k].age + '</li>';
+                    code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
                     code1 += '</ul>';
                     code1 += '</div>';
                     code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'

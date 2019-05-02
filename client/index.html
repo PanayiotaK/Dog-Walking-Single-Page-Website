@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
- <meta charset="utf-8">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -113,15 +113,15 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <p>Welcome to<b> Dog Walking Durham!</b> The best way for people with a dog obsesion to enjoy some
+                <p>Welcome to<b> Dog Walking Durham!</b> The best way for people with a dog obsession to enjoy some
                   valuable time with
                   a cute furry animal and the most friendly and loving way for busy dog owners to walk their dogs.<br>
                   <br> Our company
-                  will macth your dog with a lovely person, with a small dog addiction, so your dog will not only get
+                  will match your dog with a lovely person, with a small dog addiction, so your dog will not only get
                   their regular
                   exercise but lots of love and cuddles, as your pet deserves. <br><br>
-                  If you are interested as a volunteer you will have the ability to take animals for walks whenever you
-                  are availbale, without
+                  If you are interested as a volunteer, you will have the ability to take animals for walks whenever you
+                  are available, without
                   that affecting your plans. Simply login in and complete a form that under 1min.
                 </p>
               </div>
@@ -145,7 +145,8 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-10 mb-3">
-                  <p>Update your data or if is your first time loging in add your data.
+                  <p> <b>Add</b> your data if you are logging in for the <b>first</b> time.<br>
+                    <b>Update</b> your data if you have already entered data.
                     All you have to do is complete a simple form.</p>
                 </div>
               </div>
@@ -167,10 +168,6 @@
 
       })
     </script>
-
-
-
-
 
   </div>
   <div id="buttons">
@@ -305,12 +302,12 @@
               <br>
 
               <div class="form-group">
-                <label for="dogImage">Plz submit image</label>
+                <label for="dogImage">Please submit an image</label>
                 <input type="file" class="form-control-file" id="dogImage" name="dogImage" accept=".jpg,.png" required>
                 <small id="passwordHelpInline" class="text-muted">
                   Must be jpeg or png.
                 </small>
-                <div class="invalid-feedback"> Plz submit an appropriate photo </div>
+                <div class="invalid-feedback"> Please submit an appropriate photo </div>
               </div>
               <br>
               <button id="pr" class="btn btn-outline-dark" type="submit">Submit form</button>
@@ -366,17 +363,17 @@
               <br>
               <button id="SubmitVol" class="btn btn-outline-dark" type="submit">Submit
                 form</button>
-                <div id= "AddWrong"></div>
+              <div id="AddWrong"></div>
             </form>
           </div>
         </div>
-         <script>
+        <script>
           $(document).ready(function () {
             $('#SubmitVol').click(function () {
               checked = $("input[type=checkbox]:checked").length;
               if (!checked) {
                 //document.getElementById('AddWrong').innerHTML = "<span style='color:#FF0000'> Unsuccessful </span>"
-                alert("You must check at least one checkbox.");               
+                alert("You must check at least one checkbox.");
                 return false;
               }
 
@@ -397,13 +394,13 @@
                   if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                  }else {
+                  } else {
                     form.classList.add('was-validated');
                     document.getElementById("AddWrong").innerHTML = "Success!";
                     setTimeout(hide_form2, 1500);
-      
+
                   }
-                  
+
                 }, false);
               });
             }, false);
@@ -555,12 +552,12 @@
                   </div>
                   <img class="card-img-top" src="dog1.jpg" alt="Dog image" width=200 height=350>
                   <div class="card-body">
-                    <p class="card-text">Dog description .</p>
+                    <p class="card-text"><b>Description: </b> </p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Corgi</li>
-                    <li class="list-group-item">3 years old</li>
-                    <li class="list-group-item">Male</li>
+                    <li class="list-group-item"><b>Breed: </b>Corgi</li>
+                    <li class="list-group-item"><b>Age: </b>3</li>
+                    <li class="list-group-item"><b>Gender: </b>Male</li>
                   </ul>
                 </div>
               </div>
@@ -572,12 +569,12 @@
                   </div>
                   <img class="card-img-top" src="dog3.jpg" alt="Dog image" width=350 height=350>
                   <div class="card-body">
-                    <p class="card-text">Dog description .</p>
+                    <p class="card-text"><b>Description: </b></p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Husky</li>
-                    <li class="list-group-item">7 months old</li>
-                    <li class="list-group-item">Female</li>
+                    <li class="list-group-item"><b>Breed: </b>Husky</li>
+                    <li class="list-group-item"><b>Age: </b>2</li>
+                    <li class="list-group-item"><b>Gender: </b>Female</li>
                   </ul>
 
                 </div>
@@ -623,12 +620,12 @@
                   </div>
                   <img class="card-img-top" src="labrador.jpg" alt="Dog image" width=200 height=350>
                   <div class="card-body">
-                    <p class="card-text">Dog description .</p>
+                    <p class="card-text"><b>Description: </b></p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Labrador</li>
-                    <li class="list-group-item">9 months old</li>
-                    <li class="list-group-item">Female</li>
+                    <li class="list-group-item"><b>Breed: </b>Labrador</li>
+                    <li class="list-group-item"><b>Age: </b>9 months old</li>
+                    <li class="list-group-item"><b>Gender: </b>Female</li>
                   </ul>
                 </div>
               </div>
@@ -640,12 +637,12 @@
                   </div>
                   <img class="card-img-top" src="rottwailler.jpg" alt="Dog image" width=350 height=350>
                   <div class="card-body">
-                    <p class="card-text">Dog description .</p>
+                    <p class="card-text"><b>Description: </b></p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Rottweiler</li>
-                    <li class="list-group-item">4 years old</li>
-                    <li class="list-group-item">Male</li>
+                    <li class="list-group-item"><b>Breed: </b>Rottweiler</li>
+                    <li class="list-group-item"><b>Age: </b>4 years old</li>
+                    <li class="list-group-item"><b>Gender: </b>Male</li>
                   </ul>
                 </div>
               </div>
@@ -654,7 +651,6 @@
         </div>
       </div>
     </div>
-
     <br>
     <div id="moreDogs"></div>
 
@@ -760,7 +756,7 @@
               <div class="col-sm-10 mb-3">
                 <p>For more information or if you experience any problems with your account do not hesitate to Contact
                   Us</p>
-                 <h5>Email: dogwalkingpage123@gmail.com</h5>
+                <h5>Email: dogwalkingpage123@gmail.com</h5>
               </div>
             </div>
           </div>
@@ -777,15 +773,16 @@
     <div class="d-flex justify-content-center">
       <div class="card border-secondary ml-3" style="max-width: 85rem;">
         <div class="card-header">
-          <h2>Pesonal Calendar</h2>
+          <h2>Dog Walking Timetable</h2>
         </div>
         <div class="card-body text-secondary">
           <h6>If it is your first time logging in please make sure that you updated all your data</h6>
           <p>This section allows you to see your personalised timetable,the day(s) of the week that a dog walking session is planned based <br>on the days 
             you were available. <br>Both the name of the volunteer and the dog's should appear on the timetable.<br>
             If you still don't see <b>any</b> data to the timetable that means that the admin hasn't matched you yet with a
-            volunteer/dog.</p>
-          <button id="percal" type="button" class="btn btn-outline-dark">Show personalised calendar</button>
+            volunteer/dog.
+          </p>
+          <button id="percal" type="button" class="btn btn-outline-dark">Show Personal Dog Walking Timetable</button>
           <br>
           <br>
           <div id="cal">
@@ -923,125 +920,125 @@
                         <div id="Sun4"></div>
                       </td>
                     </tr>
-              <tr>
+                    <tr>
 
-                <td>
-                  <div id="Mon5"></div>
-                </td>
-                <td>
-                  <div id="Tue5"></div>
-                </td>
-                <td>
-                  <div id="Wed5"></div>
-                </td>
-                <td>
-                  <div id="Thu5"></div>
-                </td>
-                <td>
-                  <div id="F5"></div>
-                </td>
-                <td>
-                  <div id="Sat5"></div>
-                </td>
-                <td>
-                  <div id="Sun5"></div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div id="Mon6"></div>
-                </td>
-                <td>
-                  <div id="Tue6"></div>
-                </td>
-                <td>
-                  <div id="Wed6"></div>
-                </td>
-                <td>
-                  <div id="Thu6"></div>
-                </td>
-                <td>
-                  <div id="F6"></div>
-                </td>
-                <td>
-                  <div id="Sat6"></div>
-                </td>
-                <td>
-                  <div id="Sun6"></div>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+                      <td>
+                        <div id="Mon5"></div>
+                      </td>
+                      <td>
+                        <div id="Tue5"></div>
+                      </td>
+                      <td>
+                        <div id="Wed5"></div>
+                      </td>
+                      <td>
+                        <div id="Thu5"></div>
+                      </td>
+                      <td>
+                        <div id="F5"></div>
+                      </td>
+                      <td>
+                        <div id="Sat5"></div>
+                      </td>
+                      <td>
+                        <div id="Sun5"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div id="Mon6"></div>
+                      </td>
+                      <td>
+                        <div id="Tue6"></div>
+                      </td>
+                      <td>
+                        <div id="Wed6"></div>
+                      </td>
+                      <td>
+                        <div id="Thu6"></div>
+                      </td>
+                      <td>
+                        <div id="F6"></div>
+                      </td>
+                      <td>
+                        <div id="Sat6"></div>
+                      </td>
+                      <td>
+                        <div id="Sun6"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
 
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
 
-              </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    window.addEventListener('load', function () {
-      document.getElementById("PernsonalCal").style.display = "none";
-      document.getElementById("cal").style.display = "none";
+    <script>
+      window.addEventListener('load', function () {
+        document.getElementById("PernsonalCal").style.display = "none";
+        document.getElementById("cal").style.display = "none";
 
-    })
-  </script>
+      })
+    </script>
   </div>
   <br>
   <br>

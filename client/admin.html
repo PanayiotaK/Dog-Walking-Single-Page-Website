@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
- <meta charset="utf-8">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -122,11 +122,11 @@
             Click for Options
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <button class="dropdown-item" onclick="showDogs()">Get Dogs</button>
-            <button class="dropdown-item" onclick="showVols()">Get Volunteers</button>
-            <button class="dropdown-item" onclick="showOwners()">Get Owners</button>
-            <button class="dropdown-item" onclick="showCal()">Match Dogs/Volunteers</button>
-            <button class="dropdown-item" onclick="showSearch()">Search User</button>
+            <button class="dropdown-item" id="Data_Dogs" onclick="showDogs()">Get Dogs</button>
+            <button class="dropdown-item" id="Data_Vol" onclick="showVols()">Get Volunteers</button>
+            <button class="dropdown-item" id="Data_owners" onclick="showOwners()">Get Owners</button>
+            <button class="dropdown-item" id="MatchDogsVol" onclick="showCal()">Match Dogs/Volunteers</button>
+            <button class="dropdown-item"  onclick="showSearch()">Search User</button>
           </div>
         </div>
       </div>
@@ -193,9 +193,6 @@
         <h2>Get Dogs</h2>
       </div>
       <div class="card-body">
-
-        <p class="card-text">Click for dogs</p>
-        <button class="btn btn-outline-dark" id="Data_Dogs"> Get Dogs</button>
         <br>
         <br>
         <div id="Dogs_Data"></div>
@@ -211,9 +208,6 @@
         <h2>Get Volunteers</h2>
       </div>
       <div class="card-body">
-
-        <p class="card-text">Click for Volunteers</p>
-        <button class="btn btn-outline-dark" id="Data_Vol"> Get Volunteers</button>
         <br>
         <br>
         <div id="Vol_Data"></div>
@@ -229,9 +223,6 @@
         <h2>Get Owners</h2>
       </div>
       <div class="card-body">
-
-        <p class="card-text">Click for Owners</p>
-        <button class="btn btn-outline-dark" id="Data_owners"> Get Owners</button>
         <br>
         <br>
         <div id="Owners_Data"></div>
@@ -262,6 +253,7 @@
     </div>
   </div>
 
+
   <!-- Search form
 <div class="d-flex justify-content-center">
     <div class="card border-secondary lg-3" style="max-width: 95rem;">
@@ -280,18 +272,16 @@
     </div>
 </div> -->
 
-
   <div id="GetCal">
 
     <div class="card" style="max-width: 55rem;">
       <div class="card-header">
-        <h2>Get Timetable</h2>
+        <h2>Generated Walking Timetable</h2>
       </div>
       <div class="card-body">
-        <p class="card-text">By clicking the button you match the dogs with the volunteers.<br>
-          Each volunteer can take for a wal one dog per day. The days the volunteer is available are
+        <p class="card-text">The dogs are matched with the volunteers automatically .<br>
+          Each volunteer can take for a walk one dog per day. The days the volunteer is available are
           always the same as the dogs </p>
-        <button id="MatchDogsVol" class="btn btn-outline-dark"> Match dogs/volunteers</button>
         <br>
         <div id="PernsonalCal">
           <div id="cal">
@@ -432,125 +422,125 @@
                               <div id="Sun4"></div>
                             </td>
                           </tr>
-                    <tr>
+                          <tr>
 
-                      <td>
-                        <div id="Mon5"></div>
-                      </td>
-                      <td>
-                        <div id="Tue5"></div>
-                      </td>
-                      <td>
-                        <div id="Wed5"></div>
-                      </td>
-                      <td>
-                        <div id="Thu5"></div>
-                      </td>
-                      <td>
-                        <div id="F5"></div>
-                      </td>
-                      <td>
-                        <div id="Sat5"></div>
-                      </td>
-                      <td>
-                        <div id="Sun5"></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div id="Mon6"></div>
-                      </td>
-                      <td>
-                        <div id="Tue6"></div>
-                      </td>
-                      <td>
-                        <div id="Wed6"></div>
-                      </td>
-                      <td>
-                        <div id="Thu6"></div>
-                      </td>
-                      <td>
-                        <div id="F6"></div>
-                      </td>
-                      <td>
-                        <div id="Sat6"></div>
-                      </td>
-                      <td>
-                        <div id="Sun6"></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                            <td>
+                              <div id="Mon5"></div>
+                            </td>
+                            <td>
+                              <div id="Tue5"></div>
+                            </td>
+                            <td>
+                              <div id="Wed5"></div>
+                            </td>
+                            <td>
+                              <div id="Thu5"></div>
+                            </td>
+                            <td>
+                              <div id="F5"></div>
+                            </td>
+                            <td>
+                              <div id="Sat5"></div>
+                            </td>
+                            <td>
+                              <div id="Sun5"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div id="Mon6"></div>
+                            </td>
+                            <td>
+                              <div id="Tue6"></div>
+                            </td>
+                            <td>
+                              <div id="Wed6"></div>
+                            </td>
+                            <td>
+                              <div id="Thu6"></div>
+                            </td>
+                            <td>
+                              <div id="F6"></div>
+                            </td>
+                            <td>
+                              <div id="Sat6"></div>
+                            </td>
+                            <td>
+                              <div id="Sun6"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                    </tbody>
-                    </table>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
-
-
       </div>
     </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <div id="MatchData"></div>
-  </div>
+    <div class="d-flex justify-content-center">
+      <div id="MatchData"></div>
+    </div>
   </div>
 
 
