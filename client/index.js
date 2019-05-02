@@ -177,280 +177,283 @@ document.getElementById('VolunteerB').addEventListener('click', function (event)
 
 
 window.onload = function () {
-    document.getElementById('updateB').addEventListener('click', async function (event) {
-        if (localStorage.getItem("owner_save") === Owner) {
-            if (document.getElementById('form1').style.display == 'block') {
-                document.getElementById('form1').style.display = 'none';
+        document.getElementById('updateB').addEventListener('click', async function (event) {
+            if (localStorage.getItem("owner_save") === Owner) {
+                if (document.getElementById('form1').style.display == 'block') {
+                    document.getElementById('form1').style.display = 'none';
+                } else {
+                    document.getElementById('form1').style.display = 'block';
+                }
             } else {
-                document.getElementById('form1').style.display = 'block';
-            }
-        } else {
-            if (document.getElementById('form2').style.display == 'block') {
-                document.getElementById('form2').style.display = 'none';
-            } else {
-                document.getElementById('form2').style.display = 'block';
-            }
+                if (document.getElementById('form2').style.display == 'block') {
+                    document.getElementById('form2').style.display = 'none';
+                } else {
+                    document.getElementById('form2').style.display = 'block';
+                }
 
 
-        }
-        data2 = [];
-        data2.push({
-            nameO: name,
-            idO: id,
-            emailO: email
-        })
-        data2 = JSON.stringify(data2)
-        console.log(data2)
-        let response = await fetch('http://localhost:8090/addOwners1', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "data2=" + data2
-        })
-    });
-
-    var userID
-
-    document.getElementById('f2').addEventListener('submit', async function (event) {
-        event.preventDefault();
-        var error 
-        try {
-            error = false;
-            daysV = []
-            if (document.getElementById("M2").checked == true) {
-                var x2 = document.getElementById("M2").value;
-                daysV.push(x2)
             }
-
-            if (document.getElementById("Tu2").checked == true) {
-                var x2 = document.getElementById("Tu2").value;
-                daysV.push(x2)
-            }
-
-            if (document.getElementById("W2").checked == true) {
-                var x2 = document.getElementById("W2").value;
-                daysV.push(x2)
-            }
-
-            if (document.getElementById("Th2").checked == true) {
-                var x2 = document.getElementById("Th2").value;
-                daysV.push(x2)
-            }
-
-            if (document.getElementById("F2").checked == true) {
-                var x2 = document.getElementById("F2").value;
-                daysV.push(x2)
-            }
-            if (document.getElementById("Sa2").checked == true) {
-                var x2 = document.getElementById("Sa2").value;
-                daysV.push(x2)
-            }
-            if (document.getElementById("Su2").checked == true) {
-                var x2 = document.getElementById("Su2").value;
-                daysV.push(x2)
-            }
-
-            let response = await fetch('http://localhost:8090/addVol', {
+            data2 = [];
+            data2.push({
+                nameO: name,
+                idO: id,
+                emailO: email
+            })
+            data2 = JSON.stringify(data2)
+            console.log(data2)
+            let response = await fetch('http://localhost:8090/addOwners1', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: "dedV=" + daysV
+                body: "data2=" + data2
             })
+        });
 
-            if (!response.ok) {
-                error = true
-                throw new Error("problem adding data" + response.code);
+        var userID
+
+        document.getElementById('f2').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            var error
+            try {
+                error = false;
+                daysV = []
+                if (document.getElementById("M2").checked == true) {
+                    var x2 = document.getElementById("M2").value;
+                    daysV.push(x2)
+                }
+
+                if (document.getElementById("Tu2").checked == true) {
+                    var x2 = document.getElementById("Tu2").value;
+                    daysV.push(x2)
+                }
+
+                if (document.getElementById("W2").checked == true) {
+                    var x2 = document.getElementById("W2").value;
+                    daysV.push(x2)
+                }
+
+                if (document.getElementById("Th2").checked == true) {
+                    var x2 = document.getElementById("Th2").value;
+                    daysV.push(x2)
+                }
+
+                if (document.getElementById("F2").checked == true) {
+                    var x2 = document.getElementById("F2").value;
+                    daysV.push(x2)
+                }
+                if (document.getElementById("Sa2").checked == true) {
+                    var x2 = document.getElementById("Sa2").value;
+                    daysV.push(x2)
+                }
+                if (document.getElementById("Su2").checked == true) {
+                    var x2 = document.getElementById("Su2").value;
+                    daysV.push(x2)
+                }
+
+                let response = await fetch('http://localhost:8090/addVol', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "dedV=" + daysV
+                })
+
+                if (!response.ok) {
+                    error = true
+                    throw new Error("problem adding data" + response.code);
+                }
+            } catch (error) {
+                console.log(error)
+                alert("problem: " + error);
             }
-        } catch (error) {
-            console.log(error)
-            alert("problem: " + error);
+
+        });
+
+
+        document.getElementById("percal").addEventListener('click', function (event) {
+            userID = id;
+            document.getElementById('cal').style.display = 'block';
+            fetch('http://localhost:8090/loginCal/' + userID)
+                .then(function (response) {
+                    console.log(response)
+                    if (response.ok) {
+                        a = response.json()
+                        console.log(a);
+                        return a;
+                    } else {
+                        //alert("The admin hasn't match you with a dog/volunteer yet")
+
+                        throw new Error("The admin hasn't match you with a dog/volunteer yet");
+
+                    }
+                })
+                .then(function (body) {
+                    for (var i = 0; i < body.length; i++) {
+                        let a = body[i].dog + ' - ' + body[i].vol;
+                        if (body[i].day == 'Monday') {
+
+                            console.log(a)
+                            document.getElementById("Mon1").innerHTML = a;
+                        }
+                        if (body[i].day == 'Tuesday') {
+                            document.getElementById("Tue1").innerHTML = a;
+
+                        }
+                        if (body[i].day == 'Wednesday') {
+                            document.getElementById("Wed1").innerHTML = a;
+
+                        }
+                        if (body[i].day == 'Thursday') {
+                            document.getElementById("Thu1").innerHTML = a;
+
+                        }
+                        if (body.day == 'Friday') {
+                            document.getElementById("F1").innerHTML = a;
+
+                        }
+
+                        if (body[i].day == 'Saterday') {
+                            document.getElementById("Sat1").innerHTML = a;
+
+                        }
+                        if (body[i].day == 'Sunday') {
+                            document.getElementById("Sun1").innerHTML = a;
+
+                        }
+                    }
+                })
+                .catch(error => alert(error))
+
+        });
+
+
+        document.getElementById("showMore").addEventListener('click',  C());
+
+        async function C() {
+            try {
+                var error = false;
+                let response = await fetch('http://localhost:8090/showDogs').catch(function () {
+                    error = true
+
+                })
+                if (!error) {
+                    let body = await response.json();
+                    let length = body.length;
+                    let rlength = Math.floor(length / 2);
+                    let k = 0
+                    let code1 = "";
+                    if (length % 2 == 0) {
+                        for (var i = 0; i < length / 2; i++) {
+                            code1 += '<div class="d-flex justify-content-center"> ';
+                            code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                            code1 += '<div class="card-body text-secondary">';
+                            code1 += '  <div class="container">';
+                            code1 += ' <div class="row">';
+                            for (var j = 0; j < 2; j++) {
+                                code1 += '<div class="col">';
+                                code1 += '<div class="card" style="width: 18rem;">';
+                                code1 += '<div class="card-header">';
+                                code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
+                                code1 += '</div>';
+                                code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
+                                code1 += '<div class="card-body">';
+                                code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
+                                code1 += '</div>';
+                                code1 += ' <ul class="list-group list-group-flush">';
+                                code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                                code1 += ' <li class="list-group-item"><b>Age: </b> ' + body[k].age + '</li>';
+                                code1 += '<li class="list-group-item"><b>Gender: </b> ' + body[k].gender + '</li>';
+                                code1 += '</ul>';
+                                code1 += '</div>';
+                                code1 += '</div>';
+                                k += 1;
+                            }
+                            code1 += '</div>';
+                            if (i == length / 2 - 1) {
+                                code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
+                                code1 += '</div> </div>'
+                            }
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            document.getElementById("moreDogs").innerHTML = code1;
+
+                        }
+                        //console.log("K_telos for loop1",k) 
+                    } else {
+                        for (var i = 0; i < rlength; i++) {
+                            code1 += '<div class="d-flex justify-content-center"> ';
+                            code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                            code1 += '<div class="card-body text-secondary">';
+                            code1 += '  <div class="container">';
+                            code1 += ' <div class="row">';
+                            for (var j = 0; j < 2; j++) {
+                                code1 += '<div class="col">';
+                                code1 += '<div class="card" style="width: 18rem;">';
+                                code1 += '<div class="card-header">';
+                                code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
+                                code1 += '</div>';
+                                code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
+                                code1 += '<div class="card-body">';
+                                code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
+                                code1 += '</div>';
+                                code1 += ' <ul class="list-group list-group-flush">';
+                                code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                                code1 += ' <li class="list-group-item"><b>Age: </b>:' + body[k].age + '</li>';
+                                code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
+                                code1 += '</ul>';
+                                code1 += '</div>';
+                                code1 += '</div>';
+                                k += 1;
+                            }
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            code1 += '</div>';
+                            code1 += '</div>';
+                        }
+
+                        k = length - 1;
+                        code1 += '<div class="d-flex justify-content-center"> ';
+                        code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
+                        code1 += '<div class="card-body text-secondary">';
+                        code1 += '  <div class="container">';
+                        code1 += ' <div class="row">';
+                        code1 += '<div class="col">';
+                        code1 += '<div class="card" style="width: 18rem;">';
+                        code1 += '<div class="card-header">';
+                        code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
+                        code1 += '</div>';
+                        code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
+                        code1 += '<div class="card-body">';
+                        code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
+                        code1 += '</div>';
+                        code1 += ' <ul class="list-group list-group-flush">';
+                        code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
+                        code1 += ' <li class="list-group-item"><b>Age: </b>' + body[k].age + '</li>';
+                        code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
+                        code1 += '</ul>';
+                        code1 += '</div>';
+                        code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
+                        code1 += '</div> </div>'
+                        code1 += '</div>';
+                        code1 += '</div>';
+                        code1 += '</div>';
+                        code1 += '</div>';
+
+                        document.getElementById("moreDogs").innerHTML = code1;                      
+                    } 
+                }else {
+                   console.log('server not responding')
+                }
+
+            }catch(err){
+                console.log('error')
+            }
+
         }
 
-    });
-
-
-    document.getElementById("percal").addEventListener('click',  function (event) {
-        userID = id;
-        document.getElementById('cal').style.display = 'block';
-        fetch('http://localhost:8090/loginCal/' + userID)
-            .then(function (response) {
-                console.log(response)
-                if (response.ok) {
-                    a = response.json()
-                    console.log(a);
-                    return a;
-                } else {
-                    //alert("The admin hasn't match you with a dog/volunteer yet")
-
-                    throw new Error("The admin hasn't match you with a dog/volunteer yet");
-
-                }
-            })
-            .then(function (body) {
-                for (var i = 0; i < body.length; i++) {
-                    let a = body[i].dog + ' - ' + body[i].vol;
-                    if (body[i].day == 'Monday') {
-
-                        console.log(a)
-                        document.getElementById("Mon1").innerHTML = a;
-                    }
-                    if (body[i].day == 'Tuesday') {
-                        document.getElementById("Tue1").innerHTML = a;
-
-                    }
-                    if (body[i].day == 'Wednesday') {
-                        document.getElementById("Wed1").innerHTML = a;
-
-                    }
-                    if (body[i].day == 'Thursday') {
-                        document.getElementById("Thu1").innerHTML = a;
-
-                    }
-                    if (body.day == 'Friday') {
-                        document.getElementById("F1").innerHTML = a;
-
-                    }
-
-                    if (body[i].day == 'Saterday') {
-                        document.getElementById("Sat1").innerHTML = a;
-
-                    }
-                    if (body[i].day == 'Sunday') {
-                        document.getElementById("Sun1").innerHTML = a;
-
-                    }
-                }
-            })
-            .catch(error => alert(error))
-
-    });
-
-
-    document.getElementById("showMore").addEventListener('click', C());
-
-    function C() {
-        fetch('http://localhost:8090/showDogs')
-            .then(response => response.json())
-            .then(function (body) {
-                //console.log(body);
-                let length = body.length;
-
-                let rlength = Math.floor(length / 2);
-
-                let k = 0
-                let code1 = "";
-                if (length % 2 == 0) {
-                    for (var i = 0; i < length / 2; i++) {
-                        code1 += '<div class="d-flex justify-content-center"> ';
-                        code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-                        code1 += '<div class="card-body text-secondary">';
-                        code1 += '  <div class="container">';
-                        code1 += ' <div class="row">';
-                        for (var j = 0; j < 2; j++) {
-                            code1 += '<div class="col">';
-                            code1 += '<div class="card" style="width: 18rem;">';
-                            code1 += '<div class="card-header">';
-                            code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
-                            code1 += '</div>';
-                            code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
-                            code1 += '<div class="card-body">';
-                            code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
-                            code1 += '</div>';
-                            code1 += ' <ul class="list-group list-group-flush">';
-                            code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
-                            code1 += ' <li class="list-group-item"><b>Age: </b> ' + body[k].age + '</li>';
-                            code1 += '<li class="list-group-item"><b>Gender: </b> ' + body[k].gender + '</li>';
-                            code1 += '</ul>';
-                            code1 += '</div>';
-                            code1 += '</div>';
-                            k += 1;
-                        }
-                        code1 += '</div>';
-                        if (i == length / 2 - 1) {
-                            code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
-                            code1 += '</div> </div>'
-                        }
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        document.getElementById("moreDogs").innerHTML = code1;
-
-                    }
-                    //console.log("K_telos for loop1",k) 
-                } else {
-                    for (var i = 0; i < rlength; i++) {
-                        code1 += '<div class="d-flex justify-content-center"> ';
-                        code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-                        code1 += '<div class="card-body text-secondary">';
-                        code1 += '  <div class="container">';
-                        code1 += ' <div class="row">';
-                        for (var j = 0; j < 2; j++) {
-                            code1 += '<div class="col">';
-                            code1 += '<div class="card" style="width: 18rem;">';
-                            code1 += '<div class="card-header">';
-                            code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
-                            code1 += '</div>';
-                            code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
-                            code1 += '<div class="card-body">';
-                            code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
-                            code1 += '</div>';
-                            code1 += ' <ul class="list-group list-group-flush">';
-                            code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
-                            code1 += ' <li class="list-group-item"><b>Age: </b>:' + body[k].age + '</li>';
-                            code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
-                            code1 += '</ul>';
-                            code1 += '</div>';
-                            code1 += '</div>';
-                            k += 1;
-                        }
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        code1 += '</div>';
-                        code1 += '</div>';
-                    }
-
-                    k = length - 1;
-                    code1 += '<div class="d-flex justify-content-center"> ';
-                    code1 += ' <div class="card border-secondary mb-3" style="max-width: 45rem;">';
-                    code1 += '<div class="card-body text-secondary">';
-                    code1 += '  <div class="container">';
-                    code1 += ' <div class="row">';
-                    code1 += '<div class="col">';
-                    code1 += '<div class="card" style="width: 18rem;">';
-                    code1 += '<div class="card-header">';
-                    code1 += ' <h5 class="card-title">' + body[k].Dogs_Name + '</h5>';
-                    code1 += '</div>';
-                    code1 += '<img class="card-img-top" src=" ' + body[k].dogImage + '" alt="Dog image" width=200 height=350>';
-                    code1 += '<div class="card-body">';
-                    code1 += ' <p class="card-text"><b>Description: </b>' + body[k].descr + '</p>';
-                    code1 += '</div>';
-                    code1 += ' <ul class="list-group list-group-flush">';
-                    code1 += ' <li class="list-group-item"><b>Breed: </b>' + body[k].breed + '</li>';
-                    code1 += ' <li class="list-group-item"><b>Age: </b>' + body[k].age + '</li>';
-                    code1 += '<li class="list-group-item"><b>Gender: </b>' + body[k].gender + '</li>';
-                    code1 += '</ul>';
-                    code1 += '</div>';
-                    code1 += '<div class="row">  <div class="col">  <br>  <button id="Hide" type="button" class="btn btn-outline-dark" onclick="hide()">Hide</button>'
-                    code1 += '</div> </div>'
-                    code1 += '</div>';
-                    code1 += '</div>';
-                    code1 += '</div>';
-                    code1 += '</div>';
-
-                    document.getElementById("moreDogs").innerHTML = code1;
-
-
-
-                }
-            });
-
-    }
-
     setInterval(C, 3000);
-
-
 }
