@@ -9,11 +9,11 @@ window.onload = function () {
 
     document.getElementById("Data_Dogs").addEventListener("click", function (_event) {
         fetch('http://localhost:8090/dogs')
-            .then(function (response) {                
+            .then(function (response) {
                 return response.json();
             })
             .then(body => {
-                table_code = '<div class="d-flex justify-content-center"> <div class="card border-secondary lg-8" style="max-width: 99rem;">  <div class="card-body text-secondary">'
+               let table_code = '<div class="d-flex justify-content-center"> <div class="card border-secondary lg-8" style="max-width: 99rem;">  <div class="card-body text-secondary">'
                 table_code += '<div class="container">  <div class="table-responsive-md"> <table class="table table-hover">  <thead>  <tr>  <th style="width: 10%">Dog</th> '
                 table_code += ' <th style="width: 5%">Age</th>'
                 table_code += ' <th style="width: 5%">Gender</th>'
@@ -46,7 +46,7 @@ window.onload = function () {
         fetch('http://localhost:8090/volunteers')
             .then(response => response.json())
             .then(function (body) {
-                Vol_table = ' <div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> '
+               let Vol_table = ' <div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> '
                 Vol_table += ' <div class="container">  <div class="table-responsive-md"> <table class="table table-hover">  <thead>'
                 Vol_table += '<tr> '
                 Vol_table += '<th style="width: 40%"> Full Name</th>  <th style="width: 25%">email</th>   <th style="width: 35%">Days Available</th> </tr> </thead>  <tbody>'
@@ -86,7 +86,7 @@ window.onload = function () {
         fetch("http://localhost:8090/showDogs")
             .then(response => response.json())
             .then(function (body) {
-                Owners_table = '<div class="d-flex justify-content-center"> <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> ';
+               let Owners_table = '<div class="d-flex justify-content-center"> <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary"> ';
                 Owners_table += '<div class="container">';
                 Owners_table += '  <div class="table-responsive-md">  ';
                 Owners_table += '    <table class="table table-hover">';
@@ -121,15 +121,8 @@ window.onload = function () {
             })
 
             .then(function (body) {
-                var M = "";
-                var Te = "";
-                var W = "";
-                var Th = "";
-                var F = "";
-                var Sa = "";
-                var Su = "";
-                var timetable = "";
-                code = '<div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary">    <div class="container"> '
+                
+                let code = '<div class="d-flex justify-content-center">  <div class="card border-secondary ml-3" style="max-width: 85rem;">  <div class="card-body text-secondary">    <div class="container"> '
                 code += ' <meta name="viewport" content="width=device-width, initial-scale=1.0">  <div class="table-responsive">   <table id = "Calendar">     <thead id = "CalendarHead">    <tr>'
                 code += ' <th> <span class="long">Monday</span>  <span class="short">Mon</span>  </th>  <th>  <span class="long">Tuesday</span>  <span class="short">Tue</span>  </th>'
                 code += '<th> <span class="long">Wendsday</span> <span class="short">We</span>  </th>  <th>  <span class="long">Thursday</span>  <span class="short">Thur</span>  </th>'
@@ -247,20 +240,20 @@ window.onload = function () {
     document.getElementById("search").addEventListener("keyup", function (event4) {
         if (event.keyCode === 13) {
             var usename = document.getElementById('search').value;
-            console.log("USername: ", usename);
+            //console.log("USername: ", usename);
             fetch('http://localhost:8090/search/' + usename)
 
                 .then(function (response) {
                     if (!response.ok) {
                         throw new Error(document.getElementById('search_data').innerHTML = "<span style='color:#FF0000'> No such user exists! </span> ");
+                    } else {
+                        return response.json()
                     }
-                    else{
-                    return response.json()}
 
 
                 })
                 .then(function (body) {
-                    search_table = '<div class="d-flex justify-content-center">';
+                    let search_table = '<div class="d-flex justify-content-center">';
                     //search_table += '<div class="card border-secondary ml-3" style="max-width: 85rem;"> ';
                     search_table += '  <div class="card-body text-secondary">';
                     search_table += '    <div class="container">';
@@ -316,7 +309,6 @@ window.onload = function () {
 
     });
 
-    var userID
 
 
 }

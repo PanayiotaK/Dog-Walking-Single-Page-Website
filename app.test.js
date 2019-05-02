@@ -112,6 +112,17 @@ describe('Test the showDogs service', () => {
 	    .send(serialise(params))
 	    .expect(200);
 });
+
+test('POST /addVol doent works', () => {
+	// create a randomly named potato type
+
+	const params = {daysV: ['Monday'],
+		access_token: ''};
+	// add it to the list
+	return request(app)
+	.post('/addVol')
+	.send(serialise(params)).expect(404);
+});
 	
 
 });

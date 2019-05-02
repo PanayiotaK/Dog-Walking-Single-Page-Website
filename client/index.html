@@ -113,16 +113,16 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-10 mb-3">
-                <p>Welcome to<b> Dog Walking Durham!</b> The best way for people with a dog obsession to enjoy some
+                <p>Welcome to<b> Dog Walking Durham!</b> The best way for people with  dog obsession to enjoy some
                   valuable time with
                   a cute furry animal and the most friendly and loving way for busy dog owners to walk their dogs.<br>
                   <br> Our company
                   will match your dog with a lovely person, with a small dog addiction, so your dog will not only get
                   their regular
-                  exercise but lots of love and cuddles, as your pet deserves. <br><br>
+                  exercise but also lots of love and cuddles, as your pet deserves. <br><br>
                   If you are interested as a volunteer, you will have the ability to take animals for walks whenever you
                   are available, without
-                  that affecting your plans. Simply login in and complete a form that under 1min.
+                  that affecting your plans. Simply, login in and complete a form.
                 </p>
               </div>
             </div>
@@ -146,8 +146,9 @@
               <div class="row">
                 <div class="col-sm-10 mb-3">
                   <p> <b>Add</b> your data if you are logging in for the <b>first</b> time.<br>
-                    <b>Update</b> your data if you have already entered data.
-                    All you have to do is complete a simple form.</p>
+                    <b>Update</b> your data if you have already entered data. All you have to do is complete a simple form.<br>
+                 </p>
+                 <div id= "ifowner"></div>
                 </div>
               </div>
               <div class="row">
@@ -465,14 +466,14 @@
                   <img class="card-img-top" src="dogOwner.jpg" alt="Dog owners image" width=100 height=250>
                   <div class="card-body">
                     <p>Are you an<b> owner </b>with a busy schedule?</p>
-                    <p>Your dog can still go on walks with friendly dog loves and get enough hugs and pets as they
-                      deserve. The only thing you
+                    <p>Your dog can still go on walks with friendly dog loves and get enough hugs and pets as your dog
+                      deserves. The only thing you
                       will do is to sign in.</p>
                     <div class="container">
                       <!-- Trigger the modal with a button -->
                       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> -->
                       <button id="ownerB" type="button" class="btn btn-secondary" data-dismiss="modal"
-                        data-toggle="modal" data-target="#myModal">Start as Owner</button>
+                        data-toggle="modal" data-target="#myModal">Start/Login as Owner</button>
                       <!-- Modal -->
                       <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog modal-lg">
@@ -511,14 +512,14 @@
                   <img class="card-img-top" src="Volunteer.jpg" alt="Volunteer" width=100 height=250>
                   <div class="card-body">
                     <p>Are you a huge<b> dog lover</b>, but you can't have your own dog?</p>
-                    <p>Now you can! By just filling a form you will have the ability to walk around adorable puppies
+                    <p>Now you can! By just filling a form, you will have the ability to walk around adorable puppies
                       any time of the week
                       you are available.
                     </p>
 
                     <div class="container">
                       <button id="VolunteerB" type="button" class="btn btn-secondary" data-dismiss="modal"
-                        data-toggle="modal" data-target="#myModal">Start as Volunteer</button>
+                        data-toggle="modal" data-target="#myModal">Start/Login as Volunteer</button>
                     </div>
                   </div>
                 </div>
@@ -539,7 +540,7 @@
     <div class="d-flex justify-content-center">
       <div class="card border-secondary mb-3" style="max-width: 50rem;">
         <div class="card-header">
-          <h3>Available Dogs</h3>
+          <h3>Our Dogs</h3>
         </div>
         <div class="card-body text-secondary">
           <!-- <h5 class="card-title">Secondary card title</h5> -->
@@ -594,12 +595,18 @@
   </div>
 
   <script>
-    function F() {
+    function F() {     
+   
       var x = document.getElementById('DogsAv2');
       if (x.style.display === "none") {
         x.style.display = "block";
+        document.getElementById('showMore').innerText = 'Show Less Dogs';
+
       } else {
         x.style.display = "none";
+        document.getElementById('showMore').innerText = 'Show More Dogs!';
+
+
 
       }
 
@@ -777,9 +784,11 @@
         </div>
         <div class="card-body text-secondary">
           <h6>If it is your first time logging in please make sure that you updated all your data</h6>
-          <p>This section allows you to see your personalised timetable,the day(s) of the week that a dog walking session is planned based <br>on the days 
+          <p>This section allows you to see your personalised timetable,the day(s) of the week that a dog walking
+            session is planned based <br>on the days
             you were available. <br>Both the name of the volunteer and the dog's should appear on the timetable.<br>
-            If you still don't see <b>any</b> data to the timetable that means that the admin hasn't matched you yet with a
+            If you still don't see <b>any</b> data to the timetable that means that the admin hasn't matched you yet
+            with a
             volunteer/dog.
           </p>
           <button id="percal" type="button" class="btn btn-outline-dark">Show Personal Dog Walking Timetable</button>
